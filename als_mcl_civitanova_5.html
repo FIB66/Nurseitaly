@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALS MCL Civitanova Marche – Associazione Lavoratori Stranieri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1a6fb5;    --blue-lt:#e8f2fc;  --blue-mid:#4a9dd4;
+  --coral:#e8522a;   --coral-lt:#fdeee9;
+  --gold:#e8a020;    --gold-lt:#fef6e4;
+  --teal:#18a084;    --teal-lt:#e4f7f3;
+  --violet:#7c4dcc;  --violet-lt:#f0ebfa;
+  --green:#2e8b57;   --green-lt:#e8f5ee;
+  --white:#ffffff;   --off:#f8f9fb;      --paper:#f2f0eb;
+  --txt:#1a1a2e;     --txt2:#4a4a6a;     --txt3:#8888aa;
+  --border:#e0e0f0;
+  --serif:'Playfair Display',serif;
+  --sans:'Plus Jakarta Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --r:14px; --r2:24px;
+  --sh:0 4px 24px rgba(26,26,46,.08);
+  --sh2:0 12px 48px rgba(26,26,46,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--txt);background:var(--white);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:60px;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);box-shadow:0 2px 16px rgba(0,0,0,.06);
+  display:flex;align-items:center;justify-content:space-between;padding:0 2rem;
+  transition:all .3s}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-badge{background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;
+  font-family:var(--mono);font-size:11px;font-weight:500;padding:5px 11px;
+  border-radius:8px;letter-spacing:.04em}
+.nav-name{color:var(--txt2);font-size:13px;font-weight:500}
+.nav-links{display:flex;align-items:center;gap:.2rem}
+.nav-links a{color:var(--txt2);text-decoration:none;font-size:13px;font-weight:500;
+  padding:6px 12px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{background:var(--off);color:var(--blue)}
+.nav-cta{background:linear-gradient(135deg,var(--coral),var(--gold))!important;
+  color:#fff!important;font-weight:700!important;padding:8px 18px!important}
+.nav-cta:hover{box-shadow:0 4px 16px rgba(232,82,42,.35);transform:translateY(-1px)}
+.hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--txt)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;padding-top:60px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#e8f2fc 0%,#f0ebfa 40%,#fdeee9 70%,#fef6e4 100%)}
+.hero-blob1{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(26,111,181,.12),transparent 70%);
+  top:-100px;right:-100px;border-radius:50%;animation:float1 8s ease-in-out infinite}
+.hero-blob2{position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(24,160,132,.1),transparent 70%);
+  bottom:0;left:-50px;border-radius:50%;animation:float2 10s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,30px) scale(1.05)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-20px) scale(1.08)}}
+.hero-inner{max-width:1140px;margin:0 auto;padding:4rem 2rem;
+  display:grid;grid-template-columns:1fr 500px;gap:3rem;align-items:center;
+  position:relative;z-index:1;min-height:calc(100vh - 60px)}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.8);border:1px solid rgba(26,111,181,.2);
+  color:var(--blue);font-size:12px;font-weight:600;padding:6px 14px;
+  border-radius:100px;margin-bottom:1.2rem;backdrop-filter:blur(8px)}
+.hero-tag span{width:6px;height:6px;background:var(--coral);border-radius:50%;
+  animation:pulse2 2s infinite}
+@keyframes pulse2{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
+.hero h1{font-family:var(--serif);font-size:clamp(2.4rem,4.5vw,4rem);
+  font-weight:900;color:var(--txt);line-height:1.05;margin-bottom:1rem}
+.hero h1 .hl-blue{color:var(--blue)}
+.hero h1 .hl-coral{color:var(--coral)}
+.hero h1 .hl-teal{color:var(--teal);font-style:italic}
+.hero-desc{color:var(--txt2);font-size:1rem;line-height:1.75;margin-bottom:2rem;max-width:480px}
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2rem}
+.btn-p{background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;
+  padding:13px 28px;border-radius:12px;text-decoration:none;font-weight:700;
+  font-size:14px;border:none;cursor:pointer;transition:all .25s;display:inline-block;
+  box-shadow:0 4px 16px rgba(26,111,181,.3)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,111,181,.4)}
+.btn-s{background:#fff;color:var(--blue);padding:13px 28px;border-radius:12px;
+  text-decoration:none;font-weight:600;font-size:14px;
+  border:2px solid var(--blue);transition:all .25s;display:inline-block}
+.btn-s:hover{background:var(--blue-lt)}
+.hero-badges{display:flex;gap:.6rem;flex-wrap:wrap}
+.hbadge{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.9);
+  border-radius:100px;padding:6px 14px;font-size:12px;font-weight:600;
+  color:var(--txt2);border:1px solid var(--border);backdrop-filter:blur(8px)}
+
+/* hero foto collage */
+.hero-visual{position:relative;height:520px}
+.photo-main{position:absolute;right:0;top:0;width:320px;height:380px;
+  border-radius:var(--r2);object-fit:cover;box-shadow:var(--sh2);
+  border:4px solid #fff}
+.photo-sec{position:absolute;left:0;bottom:20px;width:220px;height:260px;
+  border-radius:var(--r2);object-fit:cover;box-shadow:var(--sh2);
+  border:4px solid #fff;animation:float2 9s ease-in-out infinite}
+.photo-badge{position:absolute;left:180px;top:180px;
+  background:#fff;border-radius:16px;padding:12px 16px;box-shadow:var(--sh2);
+  border:1px solid var(--border);z-index:2;animation:float1 7s ease-in-out infinite}
+.photo-badge .pb-num{font-family:var(--serif);font-size:1.6rem;font-weight:900;color:var(--coral)}
+.photo-badge .pb-label{font-size:11px;color:var(--txt2);font-weight:500}
+.photo-badge2{position:absolute;right:-10px;bottom:60px;
+  background:linear-gradient(135deg,var(--teal),var(--blue));border-radius:14px;
+  padding:10px 14px;box-shadow:var(--sh2);z-index:2;color:#fff;text-align:center;
+  animation:float2 11s ease-in-out infinite}
+.photo-badge2 .pb2-num{font-family:var(--serif);font-size:1.4rem;font-weight:900}
+.photo-badge2 .pb2-label{font-size:10px;opacity:.85;font-weight:500}
+.flag-strip{position:absolute;left:0;top:-10px;display:flex;gap:6px;
+  background:#fff;border-radius:100px;padding:8px 14px;box-shadow:var(--sh);
+  border:1px solid var(--border);font-size:18px;z-index:2}
+
+/* ── SEZIONI ── */
+section{padding:80px 2rem}
+.s-inner{max-width:1140px;margin:0 auto}
+.s-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.08em;padding:5px 14px;border-radius:100px;
+  margin-bottom:1rem}
+.chip-blue{background:var(--blue-lt);color:var(--blue)}
+.chip-coral{background:var(--coral-lt);color:var(--coral)}
+.chip-teal{background:var(--teal-lt);color:var(--teal)}
+.chip-violet{background:var(--violet-lt);color:var(--violet)}
+.chip-gold{background:var(--gold-lt);color:var(--gold)}
+.s-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);
+  font-weight:900;color:var(--txt);margin-bottom:.5rem;line-height:1.15}
+.s-sub{color:var(--txt2);font-size:.95rem;max-width:520px;line-height:1.75;
+  margin-bottom:2.5rem;font-weight:300}
+
+/* ── SERVIZI ── */
+#servizi{background:var(--off)}
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.serv-card{background:#fff;border-radius:var(--r2);padding:1.8rem;
+  border:1px solid var(--border);transition:all .3s;position:relative;overflow:hidden}
+.serv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:var(--r2) var(--r2) 0 0}
+.serv-card.c1::before{background:linear-gradient(90deg,var(--blue),var(--blue-mid))}
+.serv-card.c2::before{background:linear-gradient(90deg,var(--coral),var(--gold))}
+.serv-card.c3::before{background:linear-gradient(90deg,var(--teal),var(--blue))}
+.serv-card.c4::before{background:linear-gradient(90deg,var(--violet),var(--coral))}
+.serv-card.c5::before{background:linear-gradient(90deg,var(--gold),var(--coral))}
+.serv-card.c6::before{background:linear-gradient(90deg,var(--green),var(--teal))}
+.serv-card:hover{transform:translateY(-4px);box-shadow:var(--sh2)}
+.serv-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;
+  justify-content:center;font-size:24px;margin-bottom:1rem}
+.ic1{background:var(--blue-lt)}.ic2{background:var(--coral-lt)}.ic3{background:var(--teal-lt)}
+.ic4{background:var(--violet-lt)}.ic5{background:var(--gold-lt)}.ic6{background:var(--green-lt)}
+.serv-card h3{font-size:1rem;font-weight:700;color:var(--txt);margin-bottom:.4rem}
+.serv-card p{font-size:.85rem;color:var(--txt2);line-height:1.65;font-weight:300}
+
+/* ── PROGETTO ── */
+#progetto{background:#fff}
+.prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.prog-img-wrap{position:relative;border-radius:var(--r2);overflow:hidden;height:440px}
+.prog-img{width:100%;height:100%;object-fit:cover}
+.prog-img-overlay{position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(26,26,46,.7))}
+.prog-img-caption{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;color:#fff}
+.prog-img-caption h4{font-family:var(--serif);font-size:1.2rem;font-weight:700;margin-bottom:.3rem}
+.prog-img-caption p{font-size:.82rem;opacity:.8;font-weight:300}
+.prog-steps{display:flex;flex-direction:column;gap:0}
+.pstep{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.pstep:last-child{border-bottom:none}
+.pstep-num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;
+  justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:#fff}
+.pn1{background:var(--blue)}.pn2{background:var(--violet)}.pn3{background:var(--teal)}
+.pn4{background:var(--coral)}.pn5{background:var(--gold)}
+.pstep h4{font-size:.9rem;font-weight:700;color:var(--txt);margin-bottom:2px}
+.pstep p{font-size:.82rem;color:var(--txt2);line-height:1.6;font-weight:300}
+
+/* ── TEAM ── */
+#chi-siamo{background:var(--off)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:1.5rem}
+.tc{background:#fff;border-radius:var(--r2);padding:1.8rem;
+  border:1px solid var(--border);box-shadow:var(--sh);transition:all .3s}
+.tc:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.tc-avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-family:var(--serif);font-size:1.4rem;font-weight:900;
+  color:#fff;margin-bottom:1rem}
+.av1{background:linear-gradient(135deg,var(--blue),var(--teal))}
+.av2{background:linear-gradient(135deg,var(--teal),var(--green))}
+.av3{background:linear-gradient(135deg,var(--coral),var(--gold))}
+.tc-role{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--blue);margin-bottom:.4rem}
+.tc-name{font-family:var(--serif);font-size:1.15rem;font-weight:900;
+  color:var(--txt);margin-bottom:.5rem}
+.tc-desc{font-size:.83rem;color:var(--txt2);line-height:1.65;font-weight:300}
+.tc-link{display:inline-flex;align-items:center;gap:5px;margin-top:.7rem;
+  font-size:.78rem;font-weight:600;color:var(--blue);text-decoration:none;
+  border-bottom:1px solid transparent;transition:border-color .2s}
+.tc-link:hover{border-color:var(--blue)}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
+.ig{background:#fff;padding:1rem 1.2rem}
+.ig-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+  color:var(--txt3);margin-bottom:.3rem}
+.ig-val{font-size:.85rem;color:var(--txt);font-weight:500;line-height:1.5}
+
+/* ── FOTO GALLERY ── */
+#gallery{background:#fff;padding:60px 2rem}
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:200px 200px;gap:12px;border-radius:var(--r2);overflow:hidden}
+.gphoto{position:relative;overflow:hidden}
+.gphoto img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gphoto:hover img{transform:scale(1.05)}
+.gphoto.big{grid-row:span 2}
+.gphoto-label{position:absolute;bottom:0;left:0;right:0;padding:.6rem .8rem;
+  background:linear-gradient(transparent,rgba(0,0,0,.6));color:#fff;
+  font-size:.75rem;font-weight:600}
+
+/* ── MAPPA ── */
+#mappa{background:var(--off);padding:80px 0}
+.mappa-head{padding:0 2rem;max-width:1140px;margin:0 auto 2rem}
+.map-frame{background:#fff;border-top:4px solid;
+  border-image:linear-gradient(90deg,var(--blue),var(--teal),var(--coral),var(--gold)) 1;
+  box-shadow:var(--sh2)}
+.world-svg{width:100%;height:auto;display:block}
+.map-legend{display:flex;flex-wrap:wrap;gap:1rem;padding:1rem 2rem;
+  background:#fff;border-top:1px solid var(--border)}
+.ml{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--txt2);font-weight:500}
+.ml-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* ── REGISTRAZIONE ── */
+#registrazione{background:linear-gradient(135deg,var(--blue) 0%,var(--teal) 100%)}
+.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
+  max-width:1140px;margin:0 auto}
+.reg-left h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.4rem);
+  font-weight:900;color:#fff;margin-bottom:.5rem}
+.reg-left p{color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.75;margin-bottom:2rem}
+.rv-list{display:flex;flex-direction:column;gap:.5rem}
+.rv{display:flex;gap:10px;align-items:flex-start}
+.rv-icon{width:22px;height:22px;background:rgba(255,255,255,.2);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px}
+.rv p{color:rgba(255,255,255,.8);font-size:.88rem;line-height:1.55;font-weight:300}
+.form-card{background:#fff;border-radius:var(--r2);padding:2rem;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.form-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:900;
+  color:var(--txt);margin-bottom:1.2rem}
+.fg{margin-bottom:.85rem}
+.fg label{display:block;font-size:12px;font-weight:600;color:var(--txt2);
+  text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 14px;
+  border:1.5px solid var(--border);border-radius:10px;font-family:var(--sans);
+  font-size:14px;color:var(--txt);background:var(--off);outline:none;transition:all .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);background:#fff;
+  box-shadow:0 0 0 3px rgba(26,111,181,.1)}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.f-check{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--txt2);margin-top:.5rem}
+.f-check input{accent-color:var(--blue);margin-top:2px;flex-shrink:0}
+.btn-form{width:100%;background:linear-gradient(135deg,var(--blue),var(--teal));
+  color:#fff;padding:13px;border-radius:12px;border:none;font-family:var(--sans);
+  font-size:14px;font-weight:700;cursor:pointer;transition:all .25s;margin-top:.8rem;
+  box-shadow:0 4px 16px rgba(26,111,181,.3)}
+.btn-form:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(26,111,181,.4)}
+.form-ok{display:none;text-align:center;padding:2.5rem 1rem}
+.form-ok .oi{font-size:3rem;margin-bottom:.8rem;display:block}
+.form-ok h4{font-family:var(--serif);color:var(--teal);font-size:1.2rem;margin-bottom:.4rem}
+.form-ok p{font-size:.85rem;color:var(--txt2);line-height:1.65}
+
+/* ── CANDIDATURE ── */
+#candidature{background:#fff}
+.cand-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.profili{display:flex;flex-direction:column;gap:.6rem}
+.profilo{background:var(--off);border:2px solid transparent;border-radius:var(--r);
+  padding:1rem 1.2rem;cursor:pointer;transition:all .2s;
+  display:flex;justify-content:space-between;align-items:center}
+.profilo:hover,.profilo.on{border-color:var(--blue);background:var(--blue-lt)}
+.profilo h4{font-size:.88rem;font-weight:700;color:var(--txt)}
+.profilo p{font-size:.78rem;color:var(--txt2);margin-top:2px}
+.pbadge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;white-space:nowrap}
+.popen{background:#dcfce7;color:#166534}.psoon{background:#fef9c3;color:#854d0e}
+/* form cand paper style */
+.form-card-paper{background:var(--off);border:1.5px solid var(--border);border-radius:var(--r2);padding:2rem;position:relative}
+.form-card-paper::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  border-radius:var(--r2) var(--r2) 0 0;
+  background:linear-gradient(90deg,var(--coral),var(--gold),var(--teal))}
+.form-card-paper h3{font-family:var(--serif);font-size:1.1rem;font-weight:900;color:var(--txt);margin-bottom:.3rem}
+.prof-sel{font-size:12px;color:var(--blue);font-weight:600;margin-bottom:1rem}
+.btn-form-coral{background:linear-gradient(135deg,var(--coral),var(--gold));
+  color:#fff;width:100%;padding:12px;border-radius:12px;border:none;
+  font-family:var(--sans);font-size:14px;font-weight:700;cursor:pointer;
+  transition:all .25s;margin-top:.8rem}
+.btn-form-coral:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(232,82,42,.35)}
+.form-ok-paper{display:none;text-align:center;padding:2rem}
+.form-ok-paper .oi{font-size:2.5rem;margin-bottom:.6rem;display:block}
+.form-ok-paper h4{font-family:var(--serif);color:var(--coral);margin-bottom:.3rem}
+.form-ok-paper p{font-size:.83rem;color:var(--txt2)}
+
+/* ── COLLABORAZIONI ── */
+#collaborazioni{background:var(--off);padding:60px 2rem}
+.collab-inner{max-width:1140px;margin:0 auto}
+.collab-strip{display:flex;flex-wrap:wrap;gap:0;margin-top:1.5rem;
+  border:1.5px solid var(--border);border-radius:var(--r2);overflow:hidden;background:#fff}
+.collab-item{flex:1;min-width:160px;border-right:1px solid var(--border);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:1.8rem 1.2rem;gap:.6rem;text-decoration:none;transition:all .3s;
+  filter:grayscale(.6) opacity(.7)}
+.collab-item:hover{filter:none;background:var(--off)}
+.collab-item:last-child{border-right:none}
+.collab-item img{max-height:40px;max-width:120px;object-fit:contain}
+.collab-fb{font-size:14px;font-weight:800;color:var(--txt);display:none;letter-spacing:.04em}
+.collab-nm{font-size:11px;color:var(--txt3);font-weight:500;text-align:center}
+
+/* ── CONTATTI ── */
+#contatti{background:#fff}
+.cont-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.cont-info-card{background:linear-gradient(135deg,var(--blue-lt),var(--teal-lt));
+  border-radius:var(--r2);padding:2rem;border:1.5px solid rgba(26,111,181,.15)}
+.cont-info-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:900;
+  color:var(--txt);margin-bottom:1.5rem}
+.cont-row{display:flex;gap:14px;margin-bottom:1.1rem;align-items:flex-start}
+.cont-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;
+  justify-content:center;font-size:18px;flex-shrink:0;background:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.cont-row strong{display:block;font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--blue);margin-bottom:2px}
+.cont-row span{font-size:.85rem;color:var(--txt2)}
+
+/* ── FOOTER ── */
+footer{background:var(--txt);color:rgba(255,255,255,.5);padding:3rem 2rem 1.5rem}
+.foot-inner{max-width:1140px;margin:0 auto}
+.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;margin-bottom:2rem}
+.foot-brand p{font-size:.83rem;line-height:1.7;margin-top:.7rem;max-width:280px}
+.foot-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:rgba(255,255,255,.9);margin-bottom:.8rem}
+.foot-col a{display:block;font-size:.83rem;color:rgba(255,255,255,.45);text-decoration:none;
+  margin-bottom:.4rem;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.2rem;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-size:11px}
+.foot-rainbow{height:3px;border-radius:100px;margin-bottom:2rem;
+  background:linear-gradient(90deg,var(--blue),var(--teal),var(--coral),var(--gold),var(--violet))}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.4,0,.2,1),transform .65s cubic-bezier(.4,0,.2,1)}
+.reveal.rl{transform:translateX(-22px)}.reveal.rr{transform:translateX(22px)}
+.reveal.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner,.prog-grid,.reg-grid,.cand-grid,.cont-grid,.foot-top{grid-template-columns:1fr}
+  .hero-visual{display:none}.serv-grid{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr}.info-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gphoto.big{grid-row:span 1}
+  nav .nav-links{display:none}.hamburger{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:60px;
+    left:0;right:0;background:#fff;border-bottom:1px solid var(--border);
+    padding:.8rem;gap:.2rem;box-shadow:var(--sh)}
+  .fg-row{grid-template-columns:1fr}
+  .collab-item{min-width:140px}
+  .foot-bottom{flex-direction:column}
+}
+@media(max-width:600px){.serv-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <div class="nav-badge">ALS MCL</div>
+    <span class="nav-name">Civitanova Marche</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#servizi">Servizi</a>
+    <a href="#progetto">Sanitario</a>
+    <a href="#chi-siamo">Team</a>
+    <a href="#mappa">Mappa</a>
+    <a href="#candidature">Candidature</a>
+    <a href="#collaborazioni">Partner</a>
+    <a href="#registrazione" class="nav-cta">Diventa Socio</a>
+  </div>
+  <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-blob1"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag"><span></span> Civitanova Marche · MCL · A.P.S.</div>
+      <h1>
+        <span class="hl-blue">Integrazione.</span><br>
+        <span class="hl-coral">Lavoro.</span><br>
+        <span class="hl-teal">Futuro.</span>
+      </h1>
+      <p class="hero-desc">L'ALS MCL di Civitanova Marche supporta lavoratori stranieri immigrati in Italia con servizi concreti: assistenza legale, inserimento lavorativo, formazione linguistica e corridoi sanitari internazionali da ogni angolo del mondo.</p>
+      <div class="hero-btns">
+        <a href="#registrazione" class="btn-p">Diventa Socio →</a>
+        <a href="#candidature" class="btn-s">Candidature aperte</a>
+      </div>
+      <div class="hero-badges">
+        <div class="hbadge">🌍 40+ paesi</div>
+        <div class="hbadge">🏥 Corridoio sanitario India</div>
+        <div class="hbadge">🇨🇺 America Latina</div>
+        <div class="hbadge">📋 MCL Nazionale</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="flag-strip">🇮🇳 🇨🇺 🇵🇭 🇧🇷 🇷🇴 🇮🇶 🌍</div>
+      <img class="photo-main"
+        src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=640&q=80&auto=format&fit=crop"
+        alt="Infermiera sorridente" loading="lazy">
+      <img class="photo-sec"
+        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=480&q=80&auto=format&fit=crop"
+        alt="Team sanitario" loading="lazy">
+      <div class="photo-badge">
+        <div class="pb-num">40+</div>
+        <div class="pb-label">Paesi di reclutamento</div>
+      </div>
+      <div class="photo-badge2">
+        <div class="pb2-num">🌐</div>
+        <div class="pb2-label">Rete globale</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIZI -->
+<section id="servizi">
+  <div class="s-inner">
+    <div class="reveal">
+      <span class="s-chip chip-blue">Servizi</span>
+      <h2 class="s-title">Cosa facciamo per te</h2>
+      <p class="s-sub">Supporto concreto e professionale per lavoratori stranieri e immigrati nella provincia di Macerata e in tutta Italia.</p>
+    </div>
+    <div class="serv-grid reveal d1">
+      <div class="serv-card c1"><div class="serv-icon ic1">⚖️</div><h3>Assistenza Legale</h3><p>Permessi di soggiorno, ricongiungimenti familiari, richieste di asilo e tutela integrale dei diritti dei lavoratori stranieri.</p></div>
+      <div class="serv-card c2"><div class="serv-icon ic2">🧾</div><h3>CAF & Patronato SIAS</h3><p>Dichiarazioni dei redditi, ISEE, pratiche INPS/INAIL, pensioni, invalidità e disoccupazione.</p></div>
+      <div class="serv-card c3"><div class="serv-icon ic3">🇮🇹</div><h3>Corsi di Italiano</h3><p>Preparazione certificazioni CILS, CELI e PLIDA. Percorsi personalizzati per ogni livello e obiettivo.</p></div>
+      <div class="serv-card c4"><div class="serv-icon ic4">💼</div><h3>Inserimento Lavorativo</h3><p>Orientamento, tirocini formativi, stages e accesso alla rete di aziende del territorio marchigiano.</p></div>
+      <div class="serv-card c5"><div class="serv-icon ic5">🏠</div><h3>Supporto Abitativo</h3><p>Assistenza per trovare alloggio, pratiche di residenza e accompagnamento burocratico completo.</p></div>
+      <div class="serv-card c6"><div class="serv-icon ic6">🎓</div><h3>Formazione Professionale</h3><p>Qualifiche professionali con AINCOM, riconoscimento titoli esteri, orientamento scolastico.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOTO GALLERY -->
+<section id="gallery">
+  <div class="s-inner reveal">
+    <div class="gallery-grid">
+      <div class="gphoto big">
+        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&q=80&auto=format&fit=crop" alt="Assistenza medica">
+        <div class="gphoto-label">Assistenza sanitaria professionale</div>
+      </div>
+      <div class="gphoto">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=480&q=80&auto=format&fit=crop" alt="Infermiera con paziente">
+        <div class="gphoto-label">Cura e professionalità</div>
+      </div>
+      <div class="gphoto">
+        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=480&q=80&auto=format&fit=crop" alt="Team medico">
+        <div class="gphoto-label">Team internazionale</div>
+      </div>
+      <div class="gphoto">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=480&q=80&auto=format&fit=crop" alt="Integrazione">
+        <div class="gphoto-label">Integrazione e comunità</div>
+      </div>
+      <div class="gphoto">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=480&q=80&auto=format&fit=crop" alt="Formazione">
+        <div class="gphoto-label">Formazione continua</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGETTO SANITARIO -->
+<section id="progetto">
+  <div class="s-inner">
+    <div class="reveal">
+      <span class="s-chip chip-teal">Progetto Internazionale</span>
+      <h2 class="s-title">Corridoio sanitario India → Italia</h2>
+      <p class="s-sub">Selezione, formazione e inserimento di infermieri e personale sanitario qualificato nelle strutture italiane. Coordinato da Giorgio Torresi, presidente AIP.</p>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-img-wrap reveal rl">
+        <img class="prog-img"
+          src="https://images.unsplash.com/photo-1584516150909-c43483ee7932?w=800&q=80&auto=format&fit=crop"
+          alt="Infermiera indiana" loading="lazy">
+        <div class="prog-img-overlay"></div>
+        <div class="prog-img-caption">
+          <h4>AnKav Horizon</h4>
+          <p>Reclutamento etico e sostenibile da India, Filippine e America Latina verso l'Italia</p>
+        </div>
+      </div>
+      <div class="prog-steps reveal rr">
+        <div class="pstep"><div class="pstep-num pn1">01</div><div><h4>Selezione in India</h4><p>Screening di candidati con laurea in infermieristica tramite referenti locali certificati.</p></div></div>
+        <div class="pstep"><div class="pstep-num pn2">02</div><div><h4>Valutazione competenze</h4><p>Verifica approfondita dell'esperienza clinica e dei requisiti della normativa italiana.</p></div></div>
+        <div class="pstep"><div class="pstep-num pn3">03</div><div><h4>Corso di Italiano</h4><p>Preparazione certificazione B1/B2 necessaria per l'esercizio professionale sanitario.</p></div></div>
+        <div class="pstep"><div class="pstep-num pn4">04</div><div><h4>Riconoscimento titolo</h4><p>Gestione completa della procedura presso il Ministero della Salute italiano.</p></div></div>
+        <div class="pstep"><div class="pstep-num pn5">05</div><div><h4>Inserimento lavorativo</h4><p>Collegamento con ospedali, cliniche e RSA. Supporto per trasferimento e integrazione.</p></div></div>
+        <div style="margin-top:1.5rem">
+          <a href="#candidature" class="btn-p" style="font-size:13px;padding:11px 24px">Candidati al progetto →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="chi-siamo">
+  <div class="s-inner">
+    <div class="reveal">
+      <span class="s-chip chip-violet">Team</span>
+      <h2 class="s-title">Chi guida l'associazione</h2>
+      <p class="s-sub">Leadership con esperienza pluriennale nel terzo settore, nella sanità internazionale e nell'integrazione.</p>
+    </div>
+    <div class="team-grid reveal d1">
+      <div class="tc">
+        <div class="tc-avatar av1">PB</div>
+        <div class="tc-role">Presidente</div>
+        <div class="tc-name">Paolo Bernabucci</div>
+        <div class="tc-desc">Fondatore e già presidente unico del <strong>GUS — Gruppo Umana Solidarietà</strong>, ONG riconosciuta dal Ministero degli Affari Esteri italiano, nata a Macerata nel 1993. Oltre trent'anni di esperienza in cooperazione internazionale e accoglienza umanitaria.</div>
+        <a href="https://www.gus-italia.org" target="_blank" rel="noopener" class="tc-link">↗ gus-italia.org</a>
+      </div>
+      <div class="tc">
+        <div class="tc-avatar av2">GT</div>
+        <div class="tc-role">Segretario</div>
+        <div class="tc-name">Giorgio Torresi</div>
+        <div class="tc-desc">Presidente dell'<strong>AIP — Associazione Infermieristica Professionale</strong>. Coordina il progetto AnKav Horizon e supervisiona i corridoi lavorativi per infermieri da India, Filippine e America Latina verso le strutture sanitarie italiane.</div>
+      </div>
+      <div class="tc">
+        <div class="tc-avatar av3">MH</div>
+        <div class="tc-role">Vicepresidente</div>
+        <div class="tc-name">Matteo Hussein</div>
+        <div class="tc-desc">Punto di riferimento per la comunità araba e mediorientale del territorio marchigiano. Supporta le attività di mediazione culturale e l'integrazione dei lavoratori stranieri nella provincia di Macerata.</div>
+      </div>
+    </div>
+    <div class="info-grid reveal d2">
+      <div class="ig"><div class="ig-label">Denominazione</div><div class="ig-val">ALS MCL Territoriale di Civitanova A.P.S.</div></div>
+      <div class="ig"><div class="ig-label">Sede</div><div class="ig-val">Via Martiri di Belfiore 152 · 62012 Civitanova Marche (MC)</div></div>
+      <div class="ig"><div class="ig-label">Telefono</div><div class="ig-val">393 663 4555</div></div>
+      <div class="ig"><div class="ig-label">Forma giuridica</div><div class="ig-val">A.P.S. · Ente del Terzo Settore · D.Lgs. 117/2017</div></div>
+      <div class="ig"><div class="ig-label">Costituzione</div><div class="ig-val">30 dicembre 2025</div></div>
+      <div class="ig"><div class="ig-label">Affiliazione</div><div class="ig-val">ALS MCL Nazionale · Movimento Cristiano Lavoratori</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAPPA -->
+<section id="mappa">
+  <div class="mappa-head reveal">
+    <span class="s-chip chip-coral">Reclutamento Globale</span>
+    <h2 class="s-title">Cerchiamo infermieri in tutto il mondo</h2>
+    <p class="s-sub">Corridoi lavorativi regolari verso l'Italia da ogni continente — Asia, America Latina, Africa, Europa dell'Est. Nessun paese escluso.</p>
+  </div>
+  <div class="map-frame reveal">
+    <svg class="world-svg" viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#e8f2fc"/>
+          <stop offset="50%" stop-color="#f0f8ff"/>
+          <stop offset="100%" stop-color="#e4f7f3"/>
+        </linearGradient>
+        <radialGradient id="italyPulse" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#1a6fb5" stop-opacity=".4"/>
+          <stop offset="100%" stop-color="#1a6fb5" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="drop"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,.2)"/></filter>
+      </defs>
+      <rect width="1200" height="540" fill="url(#bgGrad)"/>
+
+      <!-- Griglia meridiani/paralleli -->
+      <line x1="0" y1="270" x2="1200" y2="270" stroke="rgba(26,111,181,.08)" stroke-width="1"/>
+      <line x1="600" y1="0" x2="600" y2="540" stroke="rgba(26,111,181,.08)" stroke-width="1"/>
+      <line x1="0" y1="135" x2="1200" y2="135" stroke="rgba(26,111,181,.05)" stroke-width=".5" stroke-dasharray="4,4"/>
+      <line x1="0" y1="405" x2="1200" y2="405" stroke="rgba(26,111,181,.05)" stroke-width=".5" stroke-dasharray="4,4"/>
+
+      <!-- ── CONTINENTI ── -->
+      <!-- NORD AMERICA -->
+      <path d="M80,72 L95,62 L138,58 L190,60 L240,66 L278,78 L308,96 L326,118 L338,148 L332,182 L318,215 L298,242 L272,264 L242,278 L208,284 L176,278 L152,262 L128,242 L108,215 L88,185 L74,155 L70,122 L74,95 Z"
+        fill="rgba(26,111,181,.12)" stroke="rgba(26,111,181,.3)" stroke-width="1.2"/>
+      <!-- America Centrale -->
+      <path d="M208,284 L242,278 L256,292 L260,318 L252,338 L238,350 L222,346 L208,330 L204,310 Z"
+        fill="rgba(26,111,181,.1)" stroke="rgba(26,111,181,.25)" stroke-width=".9"/>
+      <!-- SUD AMERICA -->
+      <path d="M202,348 L258,338 L298,354 L318,378 L328,412 L325,450 L312,480 L288,505 L260,510 L232,502 L210,475 L196,445 L188,410 L185,378 L190,358 Z"
+        fill="rgba(26,111,181,.11)" stroke="rgba(26,111,181,.28)" stroke-width="1.2"/>
+      <!-- Caraibi/Cuba -->
+      <ellipse cx="220" cy="280" rx="22" ry="8" fill="rgba(232,82,42,.15)" stroke="rgba(232,82,42,.4)" stroke-width="1"/>
+
+      <!-- EUROPA -->
+      <path d="M492,62 L532,55 L570,58 L605,72 L622,94 L618,120 L602,140 L578,152 L552,156 L526,152 L506,140 L492,122 L486,100 Z"
+        fill="rgba(124,77,204,.12)" stroke="rgba(124,77,204,.3)" stroke-width="1.2"/>
+      <!-- Italia evidenziata -->
+      <path d="M542,124 L558,120 L568,130 L570,148 L562,170 L552,182 L540,174 L534,158 L532,140 Z"
+        fill="rgba(26,111,181,.3)" stroke="#1a6fb5" stroke-width="2"/>
+      <circle cx="546" cy="148" r="18" fill="url(#italyPulse)"/>
+
+      <!-- AFRICA -->
+      <path d="M496,156 L558,152 L602,162 L628,184 L638,222 L635,268 L622,315 L600,355 L574,378 L546,385 L518,375 L494,348 L478,312 L470,268 L470,222 L478,185 Z"
+        fill="rgba(232,160,32,.1)" stroke="rgba(232,160,32,.28)" stroke-width="1.2"/>
+
+      <!-- MEDIO ORIENTE -->
+      <path d="M608,118 L662,110 L705,118 L728,138 L730,162 L708,178 L675,182 L644,174 L620,158 Z"
+        fill="rgba(232,82,42,.1)" stroke="rgba(232,82,42,.22)" stroke-width=".9"/>
+
+      <!-- RUSSIA/ASIA NORD -->
+      <path d="M625,48 L762,38 L892,36 L992,50 L1028,68 L1018,98 L972,114 L888,120 L806,118 L728,114 L668,105 L635,85 Z"
+        fill="rgba(26,111,181,.07)" stroke="rgba(26,111,181,.15)" stroke-width=".8"/>
+
+      <!-- ASIA SUD/CENTRALE -->
+      <path d="M672,118 L770,110 L848,116 L896,132 L918,155 L915,182 L888,205 L845,218 L800,215 L758,205 L718,188 L690,165 Z"
+        fill="rgba(24,160,132,.13)" stroke="rgba(24,160,132,.3)" stroke-width="1.2"/>
+      <!-- India evidenziata -->
+      <path d="M730,148 L785,142 L808,158 L812,182 L802,215 L778,232 L750,235 L730,220 L716,198 L714,170 Z"
+        fill="rgba(232,160,32,.25)" stroke="#e8a020" stroke-width="1.8"/>
+
+      <!-- SUD-EST ASIA -->
+      <path d="M848,128 L922,120 L968,138 L980,168 L968,195 L935,208 L898,205 L860,188 Z"
+        fill="rgba(24,160,132,.1)" stroke="rgba(24,160,132,.22)" stroke-width=".9"/>
+      <!-- Filippine -->
+      <ellipse cx="972" cy="188" rx="15" ry="25" fill="rgba(232,82,42,.15)" stroke="rgba(232,82,42,.35)" stroke-width="1"/>
+
+      <!-- CINA/COREA -->
+      <path d="M848,82 L952,74 L1002,86 L1015,110 L1005,135 L962,148 L908,145 L855,135 Z"
+        fill="rgba(124,77,204,.08)" stroke="rgba(124,77,204,.15)" stroke-width=".8"/>
+
+      <!-- OCEANIA -->
+      <path d="M942,308 L1038,292 L1092,308 L1108,342 L1090,375 L1042,390 L985,378 L950,355 Z"
+        fill="rgba(24,160,132,.1)" stroke="rgba(24,160,132,.2)" stroke-width=".9"/>
+
+      <!-- ══════════════════════════════════════════ -->
+      <!-- ITALIA — DESTINAZIONE -->
+      <circle cx="546" cy="148" r="12" fill="#1a6fb5" filter="url(#drop)"/>
+      <circle cx="546" cy="148" r="8" fill="#fff"/>
+      <circle cx="546" cy="148" r="4" fill="#1a6fb5"/>
+      <circle cx="546" cy="148" r="16" fill="none" stroke="#1a6fb5" stroke-width="2" opacity=".7">
+        <animate attributeName="r" from="12" to="30" dur="2.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" from=".8" to="0" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="546" y="133" fill="#1a6fb5" font-size="10" font-family="Plus Jakarta Sans,sans-serif" text-anchor="middle" font-weight="700">🇮🇹 ITALIA</text>
+
+      <!-- ── CORRIDOI PRIORITARI (rosso/arancio) ── -->
+
+      <!-- INDIA -->
+      <circle cx="762" cy="188" r="8" fill="#e8a020" filter="url(#drop)"/>
+      <circle cx="762" cy="188" r="5" fill="#fff"/>
+      <circle cx="762" cy="188" r="2.5" fill="#e8a020"/>
+      <path d="M762,188 Q654,120 546,148" fill="none" stroke="#e8a020" stroke-width="1.5" stroke-dasharray="6,4" opacity=".7"/>
+      <text x="762" y="205" fill="#e8a020" font-size="9.5" font-family="Plus Jakarta Sans,sans-serif" text-anchor="middle" font-weight="700">🇮🇳 India</text>
+
+      <!-- IRAQ -->
+      <circle cx="668" cy="152" r="7" fill="#e8522a" filter="url(#drop)"/>
+      <circle cx="668" cy="152" r="4" fill="#fff"/>
+      <circle cx="668" cy="152" r="2" fill="#e8522a"/>
+      <path d="M668,152 Q607,140 546,148" fill="none" stroke="#e8522a" stroke-width="1.5" stroke-dasharray="6,4" opacity=".65"/>
+      <text x="668" y="140" fill="#e8522a" font-size="9.5" font-family="Plus Jakarta Sans,sans-serif" text-anchor="middle" font-weight="700">🇮🇶 Iraq</text>
+
+      <!-- FILIPPINE -->
+      <circle cx="972" cy="192" r="7" fill="#e8522a" filter="url(#drop)"/>
+      <circle cx="972" cy="192" r="4" fill="#fff"/>
+      <circle cx="972" cy="192" r="2" fill="#e8522a"/>
+      <path d="M972,192 Q759,148 546,148" fill="none" stroke="#e8522a" stroke-width="1.5" stroke-dasharray="6,4" opacity=".55"/>
+      <text x="972" y="210" fill="#e8522a" font-size="9.5" font-family="Plus Jakarta Sans,sans-serif" text-anchor="middle" font-weight="700">🇵🇭 Filippine</text>
+
+      <!-- CUBA -->
+      <circle cx="220" cy="280" r="8" fill="#e8522a" filter="url(#drop)"/>
+      <circle cx="220" cy="280" r="5" fill="#fff"/>
+      <circle cx="220" cy="280" r="2.5" fill="#e8522a"/>
+      <path d="M220,280 Q383,180 546,148" fill="none" stroke="#e8522a" stroke-width="1.5" stroke-dasharray="6,4" opacity=".65"/>
+      <text x="200" y="268" fill="#e8522a" font-size="9.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="700">🇨🇺 Cuba</text>
+
+      <!-- COLOMBIA -->
+      <circle cx="222" cy="352" r="7" fill="#7c4dcc" filter="url(#drop)"/>
+      <circle cx="222" cy="352" r="4" fill="#fff"/>
+      <circle cx="222" cy="352" r="2" fill="#7c4dcc"/>
+      <path d="M222,352 Q384,220 546,148" fill="none" stroke="#7c4dcc" stroke-width="1.5" stroke-dasharray="6,4" opacity=".55"/>
+      <text x="185" y="358" fill="#7c4dcc" font-size="9.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="700">🇨🇴 Colombia</text>
+
+      <!-- BRASILE -->
+      <circle cx="278" cy="415" r="7" fill="#7c4dcc" filter="url(#drop)"/>
+      <circle cx="278" cy="415" r="4" fill="#fff"/>
+      <circle cx="278" cy="415" r="2" fill="#7c4dcc"/>
+      <path d="M278,415 Q412,262 546,148" fill="none" stroke="#7c4dcc" stroke-width="1.5" stroke-dasharray="6,4" opacity=".5"/>
+      <text x="285" y="425" fill="#7c4dcc" font-size="9.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="700">🇧🇷 Brasile</text>
+
+      <!-- ROMANIA -->
+      <circle cx="578" cy="108" r="7" fill="#18a084" filter="url(#drop)"/>
+      <circle cx="578" cy="108" r="4" fill="#fff"/>
+      <circle cx="578" cy="108" r="2" fill="#18a084"/>
+      <path d="M578,108 Q562,128 546,148" fill="none" stroke="#18a084" stroke-width="1.5" stroke-dasharray="6,4" opacity=".7"/>
+      <text x="590" y="103" fill="#18a084" font-size="9.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="700">🇷🇴 Romania</text>
+
+      <!-- ── CORRIDOI IN SVILUPPO ── -->
+      <circle cx="548" cy="120" r="5" fill="#18a084" opacity=".8"/>
+      <text x="558" y="118" fill="#18a084" font-size="8.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="600">🇦🇱 Albania</text>
+
+      <circle cx="718" cy="162" r="5" fill="#18a084" opacity=".75"/>
+      <path d="M718,162 Q632,148 546,148" fill="none" stroke="#18a084" stroke-width="1" stroke-dasharray="4,5" opacity=".4"/>
+      <text x="728" y="158" fill="#18a084" font-size="8.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="600">🇵🇰 Pakistan</text>
+
+      <circle cx="800" cy="198" r="5" fill="#18a084" opacity=".7"/>
+      <text x="810" y="196" fill="#18a084" font-size="8.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="600">🇧🇩 Bangladesh</text>
+
+      <circle cx="775" cy="228" r="5" fill="#18a084" opacity=".7"/>
+      <path d="M775,228 Q660,192 546,148" fill="none" stroke="#18a084" stroke-width="1" stroke-dasharray="4,5" opacity=".35"/>
+      <text x="785" y="232" fill="#18a084" font-size="8.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="600">🇱🇰 Sri Lanka</text>
+
+      <circle cx="508" cy="262" r="5" fill="#18a084" opacity=".7"/>
+      <path d="M508,262 Q527,198 546,148" fill="none" stroke="#18a084" stroke-width="1" stroke-dasharray="4,5" opacity=".35"/>
+      <text x="472" y="272" fill="#18a084" font-size="8.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="600">🇳🇬 Nigeria</text>
+
+      <circle cx="480" cy="188" r="5" fill="#18a084" opacity=".65"/>
+      <text x="440" y="190" fill="#18a084" font-size="8.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="600">🇹🇳 Tunisia</text>
+
+      <circle cx="466" cy="202" r="4" fill="#18a084" opacity=".6"/>
+      <text x="426" y="206" fill="#18a084" font-size="8" font-family="Plus Jakarta Sans,sans-serif">🇲🇦 Marocco</text>
+
+      <circle cx="250" cy="368" r="5" fill="#7c4dcc" opacity=".65"/>
+      <text x="254" y="364" fill="#7c4dcc" font-size="8.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="600">🇻🇪 Venezuela</text>
+
+      <circle cx="210" cy="402" r="4" fill="#7c4dcc" opacity=".6"/>
+      <text x="170" y="406" fill="#7c4dcc" font-size="8" font-family="Plus Jakarta Sans,sans-serif">🇵🇪 Perù</text>
+
+      <circle cx="252" cy="472" r="4" fill="#7c4dcc" opacity=".6"/>
+      <path d="M252,472 Q399,308 546,148" fill="none" stroke="#7c4dcc" stroke-width="1" stroke-dasharray="4,6" opacity=".3"/>
+      <text x="258" y="478" fill="#7c4dcc" font-size="8" font-family="Plus Jakarta Sans,sans-serif">🇦🇷 Argentina</text>
+
+      <circle cx="178" cy="300" r="4" fill="#e8522a" opacity=".6"/>
+      <text x="140" y="303" fill="#e8522a" font-size="8" font-family="Plus Jakarta Sans,sans-serif">🇲🇽 Messico</text>
+
+      <circle cx="585" cy="272" r="4" fill="#e8a020" opacity=".6"/>
+      <text x="592" y="272" fill="#e8a020" font-size="8" font-family="Plus Jakarta Sans,sans-serif">🇪🇹 Etiopia</text>
+
+      <circle cx="862" cy="108" r="4" fill="#1a6fb5" opacity=".55"/>
+      <text x="868" y="105" fill="#1a6fb5" font-size="8" font-family="Plus Jakarta Sans,sans-serif">🇨🇳 Cina</text>
+
+      <circle cx="466" cy="235" r="4" fill="#e8a020" opacity=".6"/>
+      <text x="428" y="240" fill="#e8a020" font-size="8" font-family="Plus Jakarta Sans,sans-serif">🌍 Africa Ovest</text>
+
+      <!-- HEADER MAPPA -->
+      <rect x="0" y="0" width="1200" height="28" fill="rgba(26,111,181,.06)"/>
+      <text x="16" y="18" fill="#1a6fb5" font-size="10" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" letter-spacing="1.5">GLOBAL NURSE RECRUITMENT NETWORK — ALS MCL CIVITANOVA MARCHE</text>
+    </svg>
+  </div>
+  <div class="map-legend">
+    <div class="ml"><div class="ml-dot" style="background:#1a6fb5;border:2px solid #fff;box-shadow:0 0 0 1px #1a6fb5"></div>Italia — destinazione</div>
+    <div class="ml"><div class="ml-dot" style="background:#e8522a"></div>Corridoi prioritari attivi (India · Iraq · Filippine · Cuba)</div>
+    <div class="ml"><div class="ml-dot" style="background:#7c4dcc"></div>America Latina (Colombia · Brasile · Venezuela · Argentina)</div>
+    <div class="ml"><div class="ml-dot" style="background:#18a084"></div>Europa Est & Africa · In sviluppo</div>
+    <div class="ml"><div class="ml-dot" style="background:#e8a020"></div>Asia · Middle East</div>
+  </div>
+</section>
+
+<!-- REGISTRAZIONE -->
+<section id="registrazione">
+  <div class="reg-grid">
+    <div class="reg-left reveal rl">
+      <span class="s-chip" style="background:rgba(255,255,255,.2);color:#fff">Diventa Socio</span>
+      <h2>Unisciti all'associazione</h2>
+      <p>Iscrivendoti accedi a tutti i servizi, hai diritto di voto in assemblea e contribuisci a costruire una comunità più giusta e inclusiva.</p>
+      <div class="rv-list">
+        <div class="rv"><div class="rv-icon">✓</div><p>Accesso gratuito a consulenza legale e CAF/Patronato</p></div>
+        <div class="rv"><div class="rv-icon">✓</div><p>Supporto permesso di soggiorno e pratiche burocratiche</p></div>
+        <div class="rv"><div class="rv-icon">✓</div><p>Orientamento al lavoro, tirocini e stages formativi</p></div>
+        <div class="rv"><div class="rv-icon">✓</div><p>Accesso al servizio badante24 e collocamento</p></div>
+        <div class="rv"><div class="rv-icon">✓</div><p>Tessera MCL nazionale valida in tutta Italia</p></div>
+        <div class="rv"><div class="rv-icon">✓</div><p>Diritto di voto e partecipazione alla vita associativa</p></div>
+      </div>
+    </div>
+    <div class="reveal rr">
+      <div class="form-card">
+        <h3>Modulo di iscrizione</h3>
+        <form id="fSocio" onsubmit="sf(event,'Socio')">
+          <div class="fg-row">
+            <div class="fg"><label>Nome *</label><input type="text" required placeholder="Nome"></div>
+            <div class="fg"><label>Cognome *</label><input type="text" required placeholder="Cognome"></div>
+          </div>
+          <div class="fg"><label>Email *</label><input type="email" required placeholder="nome@email.com"></div>
+          <div class="fg"><label>Tel / WhatsApp</label><input type="tel" placeholder="+39 o internazionale"></div>
+          <div class="fg-row">
+            <div class="fg"><label>Paese d'origine</label><input type="text" placeholder="es. India, Cuba..."></div>
+            <div class="fg"><label>Servizio richiesto</label>
+              <select><option>Assistenza legale</option><option>CAF / Patronato</option><option>Lavoro / Tirocini</option><option>Corso italiano</option><option>Prog. sanitario India</option><option>badante24</option><option>America Latina</option></select>
+            </div>
+          </div>
+          <div class="f-check"><input type="checkbox" id="pS" required><label for="pS">Acconsento al trattamento dei dati personali ai sensi del GDPR.</label></div>
+          <button type="submit" class="btn-form">Invia richiesta di iscrizione →</button>
+        </form>
+        <div class="form-ok" id="okSocio"><span class="oi">🎉</span><h4>Richiesta ricevuta!</h4><p>Ti contatteremo entro 2-3 giorni lavorativi per completare l'iscrizione e consegnarti la tessera MCL.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANDIDATURE -->
+<section id="candidature">
+  <div class="s-inner">
+    <div class="reveal">
+      <span class="s-chip chip-coral">Candidature aperte</span>
+      <h2 class="s-title">Opportunità di lavoro in Italia</h2>
+      <p class="s-sub">Collaboriamo con strutture sanitarie e aziende per trovare opportunità concrete per candidati internazionali da tutto il mondo.</p>
+    </div>
+    <div class="cand-grid">
+      <div class="reveal rl">
+        <div class="profili" id="profili">
+          <div class="profilo on" onclick="sp(this,'Infermiere/a qualificato/a — India')"><div><h4>🏥 Infermiere/a qualificato/a</h4><p>Strutture sanitarie · India · Prioritario</p></div><span class="pbadge popen">Aperto</span></div>
+          <div class="profilo" onclick="sp(this,'Infermiere/a — America Latina / Cuba')"><div><h4>🌎 Infermiere/a — America Latina</h4><p>Cuba, Colombia, Brasile, Venezuela</p></div><span class="pbadge popen">Aperto</span></div>
+          <div class="profilo" onclick="sp(this,'Operatore Socio Sanitario (OSS)')"><div><h4>🤝 Operatore Socio Sanitario (OSS)</h4><p>RSA e cliniche · Marche</p></div><span class="pbadge popen">Aperto</span></div>
+          <div class="profilo" onclick="sp(this,'Assistente familiare / Badante — badante24')"><div><h4>❤️ Assistente familiare / Badante</h4><p>Privati · Civitanova · badante24</p></div><span class="pbadge popen">Aperto</span></div>
+          <div class="profilo" onclick="sp(this,'Mediatore Culturale e Linguistico')"><div><h4>🗣️ Mediatore Culturale</h4><p>Enti pubblici, ospedali · Prov. MC</p></div><span class="pbadge popen">Aperto</span></div>
+          <div class="profilo" onclick="sp(this,'Operaio/a settore manifatturiero')"><div><h4>🏭 Operaio/a manifatturiero</h4><p>Calzaturiero · Metalmeccanico · Prov. MC</p></div><span class="pbadge psoon">In arrivo</span></div>
+        </div>
+      </div>
+      <div class="reveal rr">
+        <div class="form-card-paper">
+          <h3>Invia la tua candidatura</h3>
+          <p class="prof-sel">Profilo selezionato: <strong id="pLabel">Infermiere/a — India</strong></p>
+          <form id="fCand" onsubmit="sf(event,'Candidatura')">
+            <div class="fg-row">
+              <div class="fg"><label>Nome *</label><input type="text" required placeholder="Nome"></div>
+              <div class="fg"><label>Cognome *</label><input type="text" required placeholder="Cognome"></div>
+            </div>
+            <div class="fg"><label>Email *</label><input type="email" required placeholder="email"></div>
+            <div class="fg"><label>Tel / WhatsApp *</label><input type="tel" required placeholder="+39 o internazionale"></div>
+            <div class="fg-row">
+              <div class="fg"><label>Paese attuale</label><input type="text" placeholder="es. Cuba, India..."></div>
+              <div class="fg"><label>Italiano</label><select><option>Nessuno</option><option>A1-A2</option><option>B1-B2</option><option>C1-C2</option></select></div>
+            </div>
+            <div class="fg"><label>Esperienza / Titolo di studio</label><textarea rows="2" placeholder="Breve presentazione..."></textarea></div>
+            <div class="f-check"><input type="checkbox" id="pC" required><label for="pC">Acconsento al trattamento dei dati per la candidatura (GDPR).</label></div>
+            <button type="submit" class="btn-form-coral">Invia candidatura →</button>
+          </form>
+          <div class="form-ok-paper" id="okCandidatura"><span class="oi">🎯</span><h4>Candidatura inviata!</h4><p>Ti contatteremo entro 5 giorni lavorativi per valutare il tuo profilo.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLABORAZIONI -->
+<section id="collaborazioni">
+  <div class="collab-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:1.5rem">
+      <span class="s-chip chip-gold">Partner & Collaborazioni</span>
+      <h2 class="s-title" style="font-size:1.4rem">Un ecosistema di servizi</h2>
+    </div>
+    <div class="collab-strip reveal">
+      <a href="https://www.alsmcl.it" target="_blank" rel="noopener" class="collab-item" title="ALS MCL Nazionale">
+        <img src="https://www.alsmcl.it/wp-content/uploads/2019/01/logo-als-mcl.png" alt="ALS MCL" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="collab-fb">ALS MCL</span><span class="collab-nm">ALS MCL Nazionale</span>
+      </a>
+      <a href="https://www.gus-italia.org" target="_blank" rel="noopener" class="collab-item" title="GUS Italia">
+        <img src="https://www.gus-italia.org/sites/default/files/Gus_logo.png" alt="GUS" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="collab-fb">GUS</span><span class="collab-nm">GUS Italia</span>
+      </a>
+      <a href="https://www.badante24.com" target="_blank" rel="noopener" class="collab-item" title="badante24">
+        <img src="https://www.badante24.com/wp-content/uploads/2020/04/logo-badante24.png" alt="badante24" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="collab-fb">badante24</span><span class="collab-nm">badante24.com</span>
+      </a>
+      <a href="https://www.aincom.it" target="_blank" rel="noopener" class="collab-item" title="AINCOM">
+        <img src="https://www.aincom.it/wp-content/uploads/2017/06/logo-aincom.png" alt="AINCOM" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="collab-fb">AINCOM</span><span class="collab-nm">aincom.it</span>
+      </a>
+      <a href="https://migrants.work" target="_blank" rel="noopener" class="collab-item" title="Migrants.Work">
+        <img src="https://migrants.work/wp-content/uploads/2021/04/migrants-work-logo.png" alt="Migrants.Work" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="collab-fb">MIGRANTS.WORK</span><span class="collab-nm">migrants.work</span>
+      </a>
+      <a href="https://www.confsal.it" target="_blank" rel="noopener" class="collab-item" title="CONFSAL">
+        <img src="https://www.confsal.it/wp-content/uploads/2017/11/logo-confsal.png" alt="CONFSAL" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="collab-fb">CONFSAL</span><span class="collab-nm">confsal.it</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section id="contatti">
+  <div class="s-inner">
+    <div class="reveal">
+      <span class="s-chip chip-blue">Contatti</span>
+      <h2 class="s-title">Dove siamo</h2>
+    </div>
+    <div class="cont-grid">
+      <div class="reveal rl">
+        <div class="cont-info-card">
+          <h3>Sede di Civitanova Marche</h3>
+          <div class="cont-row"><div class="cont-icon">📍</div><div><strong>Indirizzo</strong><span>Via Martiri di Belfiore 152<br>62012 Civitanova Marche (MC)</span></div></div>
+          <div class="cont-row"><div class="cont-icon">📞</div><div><strong>Tel / WhatsApp</strong><span>393 663 4555</span></div></div>
+          <div class="cont-row"><div class="cont-icon">✉️</div><div><strong>Email</strong><span>info@alsmcl-civitanova.it</span></div></div>
+          <div class="cont-row"><div class="cont-icon">🕐</div><div><strong>Orari</strong><span>Lun–Ven 9:00–13:00 / 15:00–18:00<br>Sabato su appuntamento</span></div></div>
+          <div class="cont-row"><div class="cont-icon">🔗</div><div><strong>Web MCL</strong><span><a href="https://www.alsmcl.it" style="color:var(--blue);font-weight:600">www.alsmcl.it</a></span></div></div>
+        </div>
+      </div>
+      <div class="reveal rr">
+        <div class="form-card-paper">
+          <h3>Scrivici un messaggio</h3>
+          <form id="fCont" onsubmit="sf(event,'Contatto')">
+            <div class="fg"><label>Nome e Cognome *</label><input type="text" required placeholder="Il tuo nome"></div>
+            <div class="fg"><label>Email *</label><input type="email" required placeholder="email"></div>
+            <div class="fg"><label>Oggetto</label>
+              <select><option>Informazioni generali</option><option>Iscrizione</option><option>Prog. sanitario India</option><option>America Latina / Cuba</option><option>Permesso di soggiorno</option><option>badante24</option><option>Partnership</option></select>
+            </div>
+            <div class="fg"><label>Messaggio *</label><textarea rows="3" required placeholder="Come possiamo aiutarti?"></textarea></div>
+            <button type="submit" class="btn-form-coral">Invia messaggio →</button>
+          </form>
+          <div class="form-ok-paper" id="okContatto"><span class="oi">📨</span><h4>Messaggio inviato!</h4><p>Ti risponderemo entro 1-2 giorni lavorativi.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-rainbow"></div>
+    <div class="foot-top">
+      <div class="footer-brand">
+        <div class="nav-badge" style="display:inline-block;margin-bottom:.6rem">ALS MCL</div>
+        <p>Promuoviamo l'integrazione sociale e lavorativa dei cittadini stranieri, nel rispetto della dignità e dei diritti di ogni persona. Affiliati al Movimento Cristiano Lavoratori.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Servizi</h4>
+        <a href="#servizi">Assistenza Legale</a>
+        <a href="#servizi">CAF & Patronato</a>
+        <a href="#servizi">Corsi di Italiano</a>
+        <a href="#progetto">Prog. Sanitario India</a>
+        <a href="#candidature">Candidature</a>
+      </div>
+      <div class="foot-col">
+        <h4>Link utili</h4>
+        <a href="https://www.alsmcl.it" target="_blank" rel="noopener">ALS MCL Nazionale</a>
+        <a href="https://www.gus-italia.org" target="_blank" rel="noopener">GUS Italia</a>
+        <a href="https://www.badante24.com" target="_blank" rel="noopener">badante24</a>
+        <a href="https://www.aincom.it" target="_blank" rel="noopener">AINCOM</a>
+        <a href="https://migrants.work" target="_blank" rel="noopener">Migrants.Work</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 ALS MCL Territoriale di Civitanova A.P.S. · C.F. 97555660584 · Via Martiri di Belfiore 152, Civitanova Marche (MC) · D.Lgs. 117/2017 · Tel. 393 663 4555</span>
+      <span style="color:rgba(255,255,255,.3)">Ente del Terzo Settore</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── REVEAL ── */
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target)}})},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── NAV scroll ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').style.boxShadow=scrollY>40?'0 4px 24px rgba(0,0,0,.12)':'0 2px 16px rgba(0,0,0,.06)';
+});
+
+/* ── menu mobile ── */
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+/* ── profilo candidatura ── */
+function sp(el,nome){
+  document.querySelectorAll('.profilo').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('pLabel').textContent=nome;
+}
+
+/* ── form submit ── */
+function sf(e,tipo){
+  e.preventDefault();
+  e.target.style.display='none';
+  (document.getElementById('ok'+tipo)||{style:{}}).style.display='block';
+}
+</script>
+</body>
+</html>

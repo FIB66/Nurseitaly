@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NurseItaly — Infermieri dal Mondo verso l'Italia</title>
+<link rel="icon" type="image/jpeg" href="images/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1a6fb5;    --blue-lt:#e8f2fc;  --blue-mid:#4a9dd4;
+  --red:#c0392b;     --red-lt:#fdecea;
+  --green:#18a084;   --green-lt:#e4f7f3;
+  --gold:#e8a020;    --gold-lt:#fef6e4;
+  --violet:#7c4dcc;  --violet-lt:#f0ebfa;
+  --white:#ffffff;   --off:#f8f9fb;
+  --txt:#1a1a2e;     --txt2:#4a4a6a;     --txt3:#8888aa;
+  --border:#e0e0f0;
+  --serif:'Playfair Display',serif;
+  --sans:'Plus Jakarta Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --r:14px; --r2:24px;
+  --sh:0 4px 24px rgba(26,26,46,.08);
+  --sh2:0 12px 48px rgba(26,26,46,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--txt);background:var(--white);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);box-shadow:0 2px 16px rgba(0,0,0,.06);
+  display:flex;align-items:center;justify-content:space-between;padding:0 2rem;
+  transition:all .3s}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-emblem{width:38px;height:38px;border-radius:50%;overflow:hidden;
+  border:2px solid var(--border);flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.nav-logo-emblem img{width:100%;height:100%;object-fit:cover}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.1}
+.nav-logo-name{font-family:var(--serif);font-size:1.25rem;font-weight:900;
+  color:var(--txt);letter-spacing:-.01em}
+.nav-logo-name span{color:var(--blue)}
+.nav-logo-sub{font-size:9px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--txt3)}
+/* footer logo compat */
+.nav-logo-mark{background:linear-gradient(135deg,var(--blue),var(--green));
+  color:#fff;font-family:var(--mono);font-size:13px;font-weight:500;
+  padding:6px 13px;border-radius:10px;letter-spacing:.03em;display:inline-block}
+.nav-logo-mark span{color:rgba(255,255,255,.7)}
+.nav-tagline{font-size:12px;color:var(--txt3);font-weight:500;display:none}
+.nav-links{display:flex;align-items:center;gap:.2rem}
+.nav-links a{color:var(--txt2);text-decoration:none;font-size:13px;font-weight:500;
+  padding:6px 12px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{background:var(--off);color:var(--blue)}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--green))!important;
+  color:#fff!important;font-weight:700!important;padding:8px 18px!important;border-radius:10px!important}
+.nav-cta:hover{box-shadow:0 4px 16px rgba(26,111,181,.35);transform:translateY(-1px)}
+.lang-switcher{display:flex;gap:4px;margin-right:.8rem}
+.lang-btn{background:none;border:1.5px solid var(--border);border-radius:6px;
+  font-size:11px;font-weight:600;padding:4px 8px;cursor:pointer;color:var(--txt2);
+  transition:all .2s;font-family:var(--sans)}
+.lang-btn.active,.lang-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--txt)}
+
+/* ── TICKER ── */
+.ticker-bar{background:linear-gradient(90deg,var(--blue),var(--green));
+  color:#fff;padding:9px 0;overflow:hidden;white-space:nowrap;
+  position:relative;z-index:499;margin-top:64px}
+.ticker-track{display:inline-flex;gap:0;animation:ticker 22s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{display:inline-flex;align-items:center;gap:10px;
+  padding:0 3rem;font-size:13px;font-weight:600;letter-spacing:.02em}
+.ticker-sep{opacity:.5;font-size:10px}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;padding-top:64px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#e8f2fc 0%,#e4f7f3 45%,#fef6e4 100%)}
+.hero-blob1{position:absolute;width:700px;height:700px;
+  background:radial-gradient(circle,rgba(26,111,181,.1),transparent 70%);
+  top:-150px;right:-150px;border-radius:50%;animation:float1 9s ease-in-out infinite}
+.hero-blob2{position:absolute;width:500px;height:500px;
+  background:radial-gradient(circle,rgba(24,160,132,.09),transparent 70%);
+  bottom:-50px;left:-100px;border-radius:50%;animation:float2 11s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-25px,35px) scale(1.05)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(25px,-25px) scale(1.08)}}
+.hero-inner{max-width:1140px;margin:0 auto;padding:4rem 2rem;
+  display:grid;grid-template-columns:1fr 480px;gap:3rem;align-items:center;
+  position:relative;z-index:1;min-height:calc(100vh - 64px)}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--blue),var(--green));border:none;
+  color:#fff;font-size:13px;font-weight:700;padding:8px 18px;
+  border-radius:100px;margin-bottom:1.2rem;box-shadow:0 4px 16px rgba(26,111,181,.3)}
+@keyframes pulse2{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
+.hero h1{font-family:var(--serif);font-size:clamp(2.4rem,4.5vw,4rem);
+  font-weight:900;color:var(--txt);line-height:1.05;margin-bottom:1rem}
+.hero h1 .hl-blue{color:var(--blue)}
+.hero h1 .hl-green{color:var(--green)}
+.hero h1 .hl-italic{font-style:italic;color:var(--gold)}
+.hero-desc{color:var(--txt2);font-size:1rem;line-height:1.8;margin-bottom:1.8rem;max-width:500px}
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2rem}
+.btn-p{background:linear-gradient(135deg,var(--blue),var(--green));color:#fff;
+  padding:13px 28px;border-radius:12px;text-decoration:none;font-weight:700;
+  font-size:14px;border:none;cursor:pointer;transition:all .25s;display:inline-block;
+  box-shadow:0 4px 16px rgba(26,111,181,.3)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,111,181,.4)}
+.btn-s{background:#fff;color:var(--blue);padding:13px 28px;border-radius:12px;
+  text-decoration:none;font-weight:600;font-size:14px;
+  border:2px solid var(--blue);transition:all .25s;display:inline-block}
+.btn-s:hover{background:var(--blue-lt)}
+.hero-stats{display:flex;gap:2rem;flex-wrap:wrap}
+.hstat{display:flex;flex-direction:column}
+.hstat-num{font-family:var(--serif);font-size:2rem;font-weight:900;color:var(--blue);line-height:1}
+.hstat-label{font-size:11px;color:var(--txt3);font-weight:500;margin-top:2px}
+
+/* hero collage visuale */
+.hero-visual{position:relative;height:520px}
+.hero-collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+  gap:10px;height:100%;border-radius:var(--r2);overflow:hidden}
+.hcol-main{grid-row:span 2;position:relative;overflow:hidden}
+.hcol-main img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.hcol-main:hover img{transform:scale(1.04)}
+.hcol{position:relative;overflow:hidden}
+.hcol img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.hcol:hover img{transform:scale(1.04)}
+.hcol-label{position:absolute;bottom:0;left:0;right:0;padding:.5rem .8rem;
+  background:linear-gradient(transparent,rgba(0,0,0,.55));color:#fff;
+  font-size:.75rem;font-weight:600}
+.hero-nurse{position:absolute;bottom:0;left:-120px;height:88%;z-index:3;
+  filter:drop-shadow(4px 0 18px rgba(0,0,0,.18));pointer-events:none}
+.float-badge{position:absolute;background:#fff;border-radius:14px;
+  padding:10px 14px;box-shadow:var(--sh2);border:1px solid var(--border);z-index:4}
+.fb1{top:-20px;right:-10px;animation:float1 8s ease-in-out infinite}
+.fb1 .fbn{font-family:var(--serif);font-size:1.5rem;font-weight:900;color:var(--green);line-height:1}
+.fb1 .fbl{font-size:10px;color:var(--txt3)}
+.fb2{bottom:10px;right:-10px;animation:float2 10s ease-in-out infinite;
+  background:linear-gradient(135deg,var(--blue),var(--green));color:#fff}
+.fb2 .fbn{font-family:var(--serif);font-size:1.2rem;font-weight:900;line-height:1}
+.fb2 .fbl{font-size:10px;opacity:.8}
+
+/* ── SEZIONI BASE ── */
+section{padding:80px 2rem}
+.s-inner{max-width:1140px;margin:0 auto}
+.s-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.08em;padding:5px 14px;border-radius:100px;
+  margin-bottom:1rem}
+.chip-blue{background:var(--blue-lt);color:var(--blue)}
+.chip-green{background:var(--green-lt);color:var(--green)}
+.chip-gold{background:var(--gold-lt);color:var(--gold)}
+.chip-violet{background:var(--violet-lt);color:var(--violet)}
+.chip-red{background:var(--red-lt);color:var(--red)}
+.s-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);
+  font-weight:900;color:var(--txt);margin-bottom:.5rem;line-height:1.15}
+.s-sub{color:var(--txt2);font-size:.95rem;max-width:560px;line-height:1.8;
+  margin-bottom:2.5rem;font-weight:300}
+
+/* ── COME FUNZIONA ── */
+#processo{background:var(--off)}
+.process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.process-grid::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--green),var(--gold));
+  z-index:0}
+.pstep{display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:0 .8rem;position:relative;z-index:1}
+.pstep-num{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:22px;font-weight:900;font-family:var(--serif);
+  color:#fff;margin-bottom:1rem;box-shadow:var(--sh2);border:3px solid #fff}
+.ps1{background:linear-gradient(135deg,var(--blue),var(--blue-mid))}
+.ps2{background:linear-gradient(135deg,var(--violet),var(--blue))}
+.ps3{background:linear-gradient(135deg,var(--green),var(--blue))}
+.ps4{background:linear-gradient(135deg,var(--gold),var(--green))}
+.ps5{background:linear-gradient(135deg,var(--green),#0d7a62)}
+.pstep h4{font-size:.88rem;font-weight:700;color:var(--txt);margin-bottom:.4rem}
+.pstep p{font-size:.78rem;color:var(--txt2);line-height:1.6;font-weight:300}
+.pstep-icon{font-size:1.1rem;margin-bottom:.3rem;display:block}
+
+/* ── PAESI ── */
+#paesi{background:#fff}
+.countries-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.ctab{padding:7px 18px;border-radius:100px;font-size:13px;font-weight:600;
+  border:2px solid var(--border);cursor:pointer;transition:all .2s;background:#fff;
+  font-family:var(--sans);color:var(--txt2)}
+.ctab.active,.ctab:hover{border-color:var(--blue);background:var(--blue-lt);color:var(--blue)}
+.countries-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.country-card{background:var(--off);border:1.5px solid var(--border);border-radius:var(--r);
+  padding:1.2rem;display:flex;align-items:center;gap:12px;transition:all .2s;cursor:default}
+.country-card:hover{border-color:var(--blue);background:var(--blue-lt);transform:translateY(-2px)}
+.cc-flag{font-size:2rem;line-height:1}
+.cc-name{font-size:.88rem;font-weight:700;color:var(--txt)}
+.cc-status{font-size:.75rem;color:var(--txt3);margin-top:2px}
+.cc-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-top:4px;display:inline-block}
+.cb-active{background:#dcfce7;color:#166534}
+.cb-dev{background:#fef9c3;color:#854d0e}
+.cb-new{background:var(--blue-lt);color:var(--blue)}
+
+/* ── PERCHÉ NURSEITALY ── */
+#perche{background:linear-gradient(135deg,var(--blue) 0%,var(--green) 100%)}
+.perche-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  max-width:1140px;margin:0 auto}
+.pc-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:var(--r2);padding:1.8rem;backdrop-filter:blur(10px);transition:all .3s}
+.pc-card:hover{background:rgba(255,255,255,.2);transform:translateY(-3px)}
+.pc-icon{font-size:2rem;margin-bottom:.8rem;display:block}
+.pc-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.4rem}
+.pc-card p{font-size:.85rem;color:rgba(255,255,255,.75);line-height:1.7;font-weight:300}
+
+/* ── CANDIDATURA ── */
+#candidatura{background:var(--off)}
+.cand-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.cand-info h3{font-family:var(--serif);font-size:1.6rem;font-weight:900;
+  color:var(--txt);margin-bottom:.8rem}
+.cand-info p{color:var(--txt2);font-size:.92rem;line-height:1.8;margin-bottom:1.5rem;font-weight:300}
+.req-list{display:flex;flex-direction:column;gap:.7rem}
+.req-item{display:flex;gap:10px;align-items:flex-start}
+.req-icon{width:28px;height:28px;border-radius:8px;background:var(--blue-lt);
+  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.req-item p{font-size:.85rem;color:var(--txt2);line-height:1.6}
+.req-item strong{color:var(--txt);display:block;font-size:.88rem;margin-bottom:1px}
+.form-card{background:#fff;border-radius:var(--r2);padding:2rem;box-shadow:var(--sh2);
+  border:1px solid var(--border);position:relative}
+.form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  border-radius:var(--r2) var(--r2) 0 0;
+  background:linear-gradient(90deg,var(--blue),var(--green),var(--gold))}
+.form-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:900;
+  color:var(--txt);margin-bottom:1.2rem}
+.fg{margin-bottom:.85rem}
+.fg label{display:block;font-size:11px;font-weight:700;color:var(--txt2);
+  text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 14px;
+  border:1.5px solid var(--border);border-radius:10px;font-family:var(--sans);
+  font-size:14px;color:var(--txt);background:var(--off);outline:none;transition:all .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);background:#fff;
+  box-shadow:0 0 0 3px rgba(26,111,181,.1)}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.f-check{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--txt2);margin-top:.5rem}
+.f-check input{accent-color:var(--blue);margin-top:2px;flex-shrink:0}
+.btn-form{width:100%;background:linear-gradient(135deg,var(--blue),var(--green));
+  color:#fff;padding:13px;border-radius:12px;border:none;font-family:var(--sans);
+  font-size:14px;font-weight:700;cursor:pointer;transition:all .25s;margin-top:.8rem;
+  box-shadow:0 4px 16px rgba(26,111,181,.3)}
+.btn-form:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(26,111,181,.4)}
+.form-ok{display:none;text-align:center;padding:2.5rem 1rem}
+.form-ok .oi{font-size:3rem;margin-bottom:.8rem;display:block}
+.form-ok h4{font-family:var(--serif);color:var(--green);font-size:1.2rem;margin-bottom:.4rem}
+.form-ok p{font-size:.85rem;color:var(--txt2);line-height:1.65}
+
+/* ── CHI SIAMO ── */
+#chi-siamo{background:#fff}
+.chisiamo-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.als-card{background:linear-gradient(135deg,var(--blue-lt),var(--green-lt));
+  border-radius:var(--r2);padding:2rem;border:1.5px solid rgba(26,111,181,.15)}
+.als-badge{display:inline-flex;align-items:center;gap:8px;
+  background:#fff;border-radius:10px;padding:8px 14px;margin-bottom:1.2rem;
+  box-shadow:var(--sh)}
+.als-badge .ab-logo{background:linear-gradient(135deg,var(--blue),var(--green));
+  color:#fff;font-family:var(--mono);font-size:11px;font-weight:500;
+  padding:4px 9px;border-radius:6px}
+.als-badge .ab-name{font-size:12px;color:var(--txt2);font-weight:500}
+.als-card h3{font-family:var(--serif);font-size:1.3rem;font-weight:900;color:var(--txt);margin-bottom:.6rem}
+.als-card p{font-size:.88rem;color:var(--txt2);line-height:1.8;font-weight:300;margin-bottom:1rem}
+.als-link{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;
+  font-weight:700;color:var(--blue);text-decoration:none;border-bottom:2px solid transparent;
+  transition:border-color .2s}
+.als-link:hover{border-color:var(--blue)}
+.chisiamo-text h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.4rem);
+  font-weight:900;color:var(--txt);margin-bottom:.8rem;line-height:1.15}
+.chisiamo-text p{color:var(--txt2);font-size:.92rem;line-height:1.8;margin-bottom:1rem;font-weight:300}
+.team-mini{display:flex;flex-direction:column;gap:.6rem;margin-top:1.2rem}
+.tm{display:flex;gap:12px;align-items:center;padding:10px 14px;
+  background:var(--off);border-radius:12px;border:1px solid var(--border)}
+.tm-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-family:var(--serif);font-size:.9rem;font-weight:900;
+  color:#fff;flex-shrink:0}
+.av1{background:linear-gradient(135deg,var(--blue),var(--green))}
+.av2{background:linear-gradient(135deg,var(--green),#0d7a62)}
+.tm-info{flex:1}
+.tm-name{font-size:.88rem;font-weight:700;color:var(--txt)}
+.tm-role{font-size:.78rem;color:var(--txt3)}
+
+/* ── CONTATTI ── */
+#contatti{background:var(--off)}
+.cont-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.cont-info-card{background:linear-gradient(135deg,var(--blue-lt),var(--green-lt));
+  border-radius:var(--r2);padding:2rem;border:1.5px solid rgba(26,111,181,.15)}
+.cont-info-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:900;
+  color:var(--txt);margin-bottom:1.5rem}
+.cont-row{display:flex;gap:14px;margin-bottom:1.1rem;align-items:flex-start}
+.cont-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;
+  justify-content:center;font-size:18px;flex-shrink:0;background:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.cont-row strong{display:block;font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--blue);margin-bottom:2px}
+.cont-row span{font-size:.85rem;color:var(--txt2)}
+.lang-note{background:#fff;border-radius:12px;padding:1rem 1.2rem;
+  margin-top:1.2rem;border:1px solid var(--border)}
+.lang-note p{font-size:.82rem;color:var(--txt2);margin-bottom:.3rem}
+.lang-flags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem}
+.lf{display:flex;align-items:center;gap:4px;font-size:.78rem;font-weight:600;
+  color:var(--txt2);background:var(--off);border-radius:6px;padding:3px 9px;
+  border:1px solid var(--border)}
+
+/* ── FOOTER ── */
+footer{background:var(--txt);color:rgba(255,255,255,.5);padding:3rem 2rem 1.5rem}
+.foot-inner{max-width:1140px;margin:0 auto}
+.foot-rainbow{height:3px;border-radius:100px;margin-bottom:2rem;
+  background:linear-gradient(90deg,var(--blue),var(--green),var(--gold),var(--violet))}
+.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;margin-bottom:2rem}
+.foot-brand p{font-size:.83rem;line-height:1.7;margin-top:.7rem;max-width:280px}
+.foot-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:rgba(255,255,255,.9);margin-bottom:.8rem}
+.foot-col a{display:block;font-size:.83rem;color:rgba(255,255,255,.45);text-decoration:none;
+  margin-bottom:.4rem;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.2rem;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-size:11px}
+.foot-als{display:inline-flex;align-items:center;gap:6px;margin-top:.5rem}
+.foot-als .fal{background:linear-gradient(135deg,var(--blue),var(--green));
+  color:#fff;font-family:var(--mono);font-size:10px;padding:3px 7px;border-radius:5px}
+
+/* ── MULTILANG ── */
+[data-lang]{display:none}
+[data-lang="it"]{display:block}
+span[data-lang]{display:inline}
+span[data-lang]:not([data-lang="it"]){display:none}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.4,0,.2,1),transform .65s cubic-bezier(.4,0,.2,1)}
+.reveal.rl{transform:translateX(-22px)}.reveal.rr{transform:translateX(22px)}
+.reveal.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner,.cand-layout,.chisiamo-grid,.cont-grid,.foot-top{grid-template-columns:1fr}
+  .hero-visual{order:-1;height:300px}
+  .hero-nurse{height:80%;left:-15px}
+  .process-grid{grid-template-columns:1fr 1fr;gap:1.5rem}
+  .process-grid::before{display:none}
+  .countries-grid{grid-template-columns:1fr 1fr}
+  .perche-grid{grid-template-columns:1fr}
+  nav .nav-links{display:none}.hamburger{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;
+    left:0;right:0;background:#fff;border-bottom:1px solid var(--border);
+    padding:.8rem;gap:.2rem;box-shadow:var(--sh)}
+  .fg-row{grid-template-columns:1fr}
+  .lang-switcher{display:none}
+}
+@media(max-width:600px){
+  .countries-grid{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:1fr}
+  .hero-stats{gap:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <div class="nav-logo-emblem">
+      <img src="images/logo.jpg" alt="NurseItaly logo">
+    </div>
+    <div class="nav-logo-text">
+      <div class="nav-logo-name">Nurse<span>Italy</span></div>
+      <div class="nav-logo-sub">International Nurse Recruitment</div>
+    </div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#processo" data-i18n="nav.process">Come funziona</a>
+    <a href="#paesi" data-i18n="nav.countries">Paesi</a>
+    <a href="#perche" data-i18n="nav.why">Perché noi</a>
+    <a href="#chi-siamo" data-i18n="nav.about">Chi siamo</a>
+    <a href="#contatti" data-i18n="nav.contact">Contatti</a>
+    <a href="#candidatura" class="nav-cta" data-i18n="nav.apply">Candidati ora</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:.5rem">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('it')">IT</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <span class="ticker-item">🌍 <span data-lang="it">Vivi e lavora dove tutto il mondo vuole stare in vacanza</span><span data-lang="en">Live and work where the whole world wants to go on holiday</span><span data-lang="es">Vive y trabaja donde todo el mundo quiere ir de vacaciones</span></span>
+    <span class="ticker-sep">✦</span>
+    <span class="ticker-item">🏥 <span data-lang="it">Reclutamento etico e gratuito per infermieri qualificati</span><span data-lang="en">Ethical and free recruitment for qualified nurses</span><span data-lang="es">Reclutamiento ético y gratuito para enfermeros cualificados</span></span>
+    <span class="ticker-sep">✦</span>
+    <span class="ticker-item">🇮🇹 <span data-lang="it">Ospedali, cliniche e RSA in tutta Italia ti aspettano</span><span data-lang="en">Hospitals, clinics and nursing homes across Italy are waiting for you</span><span data-lang="es">Hospitales, clínicas y residencias en toda Italia te esperan</span></span>
+    <span class="ticker-sep">✦</span>
+    <!-- duplicato per loop continuo -->
+    <span class="ticker-item">🌍 <span data-lang="it">Vivi e lavora dove tutto il mondo vuole stare in vacanza</span><span data-lang="en">Live and work where the whole world wants to go on holiday</span><span data-lang="es">Vive y trabaja donde todo el mundo quiere ir de vacaciones</span></span>
+    <span class="ticker-sep">✦</span>
+    <span class="ticker-item">🏥 <span data-lang="it">Reclutamento etico e gratuito per infermieri qualificati</span><span data-lang="en">Ethical and free recruitment for qualified nurses</span><span data-lang="es">Reclutamiento ético y gratuito para enfermeros cualificados</span></span>
+    <span class="ticker-sep">✦</span>
+    <span class="ticker-item">🇮🇹 <span data-lang="it">Ospedali, cliniche e RSA in tutta Italia ti aspettano</span><span data-lang="en">Hospitals, clinics and nursing homes across Italy are waiting for you</span><span data-lang="es">Hospitales, clínicas y residencias en toda Italia te esperan</span></span>
+    <span class="ticker-sep">✦</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-blob1"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <span data-lang="it">🌍 Vivi e lavora dove tutto il mondo vuole venire in vacanza</span>
+        <span data-lang="en">🌍 Live and work where the whole world wants to come on holiday</span>
+        <span data-lang="es">🌍 Vive y trabaja donde todo el mundo quiere venir de vacaciones</span>
+      </div>
+      <h1>
+        <span data-lang="it"><span class="hl-blue">Infermieri</span> dal<br><span class="hl-italic">mondo intero</span><br><span class="hl-green">verso l'Italia.</span></span>
+        <span data-lang="en"><span class="hl-blue">Nurses</span> from<br><span class="hl-italic">every country</span><br><span class="hl-green">to Italy.</span></span>
+        <span data-lang="es"><span class="hl-blue">Enfermeros</span> de<br><span class="hl-italic">todo el mundo</span><br><span class="hl-green">hacia Italia.</span></span>
+      </h1>
+      <p class="hero-desc">
+        <span data-lang="it">NurseItaly gestisce l'intero percorso: selezione, formazione linguistica, riconoscimento del titolo, visto e inserimento nelle strutture sanitarie italiane. Corridoi lavorativi etici e regolari da ogni continente.</span>
+        <span data-lang="en">NurseItaly manages the entire journey: selection, language training, credential recognition, visa support, and placement in Italian healthcare facilities. Ethical and legal recruitment from every continent.</span>
+        <span data-lang="es">NurseItaly gestiona todo el proceso: selección, formación lingüística, reconocimiento del título, visado e inserción en centros sanitarios italianos. Corredores laborales éticos y regulares desde todos los continentes.</span>
+      </p>
+      <div class="hero-btns">
+        <a href="#candidatura" class="btn-p">
+          <span data-lang="it">Candidati ora →</span>
+          <span data-lang="en">Apply now →</span>
+          <span data-lang="es">Postúlate ahora →</span>
+        </a>
+        <a href="#processo" class="btn-s">
+          <span data-lang="it">Come funziona</span>
+          <span data-lang="en">How it works</span>
+          <span data-lang="es">Cómo funciona</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><span class="hstat-num">40+</span><span class="hstat-label" data-lang="it">Paesi di reclutamento</span><span class="hstat-label" data-lang="en">Recruitment countries</span><span class="hstat-label" data-lang="es">Países de reclutamiento</span></div>
+        <div class="hstat"><span class="hstat-num">0€</span><span class="hstat-label" data-lang="it">Costo per il candidato</span><span class="hstat-label" data-lang="en">Cost for candidates</span><span class="hstat-label" data-lang="es">Costo para candidatos</span></div>
+        <div class="hstat"><span class="hstat-num">5</span><span class="hstat-label" data-lang="it">Step verso l'Italia</span><span class="hstat-label" data-lang="en">Steps to Italy</span><span class="hstat-label" data-lang="es">Pasos hacia Italia</span></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal rr">
+      <div class="float-badge fb1">
+        <div class="fbn">100%</div>
+        <div class="fbl" data-lang="it">Legale & Etico</div>
+        <div class="fbl" data-lang="en">Legal & Ethical</div>
+        <div class="fbl" data-lang="es">Legal y Ético</div>
+      </div>
+      <div class="hero-collage">
+        <div class="hcol-main">
+          <img src="images/rome-5778178_1280.jpg" alt="Roma">
+          <div class="hcol-label">Roma</div>
+        </div>
+        <div class="hcol">
+          <img src="images/firenze.jpg" alt="Firenze">
+          <div class="hcol-label">Firenze</div>
+        </div>
+        <div class="hcol">
+          <img src="images/venezia.jpeg" alt="Venezia">
+          <div class="hcol-label">Venezia</div>
+        </div>
+      </div>
+      <img class="hero-nurse" src="images/nurse2.png" alt="Infermiera">
+      <div class="float-badge fb2">
+        <div class="fbn">ALS MCL</div>
+        <div class="fbl">Civitanova Marche</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COME FUNZIONA -->
+<section id="processo">
+  <div class="s-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:3rem">
+      <span class="s-chip chip-blue" data-lang="it">Il processo</span>
+      <span class="s-chip chip-blue" data-lang="en">The process</span>
+      <span class="s-chip chip-blue" data-lang="es">El proceso</span>
+      <h2 class="s-title">
+        <span data-lang="it">5 step per lavorare in Italia</span>
+        <span data-lang="en">5 steps to work in Italy</span>
+        <span data-lang="es">5 pasos para trabajar en Italia</span>
+      </h2>
+      <p class="s-sub" style="margin:0 auto">
+        <span data-lang="it">Gestiamo tutto noi: dalla selezione nel tuo paese fino al primo giorno di lavoro in Italia.</span>
+        <span data-lang="en">We manage everything: from selection in your country to your first day at work in Italy.</span>
+        <span data-lang="es">Gestionamos todo: desde la selección en tu país hasta el primer día de trabajo en Italia.</span>
+      </p>
+    </div>
+    <div class="process-grid reveal d1">
+      <div class="pstep">
+        <div class="pstep-num ps1">01</div>
+        <span class="pstep-icon">🔍</span>
+        <h4><span data-lang="it">Selezione</span><span data-lang="en">Selection</span><span data-lang="es">Selección</span></h4>
+        <p><span data-lang="it">Screening del tuo profilo, laurea in infermieristica e valutazione dell'esperienza clinica.</span><span data-lang="en">Screening of your profile, nursing degree and clinical experience assessment.</span><span data-lang="es">Evaluación de tu perfil, título de enfermería y experiencia clínica.</span></p>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num ps2">02</div>
+        <span class="pstep-icon">🇮🇹</span>
+        <h4><span data-lang="it">Corso di Italiano</span><span data-lang="en">Italian Course</span><span data-lang="es">Curso de Italiano</span></h4>
+        <p><span data-lang="it">Preparazione certificazione B1/B2, obbligatoria per l'esercizio professionale sanitario in Italia.</span><span data-lang="en">B1/B2 certification preparation, required for professional healthcare practice in Italy.</span><span data-lang="es">Preparación para la certificación B1/B2, obligatoria para ejercer en sanidad en Italia.</span></p>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num ps3">03</div>
+        <span class="pstep-icon">📋</span>
+        <h4><span data-lang="it">Riconoscimento titolo</span><span data-lang="en">Credential recognition</span><span data-lang="es">Reconocimiento del título</span></h4>
+        <p><span data-lang="it">Gestione completa della procedura presso il Ministero della Salute italiano.</span><span data-lang="en">Complete management of the procedure at the Italian Ministry of Health.</span><span data-lang="es">Gestión completa del trámite ante el Ministerio de Salud italiano.</span></p>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num ps4">04</div>
+        <span class="pstep-icon">✈️</span>
+        <h4><span data-lang="it">Visto & trasferimento</span><span data-lang="en">Visa & relocation</span><span data-lang="es">Visado y traslado</span></h4>
+        <p><span data-lang="it">Supporto completo per visto di lavoro, permesso di soggiorno e trasferimento in Italia.</span><span data-lang="en">Full support for work visa, residence permit and relocation to Italy.</span><span data-lang="es">Apoyo completo para visado de trabajo, permiso de residencia y traslado a Italia.</span></p>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num ps5">05</div>
+        <span class="pstep-icon">🏥</span>
+        <h4><span data-lang="it">Inserimento lavorativo</span><span data-lang="en">Job placement</span><span data-lang="es">Inserción laboral</span></h4>
+        <p><span data-lang="it">Collocamento in ospedali, cliniche o RSA. Supporto per l'integrazione e la vita in Italia.</span><span data-lang="en">Placement in hospitals, clinics or nursing homes. Support for integration and life in Italy.</span><span data-lang="es">Colocación en hospitales, clínicas o residencias. Apoyo para la integración y la vida en Italia.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAESI DI RECLUTAMENTO -->
+<section id="paesi">
+  <div class="s-inner">
+    <div class="reveal">
+      <span class="s-chip chip-green" data-lang="it">Reclutamento globale</span>
+      <span class="s-chip chip-green" data-lang="en">Global recruitment</span>
+      <span class="s-chip chip-green" data-lang="es">Reclutamiento global</span>
+      <h2 class="s-title">
+        <span data-lang="it">Cerchiamo infermieri in tutto il mondo</span>
+        <span data-lang="en">We recruit nurses worldwide</span>
+        <span data-lang="es">Buscamos enfermeros en todo el mundo</span>
+      </h2>
+      <p class="s-sub">
+        <span data-lang="it">Corridoi lavorativi etici e regolari da ogni continente. Nessun paese escluso.</span>
+        <span data-lang="en">Ethical and legal recruitment corridors from every continent. No country excluded.</span>
+        <span data-lang="es">Corredores laborales éticos y regulares desde todos los continentes. Ningún país excluido.</span>
+      </p>
+    </div>
+    <div class="countries-tabs reveal">
+      <button class="ctab active" onclick="filterCountries('all',this)" data-lang="it">Tutti</button>
+      <button class="ctab active" onclick="filterCountries('all',this)" data-lang="en" style="display:none">All</button>
+      <button class="ctab active" onclick="filterCountries('all',this)" data-lang="es" style="display:none">Todos</button>
+      <button class="ctab" onclick="filterCountries('asia',this)">Asia</button>
+      <button class="ctab" onclick="filterCountries('latam',this)" data-lang="it">America Latina</button>
+      <button class="ctab" onclick="filterCountries('latam',this)" data-lang="en" style="display:none">Latin America</button>
+      <button class="ctab" onclick="filterCountries('latam',this)" data-lang="es" style="display:none">América Latina</button>
+      <button class="ctab" onclick="filterCountries('africa',this)">Africa</button>
+      <button class="ctab" onclick="filterCountries('europe',this)" data-lang="it">Europa Est</button>
+      <button class="ctab" onclick="filterCountries('europe',this)" data-lang="en" style="display:none">Eastern Europe</button>
+      <button class="ctab" onclick="filterCountries('europe',this)" data-lang="es" style="display:none">Europa del Este</button>
+    </div>
+    <div class="countries-grid reveal d1" id="countriesGrid">
+      <div class="country-card" data-region="asia"><div class="cc-flag">🇮🇳</div><div><div class="cc-name">India</div><div class="cc-status">Infermieri & OSS</div><span class="cc-badge cb-active">Prioritario</span></div></div>
+      <div class="country-card" data-region="asia"><div class="cc-flag">🇵🇭</div><div><div class="cc-name">Filippine</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></div>
+      <div class="country-card" data-region="asia"><div class="cc-flag">🇵🇰</div><div><div class="cc-name">Pakistan</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
+      <div class="country-card" data-region="asia"><div class="cc-flag">🇧🇩</div><div><div class="cc-name">Bangladesh</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
+      <div class="country-card" data-region="asia"><div class="cc-flag">🇱🇰</div><div><div class="cc-name">Sri Lanka</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
+      <div class="country-card" data-region="asia"><div class="cc-flag">🇮🇶</div><div><div class="cc-name">Iraq</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></div>
+      <div class="country-card" data-region="latam"><div class="cc-flag">🇨🇺</div><div><div class="cc-name">Cuba</div><div class="cc-status">Infermieri & Medici</div><span class="cc-badge cb-active">Attivo</span></div></div>
+      <div class="country-card" data-region="latam"><div class="cc-flag">🇧🇷</div><div><div class="cc-name">Brasile</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></div>
+      <div class="country-card" data-region="latam"><div class="cc-flag">🇨🇴</div><div><div class="cc-name">Colombia</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></div>
+      <div class="country-card" data-region="latam"><div class="cc-flag">🇻🇪</div><div><div class="cc-name">Venezuela</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
+      <div class="country-card" data-region="latam"><div class="cc-flag">🇵🇪</div><div><div class="cc-name">Perù</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
+      <div class="country-card" data-region="latam"><div class="cc-flag">🇦🇷</div><div><div class="cc-name">Argentina</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-new">Nuovo</span></div></div>
+      <div class="country-card" data-region="africa"><div class="cc-flag">🇳🇬</div><div><div class="cc-name">Nigeria</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
+      <div class="country-card" data-region="africa"><div class="cc-flag">🇪🇹</div><div><div class="cc-name">Etiopia</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
+      <div class="country-card" data-region="africa"><div class="cc-flag">🇹🇳</div><div><div class="cc-name">Tunisia</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
+      <div class="country-card" data-region="africa"><div class="cc-flag">🇲🇦</div><div><div class="cc-name">Marocco</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
+      <div class="country-card" data-region="europe"><div class="cc-flag">🇷🇴</div><div><div class="cc-name">Romania</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></div>
+      <div class="country-card" data-region="europe"><div class="cc-flag">🇦🇱</div><div><div class="cc-name">Albania</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></div>
+      <div class="country-card" data-region="europe"><div class="cc-flag">🇲🇩</div><div><div class="cc-name">Moldova</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
+      <div class="country-card" data-region="europe"><div class="cc-flag">🇺🇦</div><div><div class="cc-name">Ucraina</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-new">Nuovo</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PERCHÉ NURSEITALY -->
+<section id="perche">
+  <div class="perche-grid">
+    <div style="grid-column:1/-1;text-align:center;margin-bottom:2rem" class="reveal">
+      <span class="s-chip" style="background:rgba(255,255,255,.2);color:#fff">
+        <span data-lang="it">Perché sceglierci</span>
+        <span data-lang="en">Why choose us</span>
+        <span data-lang="es">Por qué elegirnos</span>
+      </span>
+      <h2 class="s-title" style="color:#fff">
+        <span data-lang="it">Il nostro impegno verso di te</span>
+        <span data-lang="en">Our commitment to you</span>
+        <span data-lang="es">Nuestro compromiso contigo</span>
+      </h2>
+    </div>
+    <div class="pc-card reveal d1">
+      <span class="pc-icon">💰</span>
+      <h3><span data-lang="it">Zero costi per il candidato</span><span data-lang="en">Zero cost for candidates</span><span data-lang="es">Cero costos para el candidato</span></h3>
+      <p><span data-lang="it">Il servizio è completamente gratuito per gli infermieri. I costi sono a carico delle strutture sanitarie italiane che richiedono il personale.</span><span data-lang="en">The service is completely free for nurses. Costs are borne by the Italian healthcare facilities requesting staff.</span><span data-lang="es">El servicio es completamente gratuito para los enfermeros. Los costos corren a cargo de los centros sanitarios italianos.</span></p>
+    </div>
+    <div class="pc-card reveal d2">
+      <span class="pc-icon">⚖️</span>
+      <h3><span data-lang="it">Reclutamento etico e legale</span><span data-lang="en">Ethical & legal recruitment</span><span data-lang="es">Reclutamiento ético y legal</span></h3>
+      <p><span data-lang="it">Operiamo nel pieno rispetto delle normative italiane e internazionali. Nessun contratto trappola, nessun costo nascosto. Trasparenza totale in ogni fase.</span><span data-lang="en">We operate in full compliance with Italian and international regulations. No trap contracts, no hidden costs. Complete transparency at every stage.</span><span data-lang="es">Operamos en pleno cumplimiento de la normativa italiana e internacional. Sin contratos trampa, sin costos ocultos. Transparencia total en cada etapa.</span></p>
+    </div>
+    <div class="pc-card reveal d3">
+      <span class="pc-icon">🤝</span>
+      <h3><span data-lang="it">Supporto completo end-to-end</span><span data-lang="en">Complete end-to-end support</span><span data-lang="es">Apoyo completo de principio a fin</span></h3>
+      <p><span data-lang="it">Ti seguiamo dal primo contatto fino all'integrazione in Italia: lingua, riconoscimento titolo, visto, alloggio e inserimento lavorativo.</span><span data-lang="en">We support you from first contact to integration in Italy: language, credential recognition, visa, housing and job placement.</span><span data-lang="es">Te acompañamos desde el primer contacto hasta tu integración en Italia: idioma, reconocimiento del título, visado, alojamiento e inserción laboral.</span></p>
+    </div>
+    <div class="pc-card reveal d1">
+      <span class="pc-icon">🌍</span>
+      <h3><span data-lang="it">Reclutamento da ogni paese</span><span data-lang="en">Recruitment from every country</span><span data-lang="es">Reclutamiento de cualquier país</span></h3>
+      <p><span data-lang="it">A differenza di altri, non siamo focalizzati su un solo paese. Lavoriamo con candidati da Asia, America Latina, Africa ed Europa dell'Est.</span><span data-lang="en">Unlike others, we are not focused on a single country. We work with candidates from Asia, Latin America, Africa and Eastern Europe.</span><span data-lang="es">A diferencia de otros, no estamos enfocados en un solo país. Trabajamos con candidatos de Asia, América Latina, África y Europa del Este.</span></p>
+    </div>
+    <div class="pc-card reveal d2">
+      <span class="pc-icon">🏛️</span>
+      <h3><span data-lang="it">Radici nel terzo settore</span><span data-lang="en">Rooted in the third sector</span><span data-lang="es">Raíces en el tercer sector</span></h3>
+      <p><span data-lang="it">Siamo il braccio operativo di ALS MCL Civitanova A.P.S., associazione affiliata al Movimento Cristiano Lavoratori con oltre 30 anni di storia nell'integrazione.</span><span data-lang="en">We are the operational arm of ALS MCL Civitanova A.P.S., an association affiliated with the Christian Workers Movement with over 30 years of integration history.</span><span data-lang="es">Somos el brazo operativo de ALS MCL Civitanova A.P.S., asociación afiliada al Movimiento Cristiano de Trabajadores con más de 30 años de historia en integración.</span></p>
+    </div>
+    <div class="pc-card reveal d3">
+      <span class="pc-icon">📍</span>
+      <h3><span data-lang="it">Sede in Italia, radici locali</span><span data-lang="en">Based in Italy, local roots</span><span data-lang="es">Con sede en Italia, raíces locales</span></h3>
+      <p><span data-lang="it">Siamo fisicamente presenti a Civitanova Marche. Conosciamo le strutture sanitarie del territorio e costruiamo rapporti diretti con ospedali e RSA delle Marche.</span><span data-lang="en">We are physically present in Civitanova Marche. We know the local healthcare facilities and build direct relationships with hospitals and nursing homes in the Marche region.</span><span data-lang="es">Estamos físicamente presentes en Civitanova Marche. Conocemos los centros sanitarios locales y construimos relaciones directas con hospitales y residencias en las Marche.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- CANDIDATURA -->
+<section id="candidatura">
+  <div class="s-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:2.5rem">
+      <span class="s-chip chip-gold" data-lang="it">Candidatura</span>
+      <span class="s-chip chip-gold" data-lang="en">Apply</span>
+      <span class="s-chip chip-gold" data-lang="es">Postulación</span>
+      <h2 class="s-title">
+        <span data-lang="it">Inizia il tuo percorso verso l'Italia</span>
+        <span data-lang="en">Start your journey to Italy</span>
+        <span data-lang="es">Empieza tu camino hacia Italia</span>
+      </h2>
+    </div>
+    <div class="cand-layout">
+      <div class="cand-info reveal rl">
+        <h3>
+          <span data-lang="it">Cosa cerchiamo</span>
+          <span data-lang="en">Who we're looking for</span>
+          <span data-lang="es">A quién buscamos</span>
+        </h3>
+        <p>
+          <span data-lang="it">Cerchiamo infermieri qualificati pronti a costruire la propria carriera in Italia. Non è necessario parlare italiano — ti aiutiamo noi a impararlo.</span>
+          <span data-lang="en">We are looking for qualified nurses ready to build their career in Italy. You don't need to speak Italian — we'll help you learn it.</span>
+          <span data-lang="es">Buscamos enfermeros titulados dispuestos a construir su carrera en Italia. No es necesario hablar italiano — nosotros te ayudamos a aprenderlo.</span>
+        </p>
+        <div class="req-list">
+          <div class="req-item"><div class="req-icon">🎓</div><div><strong><span data-lang="it">Laurea in infermieristica</span><span data-lang="en">Nursing degree</span><span data-lang="es">Título de enfermería</span></strong><p><span data-lang="it">Diploma o laurea riconosciuta nel tuo paese di origine</span><span data-lang="en">Diploma or degree recognized in your country of origin</span><span data-lang="es">Diploma o título reconocido en tu país de origen</span></p></div></div>
+          <div class="req-item"><div class="req-icon">🏥</div><div><strong><span data-lang="it">Esperienza clinica</span><span data-lang="en">Clinical experience</span><span data-lang="es">Experiencia clínica</span></strong><p><span data-lang="it">Almeno 1-2 anni di pratica professionale in ospedale o struttura sanitaria</span><span data-lang="en">At least 1-2 years of professional practice in a hospital or healthcare facility</span><span data-lang="es">Al menos 1-2 años de práctica profesional en hospital o centro sanitario</span></p></div></div>
+          <div class="req-item"><div class="req-icon">✈️</div><div><strong><span data-lang="it">Disponibilità a trasferirsi</span><span data-lang="en">Willingness to relocate</span><span data-lang="es">Disposición a trasladarse</span></strong><p><span data-lang="it">Disponibilità a vivere e lavorare stabilmente in Italia</span><span data-lang="en">Willingness to live and work permanently in Italy</span><span data-lang="es">Disponibilidad para vivir y trabajar de forma estable en Italia</span></p></div></div>
+          <div class="req-item"><div class="req-icon">💬</div><div><strong><span data-lang="it">Italiano non necessario</span><span data-lang="en">Italian not required</span><span data-lang="es">Italiano no necesario</span></strong><p><span data-lang="it">Ti aiutiamo a raggiungere il livello B1/B2 prima della partenza</span><span data-lang="en">We help you reach B1/B2 level before departure</span><span data-lang="es">Te ayudamos a alcanzar el nivel B1/B2 antes de la partida</span></p></div></div>
+        </div>
+      </div>
+      <div class="reveal rr">
+        <div class="form-card">
+          <h3>
+            <span data-lang="it">Invia la tua candidatura</span>
+            <span data-lang="en">Send your application</span>
+            <span data-lang="es">Envía tu candidatura</span>
+          </h3>
+          <form id="fCand" onsubmit="sf(event,'Cand')">
+            <div class="fg-row">
+              <div class="fg"><label data-lang="it">Nome *</label><label data-lang="en">First name *</label><label data-lang="es">Nombre *</label><input type="text" required placeholder=""></div>
+              <div class="fg"><label data-lang="it">Cognome *</label><label data-lang="en">Last name *</label><label data-lang="es">Apellido *</label><input type="text" required placeholder=""></div>
+            </div>
+            <div class="fg"><label>Email *</label><input type="email" required placeholder="email@example.com"></div>
+            <div class="fg"><label>Tel / WhatsApp *</label><input type="tel" required placeholder="+1 / +91 / +53 ..."></div>
+            <div class="fg-row">
+              <div class="fg">
+                <label data-lang="it">Paese attuale *</label><label data-lang="en">Current country *</label><label data-lang="es">País actual *</label>
+                <input type="text" required placeholder="">
+              </div>
+              <div class="fg">
+                <label data-lang="it">Livello italiano</label><label data-lang="en">Italian level</label><label data-lang="es">Nivel de italiano</label>
+                <select>
+                  <option value="0" data-lang="it">Nessuno</option><option value="0" data-lang="en">None</option><option value="0" data-lang="es">Ninguno</option>
+                  <option>A1–A2</option><option>B1–B2</option><option>C1–C2</option>
+                </select>
+              </div>
+            </div>
+            <div class="fg">
+              <label data-lang="it">Anni di esperienza *</label><label data-lang="en">Years of experience *</label><label data-lang="es">Años de experiencia *</label>
+              <select required>
+                <option value="">–</option>
+                <option>1–2</option><option>3–5</option><option>5–10</option><option>10+</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label data-lang="it">Presentazione breve</label><label data-lang="en">Brief introduction</label><label data-lang="es">Breve presentación</label>
+              <textarea rows="3" placeholder=""></textarea>
+            </div>
+            <div class="f-check">
+              <input type="checkbox" id="pC" required>
+              <label for="pC"><span data-lang="it">Acconsento al trattamento dei miei dati personali (GDPR).</span><span data-lang="en">I consent to the processing of my personal data (GDPR).</span><span data-lang="es">Consiento el tratamiento de mis datos personales (RGPD).</span></label>
+            </div>
+            <button type="submit" class="btn-form">
+              <span data-lang="it">Invia candidatura →</span>
+              <span data-lang="en">Send application →</span>
+              <span data-lang="es">Enviar candidatura →</span>
+            </button>
+          </form>
+          <div class="form-ok" id="okCand">
+            <span class="oi">🎯</span>
+            <h4><span data-lang="it">Candidatura inviata!</span><span data-lang="en">Application sent!</span><span data-lang="es">¡Candidatura enviada!</span></h4>
+            <p><span data-lang="it">Ti contatteremo entro 5 giorni lavorativi per valutare il tuo profilo.</span><span data-lang="en">We will contact you within 5 working days to evaluate your profile.</span><span data-lang="es">Te contactaremos dentro de 5 días hábiles para evaluar tu perfil.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHI SIAMO -->
+<section id="chi-siamo">
+  <div class="s-inner">
+    <div class="chisiamo-grid">
+      <div class="reveal rl">
+        <span class="s-chip chip-violet" data-lang="it">Chi siamo</span>
+        <span class="s-chip chip-violet" data-lang="en">About us</span>
+        <span class="s-chip chip-violet" data-lang="es">Quiénes somos</span>
+        <h2 class="chisiamo-text" style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;color:var(--txt);margin-bottom:.8rem;line-height:1.15">
+          <span data-lang="it">Il braccio di reclutamento di ALS MCL Civitanova</span>
+          <span data-lang="en">The recruitment arm of ALS MCL Civitanova</span>
+          <span data-lang="es">El brazo de reclutamiento de ALS MCL Civitanova</span>
+        </h2>
+        <p style="color:var(--txt2);font-size:.92rem;line-height:1.8;margin-bottom:1rem;font-weight:300">
+          <span data-lang="it">NurseItaly nasce all'interno dell'ALS MCL Territoriale di Civitanova A.P.S. — associazione del Movimento Cristiano Lavoratori fondata per promuovere l'integrazione lavorativa e sociale dei cittadini stranieri nelle Marche e in tutta Italia.</span>
+          <span data-lang="en">NurseItaly was born within ALS MCL Territoriale di Civitanova A.P.S. — an association of the Christian Workers Movement founded to promote the professional and social integration of foreign citizens in the Marche region and throughout Italy.</span>
+          <span data-lang="es">NurseItaly nace dentro de ALS MCL Territoriale di Civitanova A.P.S. — una asociación del Movimiento Cristiano de Trabajadores fundada para promover la integración laboral y social de ciudadanos extranjeros en las Marcas y en toda Italia.</span>
+        </p>
+        <p style="color:var(--txt2);font-size:.92rem;line-height:1.8;margin-bottom:1.5rem;font-weight:300">
+          <span data-lang="it">Il progetto è coordinato da Giorgio Torresi (presidente AIP — Associazione Infermieristica Professionale) con il supporto di Paolo Bernabucci, fondatore del GUS Italia, ONG con oltre 30 anni di esperienza in cooperazione internazionale.</span>
+          <span data-lang="en">The project is coordinated by Giorgio Torresi (president of AIP — Professional Nursing Association) with the support of Paolo Bernabucci, founder of GUS Italia, an NGO with over 30 years of international cooperation experience.</span>
+          <span data-lang="es">El proyecto está coordinado por Giorgio Torresi (presidente de AIP — Asociación Profesional de Enfermería) con el apoyo de Paolo Bernabucci, fundador de GUS Italia, una ONG con más de 30 años de experiencia en cooperación internacional.</span>
+        </p>
+        <div class="team-mini">
+          <div class="tm"><div class="tm-av av1">GT</div><div><div class="tm-name">Giorgio Torresi</div><div class="tm-role"><span data-lang="it">Coordinatore · Presidente AIP</span><span data-lang="en">Coordinator · AIP President</span><span data-lang="es">Coordinador · Presidente AIP</span></div></div></div>
+          <div class="tm"><div class="tm-av av2">PB</div><div><div class="tm-name">Paolo Bernabucci</div><div class="tm-role"><span data-lang="it">Presidente ALS MCL · Fondatore GUS Italia</span><span data-lang="en">ALS MCL President · GUS Italia Founder</span><span data-lang="es">Presidente ALS MCL · Fundador GUS Italia</span></div></div></div>
+        </div>
+      </div>
+      <div class="reveal rr">
+        <div class="als-card">
+          <div class="als-badge"><div class="ab-logo">ALS MCL</div><div class="ab-name">Civitanova Marche A.P.S.</div></div>
+          <h3><span data-lang="it">L'associazione madre</span><span data-lang="en">The parent association</span><span data-lang="es">La asociación madre</span></h3>
+          <p><span data-lang="it">ALS MCL Territoriale di Civitanova offre assistenza legale, CAF/Patronato SIAS, corsi di italiano, supporto abitativo e formazione professionale per lavoratori stranieri nella provincia di Macerata.</span><span data-lang="en">ALS MCL Territoriale di Civitanova offers legal assistance, CAF/Patronato SIAS, Italian courses, housing support and professional training for foreign workers in the Macerata province.</span><span data-lang="es">ALS MCL Territoriale di Civitanova ofrece asistencia legal, CAF/Patronato SIAS, cursos de italiano, apoyo en vivienda y formación profesional para trabajadores extranjeros en la provincia de Macerata.</span></p>
+          <a href="als_mcl_civitanova_5.html" class="als-link">
+            <span data-lang="it">Visita il sito ALS MCL →</span>
+            <span data-lang="en">Visit the ALS MCL website →</span>
+            <span data-lang="es">Visita el sitio ALS MCL →</span>
+          </a>
+        </div>
+        <div style="margin-top:1.5rem;background:var(--off);border-radius:var(--r2);padding:1.5rem;border:1.5px solid var(--border)">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--txt3);margin-bottom:1rem" data-lang="it">Dati legali</div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--txt3);margin-bottom:1rem" data-lang="en">Legal info</div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--txt3);margin-bottom:1rem" data-lang="es">Datos legales</div>
+          <div style="display:flex;flex-direction:column;gap:.5rem">
+            <div style="font-size:.83rem;color:var(--txt2)"><strong style="color:var(--txt)">ALS MCL Territoriale di Civitanova A.P.S.</strong></div>
+            <div style="font-size:.83rem;color:var(--txt2)">Via Martiri di Belfiore 152 · 62012 Civitanova Marche (MC)</div>
+            <div style="font-size:.83rem;color:var(--txt2)">C.F. 97555660584 · D.Lgs. 117/2017</div>
+            <div style="font-size:.83rem;color:var(--txt2)">MCL — Movimento Cristiano Lavoratori</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section id="contatti">
+  <div class="s-inner">
+    <div class="reveal">
+      <span class="s-chip chip-blue" data-lang="it">Contatti</span>
+      <span class="s-chip chip-blue" data-lang="en">Contact</span>
+      <span class="s-chip chip-blue" data-lang="es">Contacto</span>
+      <h2 class="s-title">
+        <span data-lang="it">Scrivici in qualsiasi lingua</span>
+        <span data-lang="en">Write to us in any language</span>
+        <span data-lang="es">Escríbenos en cualquier idioma</span>
+      </h2>
+    </div>
+    <div class="cont-grid">
+      <div class="reveal rl">
+        <div class="cont-info-card">
+          <h3>NurseItaly / ALS MCL Civitanova</h3>
+          <div class="cont-row"><div class="cont-icon">📍</div><div><strong data-lang="it">Sede</strong><strong data-lang="en">Address</strong><strong data-lang="es">Sede</strong><span>Via Martiri di Belfiore 152<br>62012 Civitanova Marche (MC)</span></div></div>
+          <div class="cont-row"><div class="cont-icon">📞</div><div><strong>Tel / WhatsApp</strong><span>+39 393 663 4555</span></div></div>
+          <div class="cont-row"><div class="cont-icon">✉️</div><div><strong>Email</strong><span>info@nurseitaly.it</span></div></div>
+          <div class="cont-row"><div class="cont-icon">🕐</div><div><strong data-lang="it">Orari</strong><strong data-lang="en">Hours</strong><strong data-lang="es">Horario</strong><span data-lang="it">Lun–Ven 9:00–13:00 / 15:00–18:00</span><span data-lang="en">Mon–Fri 9:00–13:00 / 15:00–18:00</span><span data-lang="es">Lun–Vie 9:00–13:00 / 15:00–18:00</span></div></div>
+          <div class="lang-note">
+            <p><strong><span data-lang="it">Parliamo:</span><span data-lang="en">We speak:</span><span data-lang="es">Hablamos:</span></strong></p>
+            <div class="lang-flags">
+              <div class="lf">🇮🇹 Italiano</div>
+              <div class="lf">🇬🇧 English</div>
+              <div class="lf">🇪🇸 Español</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal rr">
+        <div class="form-card">
+          <h3>
+            <span data-lang="it">Inviaci un messaggio</span>
+            <span data-lang="en">Send us a message</span>
+            <span data-lang="es">Envíanos un mensaje</span>
+          </h3>
+          <form id="fCont" onsubmit="sf(event,'Cont')">
+            <div class="fg">
+              <label data-lang="it">Nome e Cognome *</label><label data-lang="en">Full name *</label><label data-lang="es">Nombre y apellido *</label>
+              <input type="text" required placeholder="">
+            </div>
+            <div class="fg"><label>Email *</label><input type="email" required placeholder="email@example.com"></div>
+            <div class="fg">
+              <label data-lang="it">Oggetto</label><label data-lang="en">Subject</label><label data-lang="es">Asunto</label>
+              <select>
+                <option data-lang="it">Candidatura infermiere</option><option data-lang="en">Nurse application</option><option data-lang="es">Candidatura de enfermero</option>
+                <option data-lang="it">Richiesta struttura sanitaria</option><option data-lang="en">Healthcare facility request</option><option data-lang="es">Solicitud de centro sanitario</option>
+                <option data-lang="it">Informazioni generali</option><option data-lang="en">General information</option><option data-lang="es">Información general</option>
+                <option data-lang="it">Partnership</option><option data-lang="en">Partnership</option><option data-lang="es">Colaboración</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label data-lang="it">Messaggio *</label><label data-lang="en">Message *</label><label data-lang="es">Mensaje *</label>
+              <textarea rows="4" required placeholder=""></textarea>
+            </div>
+            <button type="submit" class="btn-form">
+              <span data-lang="it">Invia messaggio →</span>
+              <span data-lang="en">Send message →</span>
+              <span data-lang="es">Enviar mensaje →</span>
+            </button>
+          </form>
+          <div class="form-ok" id="okCont">
+            <span class="oi">📨</span>
+            <h4><span data-lang="it">Messaggio inviato!</span><span data-lang="en">Message sent!</span><span data-lang="es">¡Mensaje enviado!</span></h4>
+            <p><span data-lang="it">Ti risponderemo entro 1-2 giorni lavorativi.</span><span data-lang="en">We will reply within 1-2 working days.</span><span data-lang="es">Te responderemos en 1-2 días hábiles.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-rainbow"></div>
+    <div class="foot-top">
+      <div>
+        <div style="display:inline-block;margin-bottom:.6rem">
+          <div class="nav-logo-mark" style="display:inline-block">Nurse<span>Italy</span></div>
+        </div>
+        <div class="foot-als"><div class="fal">ALS MCL</div><span style="font-size:.78rem">Civitanova Marche A.P.S.</span></div>
+        <p style="margin-top:.6rem">
+          <span data-lang="it">Reclutamento etico e legale di infermieri da tutto il mondo verso le strutture sanitarie italiane. Servizio gratuito per i candidati.</span>
+          <span data-lang="en">Ethical and legal recruitment of nurses from around the world to Italian healthcare facilities. Free service for candidates.</span>
+          <span data-lang="es">Reclutamiento ético y legal de enfermeros de todo el mundo hacia los centros sanitarios italianos. Servicio gratuito para candidatos.</span>
+        </p>
+      </div>
+      <div class="foot-col">
+        <h4 data-lang="it">Navigazione</h4>
+        <h4 data-lang="en">Navigation</h4>
+        <h4 data-lang="es">Navegación</h4>
+        <a href="#processo" data-lang="it">Come funziona</a><a href="#processo" data-lang="en">How it works</a><a href="#processo" data-lang="es">Cómo funciona</a>
+        <a href="#paesi" data-lang="it">Paesi</a><a href="#paesi" data-lang="en">Countries</a><a href="#paesi" data-lang="es">Países</a>
+        <a href="#candidatura" data-lang="it">Candidatura</a><a href="#candidatura" data-lang="en">Apply</a><a href="#candidatura" data-lang="es">Candidatura</a>
+        <a href="#chi-siamo" data-lang="it">Chi siamo</a><a href="#chi-siamo" data-lang="en">About</a><a href="#chi-siamo" data-lang="es">Quiénes somos</a>
+      </div>
+      <div class="foot-col">
+        <h4>Link</h4>
+        <a href="als_mcl_civitanova_5.html">ALS MCL Civitanova</a>
+        <a href="https://www.alsmcl.it" target="_blank" rel="noopener">ALS MCL Nazionale</a>
+        <a href="https://www.gus-italia.org" target="_blank" rel="noopener">GUS Italia</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 NurseItaly · ALS MCL Territoriale di Civitanova A.P.S. · C.F. 97555660584 · Via Martiri di Belfiore 152, Civitanova Marche (MC)</span>
+      <span style="color:rgba(255,255,255,.3)" data-lang="it">Ente del Terzo Settore · D.Lgs. 117/2017</span>
+      <span style="color:rgba(255,255,255,.3)" data-lang="en">Third Sector Entity · D.Lgs. 117/2017</span>
+      <span style="color:rgba(255,255,255,.3)" data-lang="es">Entidad del Tercer Sector · D.Lgs. 117/2017</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── LINGUA ── */
+let currentLang = 'it';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+  });
+  // Inline span: ripristina display:inline per span
+  document.querySelectorAll('span[data-lang="'+lang+'"]').forEach(el => {
+    el.style.display = 'inline';
+  });
+  // Lang buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+  });
+  // html lang
+  document.documentElement.lang = lang;
+  // Fix tabs "Tutti/All/Todos"
+  document.querySelectorAll('.ctab').forEach(btn => {
+    if(btn.hasAttribute('data-lang') && btn.getAttribute('data-lang') !== lang) {
+      btn.style.display = 'none';
+    } else if(btn.hasAttribute('data-lang')) {
+      btn.style.display = '';
+    }
+  });
+}
+
+// inizializzazione
+setLang('it');
+
+/* ── REVEAL ── */
+const obs = new IntersectionObserver(e => {
+  e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('vis'); obs.unobserve(x.target); } });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── NAV scroll ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.boxShadow = scrollY > 40
+    ? '0 4px 24px rgba(0,0,0,.12)' : '0 2px 16px rgba(0,0,0,.06)';
+});
+
+/* ── menu mobile ── */
+document.querySelectorAll('.nav-links a').forEach(a =>
+  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+);
+
+/* ── filtro paesi ── */
+function filterCountries(region, btn) {
+  document.querySelectorAll('.ctab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.country-card').forEach(card => {
+    card.style.display = (region === 'all' || card.dataset.region === region) ? '' : 'none';
+  });
+}
+
+/* ── form submit ── */
+function sf(e, tipo) {
+  e.preventDefault();
+  e.target.style.display = 'none';
+  const ok = document.getElementById('ok' + tipo);
+  if(ok) ok.style.display = 'block';
+}
+</script>
+</body>
+</html>
