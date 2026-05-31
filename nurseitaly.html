@@ -66,9 +66,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;
 .hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--txt)}
 
 /* ── SCRITTA HERO TOP ── */
-.hero-topline{margin-top:64px;padding:14px 2rem;text-align:center;
-  background:var(--off);border-bottom:1px solid var(--border)}
-.hero-topline span{font-size:15px;font-weight:600;color:var(--txt2);letter-spacing:.02em}
+.hero-topline{padding:80px 2rem 0;text-align:center;position:relative;z-index:1}
+.hero-topline span{font-size:16px;font-weight:600;color:var(--txt2);letter-spacing:.02em}
 
 /* ── HERO ── */
 .hero{min-height:100vh;padding-top:64px;position:relative;overflow:hidden;
@@ -380,19 +379,17 @@ span[data-lang]:not([data-lang="it"]){display:none}
   </div>
 </nav>
 
-<!-- SCRITTA HERO TOP -->
-<div class="hero-topline">
-  <span>
-    <span data-lang="it">Vivi e lavora dove tutto il mondo vuole venire in vacanza</span>
-    <span data-lang="en">Live and work where the whole world wants to come on holiday</span>
-    <span data-lang="es">Vive y trabaja donde todo el mundo quiere venir de vacaciones</span>
-  </span>
-</div>
-
 <!-- HERO -->
 <section id="home" class="hero">
   <div class="hero-blob1"></div>
   <div class="hero-blob2"></div>
+  <div class="hero-topline">
+    <span>
+      <span data-lang="it">Vivi e lavora dove tutto il mondo vuole venire in vacanza</span>
+      <span data-lang="en">Live and work where the whole world wants to come on holiday</span>
+      <span data-lang="es">Vive y trabaja donde todo el mundo quiere venir de vacaciones</span>
+    </span>
+  </div>
   <div class="hero-inner">
     <div>
       <div class="hero-tag">
