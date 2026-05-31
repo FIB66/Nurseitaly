@@ -65,13 +65,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;
 .lang-btn.active,.lang-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
 .hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--txt)}
 
-/* ── BANNER FASCIA ── */
-.hero-banner{margin-top:64px;background:linear-gradient(90deg,#0f4c8a,#1a6fb5 40%,#18a084);
-  color:#fff;padding:13px 2rem;text-align:center;position:relative;z-index:499;
-  display:flex;align-items:center;justify-content:center;gap:14px}
-.hero-banner-text{font-size:15px;font-weight:600;letter-spacing:.03em;opacity:.97}
-.hero-banner-dot{width:6px;height:6px;border-radius:50%;
-  background:rgba(255,255,255,.5);display:inline-block}
+/* ── SCRITTA HERO TOP ── */
+.hero-topline{margin-top:64px;padding:14px 2rem;text-align:center;
+  background:var(--off);border-bottom:1px solid var(--border)}
+.hero-topline span{font-size:15px;font-weight:600;color:var(--txt2);letter-spacing:.02em}
 
 /* ── HERO ── */
 .hero{min-height:100vh;padding-top:64px;position:relative;overflow:hidden;
@@ -383,15 +380,13 @@ span[data-lang]:not([data-lang="it"]){display:none}
   </div>
 </nav>
 
-<!-- BANNER FASCIA -->
-<div class="hero-banner">
-  <span class="hero-banner-dot"></span>
-  <span class="hero-banner-text">
-    <span data-lang="it">🌍 &nbsp;Vivi e lavora dove tutto il mondo vuole venire in vacanza</span>
-    <span data-lang="en">🌍 &nbsp;Live and work where the whole world wants to come on holiday</span>
-    <span data-lang="es">🌍 &nbsp;Vive y trabaja donde todo el mundo quiere venir de vacaciones</span>
+<!-- SCRITTA HERO TOP -->
+<div class="hero-topline">
+  <span>
+    <span data-lang="it">Vivi e lavora dove tutto il mondo vuole venire in vacanza</span>
+    <span data-lang="en">Live and work where the whole world wants to come on holiday</span>
+    <span data-lang="es">Vive y trabaja donde todo el mundo quiere venir de vacaciones</span>
   </span>
-  <span class="hero-banner-dot"></span>
 </div>
 
 <!-- HERO -->
