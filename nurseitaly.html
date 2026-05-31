@@ -277,7 +277,9 @@ section{padding:80px 2rem}
 #referenti{background:var(--off)}
 .ref-intro{text-align:center;margin-bottom:2.5rem}
 .ref-countries{display:flex;flex-direction:column;gap:2.5rem}
-.ref-country{background:linear-gradient(135deg,#0d5c3a,#18a084);border-radius:var(--r2);padding:1.8rem;border:none;box-shadow:var(--sh2)}
+.ref-country{border-radius:var(--r2);padding:1.8rem;border:none;box-shadow:var(--sh2)}
+.ref-country.green{background:linear-gradient(135deg,#0d5c3a,#18a084)}
+.ref-country.blue{background:linear-gradient(135deg,#0d2f5c,#1a6fb5)}
 .ref-country-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.2)}
 .ref-country-flag{font-size:2rem}
 .ref-country-name{font-family:var(--serif);font-size:1.2rem;font-weight:900;color:#fff}
@@ -596,7 +598,7 @@ span[data-lang]:not([data-lang="it"]){display:none}
     <div class="ref-countries">
 
       <!-- INDIA · PAKISTAN · SRI LANKA · BANGLADESH -->
-      <div class="ref-country reveal" id="referenti-india">
+      <div class="ref-country green reveal" id="referenti-india">
         <div class="ref-country-header">
           <span style="font-size:1.5rem">🇮🇳 🇵🇰 🇱🇰 🇧🇩</span>
           <span class="ref-country-name">
@@ -647,7 +649,7 @@ span[data-lang]:not([data-lang="it"]){display:none}
       </div>
 
       <!-- IRAQ & KURDISTAN -->
-      <div class="ref-country reveal d3" id="referenti-iraq">
+      <div class="ref-country blue reveal d3" id="referenti-iraq">
         <div class="ref-country-header">
           <span class="ref-country-flag">🇮🇶</span>
           <span class="ref-country-name">Iraq &amp; Kurdistan</span>
