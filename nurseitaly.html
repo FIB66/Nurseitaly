@@ -273,6 +273,24 @@ section{padding:80px 2rem}
 .tm-name{font-size:.88rem;font-weight:700;color:var(--txt)}
 .tm-role{font-size:.78rem;color:var(--txt3)}
 
+/* ── REFERENTI ── */
+#referenti{background:var(--off)}
+.ref-intro{text-align:center;margin-bottom:2.5rem}
+.ref-countries{display:flex;flex-direction:column;gap:2.5rem}
+.ref-country{background:#fff;border-radius:var(--r2);padding:1.8rem;border:1.5px solid var(--border);box-shadow:var(--sh)}
+.ref-country-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.ref-country-flag{font-size:2rem}
+.ref-country-name{font-family:var(--serif);font-size:1.2rem;font-weight:900;color:var(--txt)}
+.ref-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.ref-card{display:flex;gap:14px;align-items:flex-start;background:var(--off);border-radius:var(--r);padding:1.2rem;border:1px solid var(--border)}
+.ref-avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.1rem;font-weight:900;color:#fff;flex-shrink:0}
+.av-mithil{background:linear-gradient(135deg,var(--blue),var(--blue-mid))}
+.av-raman{background:linear-gradient(135deg,var(--green),#0d7a62)}
+.ref-info{}
+.ref-name{font-size:.95rem;font-weight:700;color:var(--txt);margin-bottom:2px}
+.ref-role{font-size:.78rem;color:var(--txt3);margin-bottom:.5rem;line-height:1.5}
+@media(max-width:600px){.ref-cards{grid-template-columns:1fr}}
+
 /* ── CONTATTI ── */
 #contatti{background:var(--off)}
 .cont-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
@@ -555,6 +573,126 @@ span[data-lang]:not([data-lang="it"]){display:none}
       <div class="country-card" data-region="europe"><div class="cc-flag">🇦🇱</div><div><div class="cc-name">Albania</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></div>
       <div class="country-card" data-region="europe"><div class="cc-flag">🇲🇩</div><div><div class="cc-name">Moldova</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
       <div class="country-card" data-region="europe"><div class="cc-flag">🇺🇦</div><div><div class="cc-name">Ucraina</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-new">Nuovo</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENTI LOCALI -->
+<section id="referenti">
+  <div class="s-inner">
+    <div class="ref-intro reveal">
+      <span class="s-chip chip-blue" data-lang="it">Referenti locali</span>
+      <span class="s-chip chip-blue" data-lang="en">Local representatives</span>
+      <span class="s-chip chip-blue" data-lang="es">Representantes locales</span>
+      <h2 class="s-title">
+        <span data-lang="it">Le nostre persone sul territorio</span>
+        <span data-lang="en">Our people on the ground</span>
+        <span data-lang="es">Nuestras personas sobre el terreno</span>
+      </h2>
+      <p class="s-sub" style="margin:0 auto">
+        <span data-lang="it">Per ogni paese lavoriamo con una struttura di appoggio locale che conosce il territorio e i candidati.</span>
+        <span data-lang="en">For each country we work with a local support structure that knows the territory and the candidates.</span>
+        <span data-lang="es">Para cada país trabajamos con una estructura de apoyo local que conoce el territorio y los candidatos.</span>
+      </p>
+    </div>
+    <div class="ref-countries">
+
+      <!-- INDIA -->
+      <div class="ref-country reveal">
+        <div class="ref-country-header">
+          <span class="ref-country-flag">🇮🇳</span>
+          <span class="ref-country-name">India</span>
+        </div>
+        <div class="ref-cards">
+          <div class="ref-card">
+            <div class="ref-avatar av-mithil">MK</div>
+            <div class="ref-info">
+              <div class="ref-name">Mythili Kumaresh</div>
+              <div class="ref-role">
+                <span data-lang="it">Socia fondatrice ALS MCL · Selezione infermieri · Director AnKav Horizon LLP</span>
+                <span data-lang="en">ALS MCL co-founder · Nurse selection · Director AnKav Horizon LLP</span>
+                <span data-lang="es">Cofundadora ALS MCL · Selección enfermeros · Directora AnKav Horizon LLP</span>
+              </div>
+            </div>
+          </div>
+          <div class="ref-card">
+            <div class="ref-avatar av-raman">RR</div>
+            <div class="ref-info">
+              <div class="ref-name">Raman Raj</div>
+              <div class="ref-role">
+                <span data-lang="it">Director & CEO AnKav Horizon LLP · Formazione lingua italiana · Coimbatore, Tamil Nadu</span>
+                <span data-lang="en">Director & CEO AnKav Horizon LLP · Italian language training · Coimbatore, Tamil Nadu</span>
+                <span data-lang="es">Director & CEO AnKav Horizon LLP · Formación en italiano · Coimbatore, Tamil Nadu</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAKISTAN -->
+      <div class="ref-country reveal d1">
+        <div class="ref-country-header">
+          <span class="ref-country-flag">🇵🇰</span>
+          <span class="ref-country-name">Pakistan</span>
+        </div>
+        <div class="ref-cards">
+          <div class="ref-card">
+            <div class="ref-avatar av-mithil">MK</div>
+            <div class="ref-info">
+              <div class="ref-name">Mythili Kumaresh</div>
+              <div class="ref-role">
+                <span data-lang="it">Referente · Selezione infermieri</span>
+                <span data-lang="en">Representative · Nurse selection</span>
+                <span data-lang="es">Representante · Selección enfermeros</span>
+              </div>
+            </div>
+          </div>
+          <div class="ref-card">
+            <div class="ref-avatar av-raman">RR</div>
+            <div class="ref-info">
+              <div class="ref-name">Raman Raj</div>
+              <div class="ref-role">
+                <span data-lang="it">Referente · Formazione lingua italiana</span>
+                <span data-lang="en">Representative · Italian language training</span>
+                <span data-lang="es">Representante · Formación en italiano</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SRI LANKA -->
+      <div class="ref-country reveal d2">
+        <div class="ref-country-header">
+          <span class="ref-country-flag">🇱🇰</span>
+          <span class="ref-country-name">Sri Lanka</span>
+        </div>
+        <div class="ref-cards">
+          <div class="ref-card">
+            <div class="ref-avatar av-mithil">MK</div>
+            <div class="ref-info">
+              <div class="ref-name">Mythili Kumaresh</div>
+              <div class="ref-role">
+                <span data-lang="it">Referente · Selezione infermieri</span>
+                <span data-lang="en">Representative · Nurse selection</span>
+                <span data-lang="es">Representante · Selección enfermeros</span>
+              </div>
+            </div>
+          </div>
+          <div class="ref-card">
+            <div class="ref-avatar av-raman">RR</div>
+            <div class="ref-info">
+              <div class="ref-name">Raman Raj</div>
+              <div class="ref-role">
+                <span data-lang="it">Referente · Formazione lingua italiana</span>
+                <span data-lang="en">Representative · Italian language training</span>
+                <span data-lang="es">Representante · Formación en italiano</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
