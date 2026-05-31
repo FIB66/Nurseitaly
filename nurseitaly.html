@@ -65,16 +65,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;
 .lang-btn.active,.lang-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
 .hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--txt)}
 
-/* ── TICKER ── */
-.ticker-bar{background:linear-gradient(90deg,var(--blue),var(--green));
-  color:#fff;padding:9px 0;overflow:hidden;white-space:nowrap;
-  position:relative;z-index:499;margin-top:64px}
-.ticker-track{display:inline-flex;gap:0;animation:ticker 22s linear infinite}
-.ticker-track:hover{animation-play-state:paused}
-.ticker-item{display:inline-flex;align-items:center;gap:10px;
-  padding:0 3rem;font-size:13px;font-weight:600;letter-spacing:.02em}
-.ticker-sep{opacity:.5;font-size:10px}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* ── BANNER FASCIA ── */
+.hero-banner{margin-top:64px;background:linear-gradient(90deg,#0f4c8a,#1a6fb5 40%,#18a084);
+  color:#fff;padding:13px 2rem;text-align:center;position:relative;z-index:499;
+  display:flex;align-items:center;justify-content:center;gap:14px}
+.hero-banner-text{font-size:15px;font-weight:600;letter-spacing:.03em;opacity:.97}
+.hero-banner-dot{width:6px;height:6px;border-radius:50%;
+  background:rgba(255,255,255,.5);display:inline-block}
 
 /* ── HERO ── */
 .hero{min-height:100vh;padding-top:64px;position:relative;overflow:hidden;
@@ -386,23 +383,15 @@ span[data-lang]:not([data-lang="it"]){display:none}
   </div>
 </nav>
 
-<!-- TICKER -->
-<div class="ticker-bar">
-  <div class="ticker-track">
-    <span class="ticker-item">🌍 <span data-lang="it">Vivi e lavora dove tutto il mondo vuole stare in vacanza</span><span data-lang="en">Live and work where the whole world wants to go on holiday</span><span data-lang="es">Vive y trabaja donde todo el mundo quiere ir de vacaciones</span></span>
-    <span class="ticker-sep">✦</span>
-    <span class="ticker-item">🏥 <span data-lang="it">Reclutamento etico e gratuito per infermieri qualificati</span><span data-lang="en">Ethical and free recruitment for qualified nurses</span><span data-lang="es">Reclutamiento ético y gratuito para enfermeros cualificados</span></span>
-    <span class="ticker-sep">✦</span>
-    <span class="ticker-item">🇮🇹 <span data-lang="it">Ospedali, cliniche e RSA in tutta Italia ti aspettano</span><span data-lang="en">Hospitals, clinics and nursing homes across Italy are waiting for you</span><span data-lang="es">Hospitales, clínicas y residencias en toda Italia te esperan</span></span>
-    <span class="ticker-sep">✦</span>
-    <!-- duplicato per loop continuo -->
-    <span class="ticker-item">🌍 <span data-lang="it">Vivi e lavora dove tutto il mondo vuole stare in vacanza</span><span data-lang="en">Live and work where the whole world wants to go on holiday</span><span data-lang="es">Vive y trabaja donde todo el mundo quiere ir de vacaciones</span></span>
-    <span class="ticker-sep">✦</span>
-    <span class="ticker-item">🏥 <span data-lang="it">Reclutamento etico e gratuito per infermieri qualificati</span><span data-lang="en">Ethical and free recruitment for qualified nurses</span><span data-lang="es">Reclutamiento ético y gratuito para enfermeros cualificados</span></span>
-    <span class="ticker-sep">✦</span>
-    <span class="ticker-item">🇮🇹 <span data-lang="it">Ospedali, cliniche e RSA in tutta Italia ti aspettano</span><span data-lang="en">Hospitals, clinics and nursing homes across Italy are waiting for you</span><span data-lang="es">Hospitales, clínicas y residencias en toda Italia te esperan</span></span>
-    <span class="ticker-sep">✦</span>
-  </div>
+<!-- BANNER FASCIA -->
+<div class="hero-banner">
+  <span class="hero-banner-dot"></span>
+  <span class="hero-banner-text">
+    <span data-lang="it">🌍 &nbsp;Vivi e lavora dove tutto il mondo vuole venire in vacanza</span>
+    <span data-lang="en">🌍 &nbsp;Live and work where the whole world wants to come on holiday</span>
+    <span data-lang="es">🌍 &nbsp;Vive y trabaja donde todo el mundo quiere venir de vacaciones</span>
+  </span>
+  <span class="hero-banner-dot"></span>
 </div>
 
 <!-- HERO -->
