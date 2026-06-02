@@ -111,38 +111,38 @@ section{padding:70px 2rem}
   background:var(--off);border:1px solid var(--border);padding:3px 10px;border-radius:100px}
 
 /* ── COUNTRY CARD GRANDE ── */
-.countries-grid-big{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.country-card-big{background:#fff;border:1.5px solid var(--border);border-radius:var(--r2);
-  padding:1.5rem;transition:all .25s;position:relative;overflow:hidden}
-.country-card-big::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+.countries-grid-big{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem}
+.country-card-big{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);
+  padding:.85rem;transition:all .25s;position:relative;overflow:hidden}
+.country-card-big::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,var(--blue),var(--green));opacity:0;transition:opacity .25s}
-.country-card-big:hover{border-color:var(--blue);box-shadow:var(--sh2);transform:translateY(-3px)}
+.country-card-big:hover{border-color:var(--blue);box-shadow:var(--sh);transform:translateY(-2px)}
 .country-card-big:hover::before{opacity:1}
 .country-card-big.has-page{cursor:pointer}
-.ccb-top{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
-.ccb-flag{font-size:2.4rem;line-height:1}
+.ccb-top{display:flex;align-items:center;gap:8px;margin-bottom:.5rem}
+.ccb-flag{font-size:1.5rem;line-height:1}
 .ccb-head{}
-.ccb-name{font-size:1rem;font-weight:700;color:var(--txt);margin-bottom:2px}
-.ccb-region{font-size:11px;color:var(--txt3);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
-.ccb-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.9rem}
-.cc-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;display:inline-block}
+.ccb-name{font-size:.85rem;font-weight:700;color:var(--txt);margin-bottom:1px}
+.ccb-region{font-size:10px;color:var(--txt3);font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+.ccb-badges{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:.5rem}
+.cc-badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;display:inline-block}
 .cb-active{background:#dcfce7;color:#166534}
 .cb-dev{background:#fef9c3;color:#854d0e}
 .cb-new{background:var(--blue-lt);color:var(--blue)}
 .cb-priority{background:linear-gradient(135deg,var(--blue),var(--green));color:#fff}
-.ccb-body{font-size:.83rem;color:var(--txt2);line-height:1.7;font-weight:300;margin-bottom:1rem}
-.ccb-details{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
-.ccb-detail{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--txt2)}
-.ccb-detail-icon{font-size:14px;width:20px;text-align:center;flex-shrink:0}
+.ccb-body{font-size:.78rem;color:var(--txt2);line-height:1.6;font-weight:300;margin-bottom:.6rem}
+.ccb-details{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.6rem}
+.ccb-detail{display:flex;align-items:center;gap:6px;font-size:.74rem;color:var(--txt2)}
+.ccb-detail-icon{font-size:12px;width:16px;text-align:center;flex-shrink:0}
 .ccb-footer{display:flex;align-items:center;justify-content:space-between;
-  padding-top:.8rem;border-top:1px solid var(--border)}
-.ccb-referente{font-size:.78rem;color:var(--txt3)}
+  padding-top:.6rem;border-top:1px solid var(--border)}
+.ccb-referente{font-size:.72rem;color:var(--txt3)}
 .ccb-referente strong{color:var(--txt2)}
-.ccb-link{display:inline-flex;align-items:center;gap:5px;font-size:.8rem;font-weight:700;
-  color:var(--blue);text-decoration:none;padding:5px 12px;border-radius:8px;
+.ccb-link{display:inline-flex;align-items:center;gap:4px;font-size:.74rem;font-weight:700;
+  color:var(--blue);text-decoration:none;padding:3px 9px;border-radius:6px;
   background:var(--blue-lt);transition:all .2s}
 .ccb-link:hover{background:var(--blue);color:#fff}
-.ccb-soon{font-size:.78rem;color:var(--txt3);font-style:italic}
+.ccb-soon{font-size:.72rem;color:var(--txt3);font-style:italic}
 
 /* ── REFERENTI ── */
 #referenti{background:var(--off)}
@@ -192,7 +192,7 @@ span[data-lang]:not([data-lang="it"]){display:none}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  .countries-grid-big{grid-template-columns:1fr 1fr}
+  .countries-grid-big{grid-template-columns:1fr 1fr 1fr}
   .foot-top{grid-template-columns:1fr}
   nav .nav-links{display:none}.hamburger{display:block}
   .nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;
