@@ -381,7 +381,7 @@ span[data-lang]:not([data-lang="it"]){display:none}
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#processo" data-i18n="nav.process">Come funziona</a>
-    <a href="#paesi" data-i18n="nav.countries">Paesi</a>
+    <a href="paesi.html">Paesi</a>
     <a href="#perche" data-i18n="nav.why">Perché noi</a>
     <a href="#chi-siamo" data-i18n="nav.about">Chi siamo</a>
     <a href="#contatti" data-i18n="nav.contact">Contatti</a>
@@ -539,136 +539,24 @@ span[data-lang]:not([data-lang="it"]){display:none}
         <span data-lang="es">Corredores laborales éticos y regulares desde todos los continentes. Ningún país excluido.</span>
       </p>
     </div>
-    <div class="countries-tabs reveal">
-      <button class="ctab active" onclick="filterCountries('all',this)" data-lang="it">Tutti</button>
-      <button class="ctab active" onclick="filterCountries('all',this)" data-lang="en" style="display:none">All</button>
-      <button class="ctab active" onclick="filterCountries('all',this)" data-lang="es" style="display:none">Todos</button>
-      <button class="ctab" onclick="filterCountries('asia',this)">Asia</button>
-      <button class="ctab" onclick="filterCountries('latam',this)" data-lang="it">America Latina</button>
-      <button class="ctab" onclick="filterCountries('latam',this)" data-lang="en" style="display:none">Latin America</button>
-      <button class="ctab" onclick="filterCountries('latam',this)" data-lang="es" style="display:none">América Latina</button>
-      <button class="ctab" onclick="filterCountries('africa',this)">Africa</button>
-      <button class="ctab" onclick="filterCountries('europe',this)" data-lang="it">Europa Est</button>
-      <button class="ctab" onclick="filterCountries('europe',this)" data-lang="en" style="display:none">Eastern Europe</button>
-      <button class="ctab" onclick="filterCountries('europe',this)" data-lang="es" style="display:none">Europa del Este</button>
+    <div class="countries-grid reveal d1" style="margin-bottom:2rem">
+      <a class="country-card" data-region="asia" href="paesi.html#referenti-india" style="text-decoration:none"><div class="cc-flag">🇮🇳</div><div><div class="cc-name">India</div><div class="cc-status">Infermieri & OSS</div><span class="cc-badge cb-active">Prioritario</span></div></a>
+      <a class="country-card" data-region="asia" href="paesi.html" style="text-decoration:none"><div class="cc-flag">🇵🇭</div><div><div class="cc-name">Filippine</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></a>
+      <a class="country-card" data-region="asia" href="paesi.html#referenti-india" style="text-decoration:none"><div class="cc-flag">🇵🇰</div><div><div class="cc-name">Pakistan</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></a>
+      <a class="country-card" data-region="asia" href="paesi.html#referenti-india" style="text-decoration:none"><div class="cc-flag">🇧🇩</div><div><div class="cc-name">Bangladesh</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></a>
+      <a class="country-card" data-region="asia" href="paesi.html#referenti-india" style="text-decoration:none"><div class="cc-flag">🇱🇰</div><div><div class="cc-name">Sri Lanka</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></a>
+      <a class="country-card" data-region="asia" href="paesi.html#referenti-iraq" style="text-decoration:none"><div class="cc-flag">🇮🇶</div><div><div class="cc-name">Iraq</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></a>
+      <a class="country-card" data-region="latam" href="paesi.html" style="text-decoration:none"><div class="cc-flag">🇨🇺</div><div><div class="cc-name">Cuba</div><div class="cc-status">Infermieri & Medici</div><span class="cc-badge cb-active">Attivo</span></div></a>
+      <a class="country-card" data-region="latam" href="paesi.html" style="text-decoration:none"><div class="cc-flag">🇧🇷</div><div><div class="cc-name">Brasile</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></a>
+      <a class="country-card" data-region="europe" href="paesi.html" style="text-decoration:none"><div class="cc-flag">🇷🇴</div><div><div class="cc-name">Romania</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></a>
+      <a class="country-card" data-region="europe" href="paesi.html" style="text-decoration:none"><div class="cc-flag">🇦🇱</div><div><div class="cc-name">Albania</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></a>
+      <a class="country-card" data-region="africa" href="paesi.html" style="text-decoration:none"><div class="cc-flag">🇳🇬</div><div><div class="cc-name">Nigeria</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></a>
+      <a class="country-card" data-region="latam" href="paesi.html" style="text-decoration:none"><div class="cc-flag">🇦🇷</div><div><div class="cc-name">Argentina</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-new">Nuovo</span></div></a>
     </div>
-    <div class="countries-grid reveal d1" id="countriesGrid">
-      <a class="country-card" data-region="asia" href="#referenti-india" style="text-decoration:none"><div class="cc-flag">🇮🇳</div><div><div class="cc-name">India</div><div class="cc-status">Infermieri & OSS</div><span class="cc-badge cb-active">Prioritario</span></div></a>
-      <div class="country-card" data-region="asia"><div class="cc-flag">🇵🇭</div><div><div class="cc-name">Filippine</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></div>
-      <a class="country-card" data-region="asia" href="#referenti-india" style="text-decoration:none"><div class="cc-flag">🇵🇰</div><div><div class="cc-name">Pakistan</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></a>
-      <a class="country-card" data-region="asia" href="#referenti-india" style="text-decoration:none"><div class="cc-flag">🇧🇩</div><div><div class="cc-name">Bangladesh</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></a>
-      <a class="country-card" data-region="asia" href="#referenti-india" style="text-decoration:none"><div class="cc-flag">🇱🇰</div><div><div class="cc-name">Sri Lanka</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></a>
-      <a class="country-card" data-region="asia" href="#referenti-iraq" style="text-decoration:none"><div class="cc-flag">🇮🇶</div><div><div class="cc-name">Iraq</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></a>
-      <div class="country-card" data-region="latam"><div class="cc-flag">🇨🇺</div><div><div class="cc-name">Cuba</div><div class="cc-status">Infermieri & Medici</div><span class="cc-badge cb-active">Attivo</span></div></div>
-      <div class="country-card" data-region="latam"><div class="cc-flag">🇧🇷</div><div><div class="cc-name">Brasile</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></div>
-      <div class="country-card" data-region="latam"><div class="cc-flag">🇨🇴</div><div><div class="cc-name">Colombia</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></div>
-      <div class="country-card" data-region="latam"><div class="cc-flag">🇻🇪</div><div><div class="cc-name">Venezuela</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
-      <div class="country-card" data-region="latam"><div class="cc-flag">🇵🇪</div><div><div class="cc-name">Perù</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
-      <div class="country-card" data-region="latam"><div class="cc-flag">🇦🇷</div><div><div class="cc-name">Argentina</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-new">Nuovo</span></div></div>
-      <div class="country-card" data-region="africa"><div class="cc-flag">🇳🇬</div><div><div class="cc-name">Nigeria</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
-      <div class="country-card" data-region="africa"><div class="cc-flag">🇪🇹</div><div><div class="cc-name">Etiopia</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
-      <div class="country-card" data-region="africa"><div class="cc-flag">🇹🇳</div><div><div class="cc-name">Tunisia</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
-      <div class="country-card" data-region="africa"><div class="cc-flag">🇲🇦</div><div><div class="cc-name">Marocco</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
-      <div class="country-card" data-region="europe"><div class="cc-flag">🇷🇴</div><div><div class="cc-name">Romania</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></div>
-      <div class="country-card" data-region="europe"><div class="cc-flag">🇦🇱</div><div><div class="cc-name">Albania</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></div>
-      <div class="country-card" data-region="europe"><div class="cc-flag">🇲🇩</div><div><div class="cc-name">Moldova</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-dev">In sviluppo</span></div></div>
-      <div class="country-card" data-region="europe"><div class="cc-flag">🇺🇦</div><div><div class="cc-name">Ucraina</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-new">Nuovo</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- REFERENTI LOCALI -->
-<section id="referenti">
-  <div class="s-inner">
-    <div class="ref-intro reveal">
-      <span class="s-chip chip-blue" data-lang="it">Referenti locali</span>
-      <span class="s-chip chip-blue" data-lang="en">Local representatives</span>
-      <span class="s-chip chip-blue" data-lang="es">Representantes locales</span>
-      <h2 class="s-title">
-        <span data-lang="it">Le nostre persone sul territorio</span>
-        <span data-lang="en">Our people on the ground</span>
-        <span data-lang="es">Nuestras personas sobre el terreno</span>
-      </h2>
-      <p class="s-sub" style="margin:0 auto">
-        <span data-lang="it">Per ogni paese lavoriamo con una struttura di appoggio locale che conosce il territorio e i candidati.</span>
-        <span data-lang="en">For each country we work with a local support structure that knows the territory and the candidates.</span>
-        <span data-lang="es">Para cada país trabajamos con una estructura de apoyo local que conoce el territorio y los candidatos.</span>
-      </p>
-    </div>
-    <div class="ref-countries">
-
-      <!-- INDIA · PAKISTAN · SRI LANKA · BANGLADESH -->
-      <div class="ref-country green reveal" id="referenti-india">
-        <div class="ref-country-header">
-          <span style="font-size:1.5rem">🇮🇳 🇵🇰 🇱🇰 🇧🇩</span>
-          <span class="ref-country-name">
-            <span data-lang="it">India · Pakistan · Sri Lanka · Bangladesh</span>
-            <span data-lang="en">India · Pakistan · Sri Lanka · Bangladesh</span>
-            <span data-lang="es">India · Pakistán · Sri Lanka · Bangladesh</span>
-          </span>
-        </div>
-        <div class="ref-cards">
-          <div class="ref-card">
-            <img class="ref-avatar" src="images/mithil.jpg" alt="Mythili Kumaresh">
-            <div class="ref-info">
-              <div class="ref-name">Mythili Kumaresh</div>
-              <div class="ref-role">
-                <span data-lang="it">Socia fondatrice ALS MCL · Selezione infermieri · Director AnKav Horizon LLP</span>
-                <span data-lang="en">ALS MCL co-founder · Nurse selection · Director AnKav Horizon LLP</span>
-                <span data-lang="es">Cofundadora ALS MCL · Selección enfermeros · Directora AnKav Horizon LLP</span>
-              </div>
-            </div>
-          </div>
-          <div class="ref-card">
-            <img class="ref-avatar" src="images/raman.jpg" alt="Raman Raj">
-            <div class="ref-info">
-              <div class="ref-name">Raman Raj</div>
-              <div class="ref-role">
-                <span data-lang="it">Director &amp; CEO AnKav Horizon LLP · Formazione lingua italiana · Coimbatore, Tamil Nadu</span>
-                <span data-lang="en">Director &amp; CEO AnKav Horizon LLP · Italian language training · Coimbatore, Tamil Nadu</span>
-                <span data-lang="es">Director &amp; CEO AnKav Horizon LLP · Formación en italiano · Coimbatore, Tamil Nadu</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- AnKav Horizon -->
-        <div style="margin-top:1.2rem;background:var(--blue-lt);border-radius:var(--r);padding:1rem 1.2rem;border:1.5px solid rgba(26,111,181,.15);display:flex;align-items:flex-start;gap:14px">
-          <div style="font-size:1.6rem;flex-shrink:0">🏫</div>
-          <div>
-            <div style="font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--blue);margin-bottom:4px">Partner formativo</div>
-            <div style="font-size:.95rem;font-weight:700;color:var(--txt);margin-bottom:2px">AnKav Horizon LLP</div>
-            <div style="font-size:.8rem;color:var(--txt2);line-height:1.6">
-              <span data-lang="it">Centro italiano di lingua e cultura · Coimbatore, Tamil Nadu, India</span>
-              <span data-lang="en">Italian Language and Culture Center · Coimbatore, Tamil Nadu, India</span>
-              <span data-lang="es">Centro de lengua y cultura italiana · Coimbatore, Tamil Nadu, India</span><br>
-              RainTree Center, 102, 8th Street, VKL Nagar, Thudiyalur – 641034
-            </div>
-            <a href="https://ankavhorizon.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:.8rem;font-weight:700;color:var(--blue);text-decoration:none">🔗 ankavhorizon.com</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- IRAQ & KURDISTAN -->
-      <div class="ref-country blue reveal d3" id="referenti-iraq">
-        <div class="ref-country-header">
-          <span class="ref-country-flag">🇮🇶</span>
-          <span class="ref-country-name">Iraq &amp; Kurdistan</span>
-        </div>
-        <div class="ref-cards" style="grid-template-columns:1fr">
-          <div class="ref-card">
-            <img class="ref-avatar" src="images/matteo.jpg" alt="Matteo Hussein">
-            <div class="ref-info">
-              <div class="ref-name">Matteo Hussein</div>
-              <div class="ref-role">
-                <span data-lang="it">Responsabile Iraq e Kurdistan · Selezione e supporto infermieri</span>
-                <span data-lang="en">Iraq and Kurdistan Representative · Nurse selection and support</span>
-                <span data-lang="es">Responsable Iraq y Kurdistán · Selección y apoyo a enfermeros</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div class="reveal" style="text-align:center">
+      <a href="paesi.html" class="btn-p" data-lang="it">Vedi tutti i 20 paesi →</a>
+      <a href="paesi.html" class="btn-p" data-lang="en" style="display:none">See all 20 countries →</a>
+      <a href="paesi.html" class="btn-p" data-lang="es" style="display:none">Ver los 20 países →</a>
     </div>
   </div>
 </section>

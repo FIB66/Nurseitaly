@@ -144,6 +144,23 @@ section{padding:70px 2rem}
 .ccb-link:hover{background:var(--blue);color:#fff}
 .ccb-soon{font-size:.78rem;color:var(--txt3);font-style:italic}
 
+/* ── REFERENTI ── */
+#referenti{background:var(--off)}
+.ref-intro{text-align:center;margin-bottom:2.5rem}
+.ref-countries{display:flex;flex-direction:column;gap:2.5rem}
+.ref-country{border-radius:var(--r2);padding:1.8rem;border:none;box-shadow:var(--sh2)}
+.ref-country.green{background:linear-gradient(135deg,#0d5c3a,#18a084)}
+.ref-country.blue{background:linear-gradient(135deg,#0d2f5c,#1a6fb5)}
+.ref-country-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.2)}
+.ref-country-flag{font-size:2rem}
+.ref-country-name{font-family:var(--serif);font-size:1.2rem;font-weight:900;color:#fff}
+.ref-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.ref-card{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.12);border-radius:var(--r);padding:1.2rem;border:1px solid rgba(255,255,255,.2)}
+.ref-avatar{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.4);box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.ref-name{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:2px}
+.ref-role{font-size:.78rem;color:rgba(255,255,255,.75);margin-bottom:.5rem;line-height:1.5}
+@media(max-width:600px){.ref-cards{grid-template-columns:1fr}}
+
 /* ── FOOTER ── */
 footer{background:var(--txt);color:rgba(255,255,255,.5);padding:3rem 2rem 1.5rem}
 .foot-inner{max-width:1140px;margin:0 auto}
@@ -845,6 +862,102 @@ span[data-lang]:not([data-lang="it"]){display:none}
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- REFERENTI LOCALI -->
+<section id="referenti" style="background:var(--off)">
+  <div class="s-inner">
+    <div class="ref-intro reveal">
+      <span class="s-chip chip-blue" data-lang="it">Referenti locali</span>
+      <span class="s-chip chip-blue" data-lang="en">Local representatives</span>
+      <span class="s-chip chip-blue" data-lang="es">Representantes locales</span>
+      <h2 class="s-title">
+        <span data-lang="it">Le nostre persone sul territorio</span>
+        <span data-lang="en">Our people on the ground</span>
+        <span data-lang="es">Nuestras personas sobre el terreno</span>
+      </h2>
+      <p class="s-sub" style="margin:0 auto">
+        <span data-lang="it">Per ogni paese lavoriamo con una struttura di appoggio locale che conosce il territorio e i candidati.</span>
+        <span data-lang="en">For each country we work with a local support structure that knows the territory and the candidates.</span>
+        <span data-lang="es">Para cada país trabajamos con una estructura de apoyo local que conoce el territorio y los candidatos.</span>
+      </p>
+    </div>
+    <div class="ref-countries">
+
+      <!-- INDIA · PAKISTAN · SRI LANKA · BANGLADESH -->
+      <div class="ref-country green reveal" id="referenti-india">
+        <div class="ref-country-header">
+          <span style="font-size:1.5rem">🇮🇳 🇵🇰 🇱🇰 🇧🇩</span>
+          <span class="ref-country-name">
+            <span data-lang="it">India · Pakistan · Sri Lanka · Bangladesh</span>
+            <span data-lang="en">India · Pakistan · Sri Lanka · Bangladesh</span>
+            <span data-lang="es">India · Pakistán · Sri Lanka · Bangladesh</span>
+          </span>
+        </div>
+        <div class="ref-cards">
+          <div class="ref-card">
+            <img class="ref-avatar" src="images/mithil.jpg" alt="Mythili Kumaresh">
+            <div class="ref-info">
+              <div class="ref-name">Mythili Kumaresh</div>
+              <div class="ref-role">
+                <span data-lang="it">Socia fondatrice ALS MCL · Selezione infermieri · Director AnKav Horizon LLP</span>
+                <span data-lang="en">ALS MCL co-founder · Nurse selection · Director AnKav Horizon LLP</span>
+                <span data-lang="es">Cofundadora ALS MCL · Selección enfermeros · Directora AnKav Horizon LLP</span>
+              </div>
+            </div>
+          </div>
+          <div class="ref-card">
+            <img class="ref-avatar" src="images/raman.jpg" alt="Raman Raj">
+            <div class="ref-info">
+              <div class="ref-name">Raman Raj</div>
+              <div class="ref-role">
+                <span data-lang="it">Director &amp; CEO AnKav Horizon LLP · Formazione lingua italiana · Coimbatore, Tamil Nadu</span>
+                <span data-lang="en">Director &amp; CEO AnKav Horizon LLP · Italian language training · Coimbatore, Tamil Nadu</span>
+                <span data-lang="es">Director &amp; CEO AnKav Horizon LLP · Formación en italiano · Coimbatore, Tamil Nadu</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- AnKav Horizon -->
+        <div style="margin-top:1.2rem;background:rgba(255,255,255,.15);border-radius:var(--r);padding:1rem 1.2rem;border:1.5px solid rgba(255,255,255,.2);display:flex;align-items:flex-start;gap:14px">
+          <div style="font-size:1.6rem;flex-shrink:0">🏫</div>
+          <div>
+            <div style="font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.7);margin-bottom:4px">Partner formativo</div>
+            <div style="font-size:.95rem;font-weight:700;color:#fff;margin-bottom:2px">AnKav Horizon LLP</div>
+            <div style="font-size:.8rem;color:rgba(255,255,255,.8);line-height:1.6">
+              <span data-lang="it">Centro italiano di lingua e cultura · Coimbatore, Tamil Nadu, India</span>
+              <span data-lang="en">Italian Language and Culture Center · Coimbatore, Tamil Nadu, India</span>
+              <span data-lang="es">Centro de lengua y cultura italiana · Coimbatore, Tamil Nadu, India</span><br>
+              RainTree Center, 102, 8th Street, VKL Nagar, Thudiyalur – 641034
+            </div>
+            <a href="https://ankavhorizon.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:.8rem;font-weight:700;color:#fff;text-decoration:none">🔗 ankavhorizon.com</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- IRAQ & KURDISTAN -->
+      <div class="ref-country blue reveal d3" id="referenti-iraq">
+        <div class="ref-country-header">
+          <span class="ref-country-flag">🇮🇶</span>
+          <span class="ref-country-name">Iraq &amp; Kurdistan</span>
+        </div>
+        <div class="ref-cards" style="grid-template-columns:1fr">
+          <div class="ref-card">
+            <img class="ref-avatar" src="images/matteo.jpg" alt="Matteo Hussein">
+            <div class="ref-info">
+              <div class="ref-name">Matteo Hussein</div>
+              <div class="ref-role">
+                <span data-lang="it">Responsabile Iraq e Kurdistan · Selezione e supporto infermieri</span>
+                <span data-lang="en">Iraq and Kurdistan Representative · Nurse selection and support</span>
+                <span data-lang="es">Responsable Iraq y Kurdistán · Selección y apoyo a enfermeros</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
