@@ -157,10 +157,19 @@ section{padding:70px 2rem}
 .ref-country-name{font-family:var(--serif);font-size:1.2rem;font-weight:900;color:#fff}
 .ref-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
 .ref-card{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.12);border-radius:var(--r);padding:1.2rem;border:1px solid rgba(255,255,255,.2)}
-.ref-avatar{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.4);box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.ref-avatar{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.4);box-shadow:0 2px 8px rgba(0,0,0,.2);cursor:pointer;transition:transform .2s}
+.ref-avatar:hover{transform:scale(1.08)}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1000;
+  align-items:center;justify-content:center;cursor:pointer}
+.lightbox.open{display:flex}
+.lightbox img{width:280px;height:280px;border-radius:50%;object-fit:cover;
+  border:4px solid #fff;box-shadow:0 12px 48px rgba(0,0,0,.6);
+  animation:lbpop .25s ease}
 .ref-name{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:2px}
 .ref-role{font-size:.78rem;color:rgba(255,255,255,.75);margin-bottom:.5rem;line-height:1.5}
 @media(max-width:600px){.ref-cards{grid-template-columns:1fr}}
+
+@keyframes lbpop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
 
 /* ── FOOTER ── */
 footer{background:var(--txt);color:rgba(255,255,255,.5);padding:3rem 2rem 1.5rem}
@@ -866,6 +875,11 @@ span[data-lang]:not([data-lang="it"]){display:none}
   </div>
 </section>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
+  <img id="lightboxImg" src="" alt="">
+</div>
+
 <!-- REFERENTI LOCALI -->
 <section id="referenti" style="background:var(--off)">
   <div class="s-inner">
@@ -1082,6 +1096,14 @@ window.addEventListener('scroll', () => {
 document.querySelectorAll('.nav-links a').forEach(a =>
   a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
 );
+
+/* ── LIGHTBOX ── */
+document.querySelectorAll('.ref-avatar').forEach(img => {
+  img.addEventListener('click', () => {
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('open');
+  });
+});
 </script>
 </body>
 </html>
