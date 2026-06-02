@@ -66,11 +66,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;
 .hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--txt)}
 
 /* ── SCRITTA HERO TOP ── */
-.hero-topline{padding:68px 2rem 0;text-align:center;position:relative;z-index:1}
+.hero-topline{padding:1.2rem 2rem 0;text-align:center;position:relative;z-index:1}
 .hero-topline span{font-size:22px;font-weight:700;color:#0d3a6e;letter-spacing:.06em;text-transform:uppercase}
 
 /* ── HERO ── */
-.hero{min-height:100vh;padding-top:0;position:relative;overflow:hidden;
+.hero{min-height:100vh;padding-top:64px;position:relative;overflow:hidden;
   background:linear-gradient(135deg,#e8f2fc 0%,#e4f7f3 45%,#fef6e4 100%)}
 .hero-blob1{position:absolute;width:700px;height:700px;
   background:radial-gradient(circle,rgba(26,111,181,.1),transparent 70%);
@@ -290,6 +290,7 @@ section{padding:80px 2rem}
 .ref-name{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:2px}
 .ref-role{font-size:.78rem;color:rgba(255,255,255,.75);margin-bottom:.5rem;line-height:1.5}
 @media(max-width:600px){.ref-cards{grid-template-columns:1fr}}
+.ref-country.violet{background:linear-gradient(135deg,#3d1a7a,#7c4dcc)}
 
 /* ── CONTATTI ── */
 #contatti{background:var(--off)}
@@ -358,6 +359,8 @@ span[data-lang]:not([data-lang="it"]){display:none}
     padding:.8rem;gap:.2rem;box-shadow:var(--sh)}
   .fg-row{grid-template-columns:1fr}
   .lang-switcher{display:none}
+  .lang-switcher-mobile{display:none}
+  .nav-links.open .lang-switcher-mobile{display:flex;padding:6px 12px;border-top:1px solid var(--border);margin-top:.2rem}
 }
 @media(max-width:600px){
   .countries-grid{grid-template-columns:1fr}
@@ -381,11 +384,16 @@ span[data-lang]:not([data-lang="it"]){display:none}
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#processo" data-i18n="nav.process">Come funziona</a>
-    <a href="paesi.html">Paesi</a>
+    <a href="#paesi">Paesi</a>
     <a href="#perche" data-i18n="nav.why">Perché noi</a>
     <a href="#chi-siamo" data-i18n="nav.about">Chi siamo</a>
     <a href="#contatti" data-i18n="nav.contact">Contatti</a>
     <a href="#candidatura" class="nav-cta" data-i18n="nav.apply">Candidati ora</a>
+    <div class="lang-switcher lang-switcher-mobile">
+      <button class="lang-btn active" onclick="setLang('it')">IT</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
   </div>
   <div style="display:flex;align-items:center;gap:.5rem">
     <div class="lang-switcher">
@@ -539,6 +547,15 @@ span[data-lang]:not([data-lang="it"]){display:none}
         <span data-lang="es">Corredores laborales éticos y regulares desde todos los continentes. Ningún país excluido.</span>
       </p>
     </div>
+    <div class="countries-tabs reveal">
+      <button class="ctab active" data-lang="it" onclick="filterCountries('all',this)">Tutti</button>
+      <button class="ctab active" data-lang="en" style="display:none" onclick="filterCountries('all',this)">All</button>
+      <button class="ctab active" data-lang="es" style="display:none" onclick="filterCountries('all',this)">Todos</button>
+      <button class="ctab" onclick="filterCountries('asia',this)">Asia</button>
+      <button class="ctab" onclick="filterCountries('latam',this)">Latin America</button>
+      <button class="ctab" onclick="filterCountries('europe',this)">Europa</button>
+      <button class="ctab" onclick="filterCountries('africa',this)">Africa</button>
+    </div>
     <div class="countries-grid reveal d1" style="margin-bottom:2rem">
       <a class="country-card" data-region="asia" href="paesi.html#referenti-india" style="text-decoration:none"><div class="cc-flag">🇮🇳</div><div><div class="cc-name">India</div><div class="cc-status">Infermieri & OSS</div><span class="cc-badge cb-active">Prioritario</span></div></a>
       <a class="country-card" data-region="asia" href="paesi.html" style="text-decoration:none"><div class="cc-flag">🇵🇭</div><div><div class="cc-name">Filippine</div><div class="cc-status">Infermieri</div><span class="cc-badge cb-active">Attivo</span></div></a>
@@ -662,10 +679,9 @@ span[data-lang]:not([data-lang="it"]){display:none}
               </div>
               <div class="fg">
                 <label data-lang="it">Livello italiano</label><label data-lang="en">Italian level</label><label data-lang="es">Nivel de italiano</label>
-                <select>
-                  <option value="0" data-lang="it">Nessuno</option><option value="0" data-lang="en">None</option><option value="0" data-lang="es">Ninguno</option>
-                  <option>A1–A2</option><option>B1–B2</option><option>C1–C2</option>
-                </select>
+                <select data-lang="it"><option value="0">Nessuno</option><option>A1–A2</option><option>B1–B2</option><option>C1–C2</option></select>
+                <select data-lang="en" style="display:none"><option value="0">None</option><option>A1–A2</option><option>B1–B2</option><option>C1–C2</option></select>
+                <select data-lang="es" style="display:none"><option value="0">Ninguno</option><option>A1–A2</option><option>B1–B2</option><option>C1–C2</option></select>
               </div>
             </div>
             <div class="fg">
@@ -725,8 +741,8 @@ span[data-lang]:not([data-lang="it"]){display:none}
         </p>
         <div class="team-mini">
           <div class="tm"><div class="tm-av av2">PB</div><div class="tm-info"><div class="tm-name">Paolo Bernabucci</div><div class="tm-role"><span data-lang="it">Presidente ALS MCL Civitanova · Fondatore GUS Italia</span><span data-lang="en">President ALS MCL Civitanova · GUS Italia Founder</span><span data-lang="es">Presidente ALS MCL Civitanova · Fundador GUS Italia</span></div></div></div>
-          <div class="tm"><div class="tm-av" style="background:linear-gradient(135deg,#0d2f5c,#1a6fb5)">MH</div><div class="tm-info"><div class="tm-name">Matteo Hussein</div><div class="tm-role"><span data-lang="it">Vicepresidente ALS MCL</span><span data-lang="en">Vice President ALS MCL</span><span data-lang="es">Vicepresidente ALS MCL</span></div></div></div>
-          <div class="tm"><div class="tm-av av1">GT</div><div class="tm-info"><div class="tm-name">Giorgio Torresi</div><div class="tm-role"><span data-lang="it">Segretario ALS MCL · Coordinatore NurseItaly · Presidente AIP</span><span data-lang="en">Secretary ALS MCL · NurseItaly Coordinator · AIP President</span><span data-lang="es">Secretario ALS MCL · Coordinador NurseItaly · Presidente AIP</span></div></div></div>
+          <div class="tm"><div class="tm-av" style="background:linear-gradient(135deg,#0d2f5c,#1a6fb5)">MH</div><div class="tm-info"><div class="tm-name">Matteo Hussein</div><div class="tm-role"><span data-lang="it">Vicepresidente ALS MCL Civitanova Marche</span><span data-lang="en">Vice President ALS MCL Civitanova Marche</span><span data-lang="es">Vicepresidente ALS MCL Civitanova Marche</span></div></div></div>
+          <div class="tm"><div class="tm-av av1">GT</div><div class="tm-info"><div class="tm-name">Giorgio Torresi</div><div class="tm-role"><span data-lang="it">Segretario ALS MCL Civitanova Marche · Coordinatore NurseItaly · Presidente AIP</span><span data-lang="en">Secretary ALS MCL Civitanova Marche · NurseItaly Coordinator · AIP President</span><span data-lang="es">Secretario ALS MCL Civitanova Marche · Coordinador NurseItaly · Presidente AIP</span></div></div></div>
         </div>
       </div>
       <div class="reveal rr">
@@ -752,6 +768,120 @@ span[data-lang]:not([data-lang="it"]){display:none}
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENTI -->
+<section id="referenti">
+  <div class="s-inner">
+    <div class="ref-intro reveal" style="text-align:center;margin-bottom:2.5rem">
+      <span class="s-chip chip-blue" data-lang="it">Referenti locali</span>
+      <span class="s-chip chip-blue" data-lang="en">Local representatives</span>
+      <span class="s-chip chip-blue" data-lang="es">Representantes locales</span>
+      <h2 class="s-title">
+        <span data-lang="it">Le nostre persone sul territorio</span>
+        <span data-lang="en">Our people on the ground</span>
+        <span data-lang="es">Nuestras personas sobre el terreno</span>
+      </h2>
+      <p class="s-sub" style="margin:0 auto">
+        <span data-lang="it">Per ogni paese lavoriamo con una struttura di appoggio locale che conosce il territorio e i candidati.</span>
+        <span data-lang="en">For each country we work with a local support structure that knows the territory and the candidates.</span>
+        <span data-lang="es">Para cada país trabajamos con una estructura de apoyo local que conoce el territorio y los candidatos.</span>
+      </p>
+    </div>
+    <div class="ref-countries">
+      <!-- INDIA -->
+      <div class="ref-country green reveal">
+        <div class="ref-country-header">
+          <span style="font-size:1.5rem">🇮🇳 🇵🇰 🇱🇰 🇧🇩</span>
+          <span class="ref-country-name">India · Pakistan · Sri Lanka · Bangladesh</span>
+        </div>
+        <div class="ref-cards">
+          <div class="ref-card">
+            <img class="ref-avatar" src="images/mithil.jpg" alt="Mythili Kumaresh">
+            <div class="ref-info">
+              <div class="ref-name">Mythili Kumaresh</div>
+              <div class="ref-role">
+                <span data-lang="it">Socia fondatrice ALS MCL · CEO AnKav Horizon LLP</span>
+                <span data-lang="en">ALS MCL co-founder · CEO AnKav Horizon LLP</span>
+                <span data-lang="es">Cofundadora ALS MCL · CEO AnKav Horizon LLP</span>
+              </div>
+              <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem">
+                <a href="tel:+393334641459" style="font-size:.75rem;font-weight:700;color:#fff;text-decoration:none">📞 +39 333 464 1459</a>
+                <a href="tel:+917065208337" style="font-size:.75rem;font-weight:700;color:rgba(255,255,255,.75);text-decoration:none">📱 +91 706 520 8337</a>
+              </div>
+            </div>
+          </div>
+          <div class="ref-card">
+            <img class="ref-avatar" src="images/raman.jpg" alt="Raman Raj">
+            <div class="ref-info">
+              <div class="ref-name">Raman Raj</div>
+              <div class="ref-role">
+                <span data-lang="it">Direttore AnKav Horizon LLP · Formazione lingua italiana</span>
+                <span data-lang="en">Director AnKav Horizon LLP · Italian language training</span>
+                <span data-lang="es">Director AnKav Horizon LLP · Formación en italiano</span>
+              </div>
+              <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem">
+                <a href="tel:+393491679010" style="font-size:.75rem;font-weight:700;color:#fff;text-decoration:none">📞 +39 349 167 9010</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- IRAQ -->
+      <div class="ref-country blue reveal d2">
+        <div class="ref-country-header">
+          <span class="ref-country-flag">🇮🇶</span>
+          <span class="ref-country-name">Iraq &amp; Kurdistan</span>
+        </div>
+        <div class="ref-cards" style="grid-template-columns:1fr">
+          <div class="ref-card">
+            <img class="ref-avatar" src="images/matteo.jpg" alt="Matteo Hussein">
+            <div class="ref-info">
+              <div class="ref-name">Matteo Hussein</div>
+              <div class="ref-role">
+                <span data-lang="it">Responsabile Iraq e Kurdistan · Selezione e supporto infermieri</span>
+                <span data-lang="en">Iraq and Kurdistan Representative · Nurse selection and support</span>
+                <span data-lang="es">Responsable Iraq y Kurdistán · Selección y apoyo a enfermeros</span>
+              </div>
+              <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem">
+                <a href="tel:+393936634555" style="font-size:.75rem;font-weight:700;color:#fff;text-decoration:none">📞 +39 393 663 4555</a>
+                <a href="tel:+9647704450019" style="font-size:.75rem;font-weight:700;color:rgba(255,255,255,.75);text-decoration:none">📱 +964 770 445 0019</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ETIOPIA -->
+      <div class="ref-country violet reveal d3">
+        <div class="ref-country-header">
+          <span class="ref-country-flag">🇪🇹</span>
+          <span class="ref-country-name">Etiopia</span>
+        </div>
+        <div class="ref-cards" style="grid-template-columns:1fr">
+          <div class="ref-card">
+            <img class="ref-avatar" src="images/nigist.png" alt="Nigist Bernabucci">
+            <div class="ref-info">
+              <div class="ref-name">Nigist Bernabucci</div>
+              <div class="ref-role">
+                <span data-lang="it">Presidente ALS MCL Macerata · Responsabile Etiopia</span>
+                <span data-lang="en">President ALS MCL Macerata · Ethiopia Representative</span>
+                <span data-lang="es">Presidenta ALS MCL Macerata · Responsable Etiopía</span>
+              </div>
+              <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem">
+                <a href="tel:+393939234307" style="font-size:.75rem;font-weight:700;color:#fff;text-decoration:none">📞 +39 393 923 4307</a>
+                <a href="tel:+251989934730" style="font-size:.75rem;font-weight:700;color:rgba(255,255,255,.75);text-decoration:none">📱 +251 989 934 730</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:2rem">
+      <a href="paesi.html#referenti" class="btn-s" data-lang="it">Vedi tutti i referenti →</a>
+      <a href="paesi.html#referenti" class="btn-s" data-lang="en" style="display:none">See all representatives →</a>
+      <a href="paesi.html#referenti" class="btn-s" data-lang="es" style="display:none">Ver todos los representantes →</a>
     </div>
   </div>
 </section>
@@ -802,12 +932,9 @@ span[data-lang]:not([data-lang="it"]){display:none}
             <div class="fg"><label>Email *</label><input type="email" required placeholder="email@example.com"></div>
             <div class="fg">
               <label data-lang="it">Oggetto</label><label data-lang="en">Subject</label><label data-lang="es">Asunto</label>
-              <select>
-                <option data-lang="it">Candidatura infermiere</option><option data-lang="en">Nurse application</option><option data-lang="es">Candidatura de enfermero</option>
-                <option data-lang="it">Richiesta struttura sanitaria</option><option data-lang="en">Healthcare facility request</option><option data-lang="es">Solicitud de centro sanitario</option>
-                <option data-lang="it">Informazioni generali</option><option data-lang="en">General information</option><option data-lang="es">Información general</option>
-                <option data-lang="it">Partnership</option><option data-lang="en">Partnership</option><option data-lang="es">Colaboración</option>
-              </select>
+              <select data-lang="it"><option>Candidatura infermiere</option><option>Richiesta struttura sanitaria</option><option>Informazioni generali</option><option>Partnership</option></select>
+              <select data-lang="en" style="display:none"><option>Nurse application</option><option>Healthcare facility request</option><option>General information</option><option>Partnership</option></select>
+              <select data-lang="es" style="display:none"><option>Candidatura de enfermero</option><option>Solicitud de centro sanitario</option><option>Información general</option><option>Colaboración</option></select>
             </div>
             <div class="fg">
               <label data-lang="it">Messaggio *</label><label data-lang="en">Message *</label><label data-lang="es">Mensaje *</label>
@@ -866,7 +993,7 @@ span[data-lang]:not([data-lang="it"]){display:none}
       <script type="text/javascript" id="mmvst_globe" src="//mapmyvisitors.com/globe.js?d=1ZU_M256JOYrPdVoUrn6oKz1ZKiAz_y1_zQ0R0iEIHU"></script>
     </div>
     <div class="foot-bottom">
-      <span>© 2025 NurseItaly · ALS MCL Territoriale di Civitanova A.P.S. · C.F. 97555660584 · Via Martiri di Belfiore 152, Civitanova Marche (MC)</span>
+      <span>© 2026 NurseItaly · ALS MCL Territoriale di Civitanova A.P.S. · C.F. 97555660584 · Via Martiri di Belfiore 152, Civitanova Marche (MC)</span>
       <span style="color:rgba(255,255,255,.3)" data-lang="it">Ente del Terzo Settore · D.Lgs. 117/2017</span>
       <span style="color:rgba(255,255,255,.3)" data-lang="en">Third Sector Entity · D.Lgs. 117/2017</span>
       <span style="color:rgba(255,255,255,.3)" data-lang="es">Entidad del Tercer Sector · D.Lgs. 117/2017</span>
