@@ -111,38 +111,38 @@ section{padding:70px 2rem}
   background:var(--off);border:1px solid var(--border);padding:3px 10px;border-radius:100px}
 
 /* ── COUNTRY CARD GRANDE ── */
-.countries-grid-big{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem}
+.countries-grid-big{display:grid;grid-template-columns:repeat(6,1fr);gap:.5rem}
 .country-card-big{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);
-  padding:.85rem;transition:all .25s;position:relative;overflow:hidden}
+  padding:.65rem;transition:all .25s;position:relative;overflow:hidden}
 .country-card-big::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,var(--blue),var(--green));opacity:0;transition:opacity .25s}
 .country-card-big:hover{border-color:var(--blue);box-shadow:var(--sh);transform:translateY(-2px)}
 .country-card-big:hover::before{opacity:1}
 .country-card-big.has-page{cursor:pointer}
-.ccb-top{display:flex;align-items:center;gap:8px;margin-bottom:.5rem}
-.ccb-flag{font-size:1.5rem;line-height:1}
+.ccb-top{display:flex;align-items:center;gap:6px;margin-bottom:.4rem}
+.ccb-flag{font-size:1.3rem;line-height:1}
 .ccb-head{}
-.ccb-name{font-size:.85rem;font-weight:700;color:var(--txt);margin-bottom:1px}
-.ccb-region{font-size:10px;color:var(--txt3);font-weight:500;text-transform:uppercase;letter-spacing:.05em}
-.ccb-badges{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:.5rem}
-.cc-badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;display:inline-block}
+.ccb-name{font-size:.78rem;font-weight:700;color:var(--txt);margin-bottom:1px}
+.ccb-region{font-size:9px;color:var(--txt3);font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.ccb-badges{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:.4rem}
+.cc-badge{font-size:9px;font-weight:700;padding:2px 6px;border-radius:100px;display:inline-block}
 .cb-active{background:#dcfce7;color:#166534}
 .cb-dev{background:#fef9c3;color:#854d0e}
 .cb-new{background:var(--blue-lt);color:var(--blue)}
 .cb-priority{background:linear-gradient(135deg,var(--blue),var(--green));color:#fff}
-.ccb-body{font-size:.78rem;color:var(--txt2);line-height:1.6;font-weight:300;margin-bottom:.6rem}
-.ccb-details{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.6rem}
-.ccb-detail{display:flex;align-items:center;gap:6px;font-size:.74rem;color:var(--txt2)}
-.ccb-detail-icon{font-size:12px;width:16px;text-align:center;flex-shrink:0}
+.ccb-body{font-size:.74rem;color:var(--txt2);line-height:1.5;font-weight:300;margin-bottom:.4rem}
+.ccb-details{display:flex;flex-direction:column;gap:.25rem;margin-bottom:.4rem}
+.ccb-detail{display:flex;align-items:center;gap:5px;font-size:.7rem;color:var(--txt2)}
+.ccb-detail-icon{font-size:11px;width:14px;text-align:center;flex-shrink:0}
 .ccb-footer{display:flex;align-items:center;justify-content:space-between;
-  padding-top:.6rem;border-top:1px solid var(--border)}
-.ccb-referente{font-size:.72rem;color:var(--txt3)}
+  padding-top:.4rem;border-top:1px solid var(--border)}
+.ccb-referente{font-size:.68rem;color:var(--txt3)}
 .ccb-referente strong{color:var(--txt2)}
-.ccb-link{display:inline-flex;align-items:center;gap:4px;font-size:.74rem;font-weight:700;
-  color:var(--blue);text-decoration:none;padding:3px 9px;border-radius:6px;
+.ccb-link{display:inline-flex;align-items:center;gap:3px;font-size:.68rem;font-weight:700;
+  color:var(--blue);text-decoration:none;padding:2px 7px;border-radius:6px;
   background:var(--blue-lt);transition:all .2s}
 .ccb-link:hover{background:var(--blue);color:#fff}
-.ccb-soon{font-size:.72rem;color:var(--txt3);font-style:italic}
+.ccb-soon{font-size:.68rem;color:var(--txt3);font-style:italic}
 
 /* ── REFERENTI ── */
 #referenti{background:var(--off)}
@@ -151,6 +151,7 @@ section{padding:70px 2rem}
 .ref-country{border-radius:var(--r2);padding:1.8rem;border:none;box-shadow:var(--sh2)}
 .ref-country.green{background:linear-gradient(135deg,#0d5c3a,#18a084)}
 .ref-country.blue{background:linear-gradient(135deg,#0d2f5c,#1a6fb5)}
+.ref-country.violet{background:linear-gradient(135deg,#1a5c3a,#2d9e6b)}
 .ref-country-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.2)}
 .ref-country-flag{font-size:2rem}
 .ref-country-name{font-family:var(--serif);font-size:1.2rem;font-weight:900;color:#fff}
@@ -192,7 +193,7 @@ span[data-lang]:not([data-lang="it"]){display:none}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  .countries-grid-big{grid-template-columns:1fr 1fr 1fr}
+  .countries-grid-big{grid-template-columns:repeat(3,1fr)}
   .foot-top{grid-template-columns:1fr}
   nav .nav-links{display:none}.hamburger{display:block}
   .nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;
@@ -296,7 +297,7 @@ span[data-lang]:not([data-lang="it"]){display:none}
       </div>
       <div class="countries-grid-big">
 
-        <div class="country-card-big has-page reveal d1" onclick="window.location='india.html'">
+        <div class="country-card-big has-page reveal d1" onclick="window.location='#referenti-india'">
           <div class="ccb-top">
             <div class="ccb-flag">🇮🇳</div>
             <div class="ccb-head">
@@ -320,13 +321,13 @@ span[data-lang]:not([data-lang="it"]){display:none}
           </div>
           <div class="ccb-footer">
             <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <strong>Mythili Kumaresh</strong></div>
-            <a class="ccb-link" href="india.html">
+            <a class="ccb-link" href="#referenti-india">
               <span data-lang="it">Approfondisci</span><span data-lang="en">Learn more</span><span data-lang="es">Más info</span> →
             </a>
           </div>
         </div>
 
-        <div class="country-card-big has-page reveal d2" onclick="window.location='filippine.html'">
+        <div class="country-card-big reveal d2">
           <div class="ccb-top">
             <div class="ccb-flag">🇵🇭</div>
             <div class="ccb-head">
@@ -460,7 +461,7 @@ span[data-lang]:not([data-lang="it"]){display:none}
       </div>
       <div class="countries-grid-big">
 
-        <div class="country-card-big has-page reveal d1" onclick="window.location='iraq.html'">
+        <div class="country-card-big has-page reveal d1" onclick="window.location='#referenti-iraq'">
           <div class="ccb-top">
             <div class="ccb-flag">🇮🇶</div>
             <div class="ccb-head">
@@ -482,7 +483,7 @@ span[data-lang]:not([data-lang="it"]){display:none}
           </div>
           <div class="ccb-footer">
             <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <strong>Matteo Hussein</strong></div>
-            <a class="ccb-link" href="iraq.html">
+            <a class="ccb-link" href="#referenti-iraq">
               <span data-lang="it">Approfondisci</span><span data-lang="en">Learn more</span><span data-lang="es">Más info</span> →
             </a>
           </div>
@@ -901,9 +902,13 @@ span[data-lang]:not([data-lang="it"]){display:none}
             <div class="ref-info">
               <div class="ref-name">Mythili Kumaresh</div>
               <div class="ref-role">
-                <span data-lang="it">Socia fondatrice ALS MCL · Selezione infermieri · Director AnKav Horizon LLP</span>
-                <span data-lang="en">ALS MCL co-founder · Nurse selection · Director AnKav Horizon LLP</span>
-                <span data-lang="es">Cofundadora ALS MCL · Selección enfermeros · Directora AnKav Horizon LLP</span>
+                <span data-lang="it">Socia fondatrice ALS MCL · Selezione infermieri · CEO AnKav Horizon LLP</span>
+                <span data-lang="en">ALS MCL co-founder · Nurse selection · CEO AnKav Horizon LLP</span>
+                <span data-lang="es">Cofundadora ALS MCL · Selección enfermeros · CEO AnKav Horizon LLP</span>
+              </div>
+              <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem">
+                <a href="tel:+393334641459" style="font-size:.75rem;font-weight:700;color:#fff;text-decoration:none">📞 +39 333 464 1459</a>
+                <a href="tel:+917065208337" style="font-size:.75rem;font-weight:700;color:rgba(255,255,255,.75);text-decoration:none">📱 +91 706 520 8337</a>
               </div>
             </div>
           </div>
@@ -912,9 +917,13 @@ span[data-lang]:not([data-lang="it"]){display:none}
             <div class="ref-info">
               <div class="ref-name">Raman Raj</div>
               <div class="ref-role">
-                <span data-lang="it">Director &amp; CEO AnKav Horizon LLP · Formazione lingua italiana · Coimbatore, Tamil Nadu</span>
-                <span data-lang="en">Director &amp; CEO AnKav Horizon LLP · Italian language training · Coimbatore, Tamil Nadu</span>
-                <span data-lang="es">Director &amp; CEO AnKav Horizon LLP · Formación en italiano · Coimbatore, Tamil Nadu</span>
+                <span data-lang="it">Direttore AnKav Horizon LLP · Formazione lingua italiana · Coimbatore, Tamil Nadu</span>
+                <span data-lang="en">Director AnKav Horizon LLP · Italian language training · Coimbatore, Tamil Nadu</span>
+                <span data-lang="es">Director AnKav Horizon LLP · Formación en italiano · Coimbatore, Tamil Nadu</span>
+              </div>
+              <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem">
+                <a href="tel:+393491679010" style="font-size:.75rem;font-weight:700;color:#fff;text-decoration:none">📞 +39 349 167 9010</a>
+                <a href="tel:+917065208337" style="font-size:.75rem;font-weight:700;color:rgba(255,255,255,.75);text-decoration:none">📱 +91 706 520 8337</a>
               </div>
             </div>
           </div>
@@ -931,7 +940,10 @@ span[data-lang]:not([data-lang="it"]){display:none}
               <span data-lang="es">Centro de lengua y cultura italiana · Coimbatore, Tamil Nadu, India</span><br>
               RainTree Center, 102, 8th Street, VKL Nagar, Thudiyalur – 641034
             </div>
-            <a href="https://ankavhorizon.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:.8rem;font-weight:700;color:#fff;text-decoration:none">🔗 ankavhorizon.com</a>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:8px">
+              <a href="https://ankavhorizon.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;font-size:.8rem;font-weight:700;color:#fff;text-decoration:none">🔗 ankavhorizon.com</a>
+              <a href="tel:+916385745429" style="display:inline-flex;align-items:center;gap:5px;font-size:.8rem;font-weight:700;color:#fff;text-decoration:none">📞 +91 63857 45429</a>
+            </div>
           </div>
         </div>
       </div>
@@ -951,6 +963,31 @@ span[data-lang]:not([data-lang="it"]){display:none}
                 <span data-lang="it">Responsabile Iraq e Kurdistan · Selezione e supporto infermieri</span>
                 <span data-lang="en">Iraq and Kurdistan Representative · Nurse selection and support</span>
                 <span data-lang="es">Responsable Iraq y Kurdistán · Selección y apoyo a enfermeros</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ETIOPIA -->
+      <div class="ref-country violet reveal d4" id="referenti-etiopia">
+        <div class="ref-country-header">
+          <span class="ref-country-flag">🇪🇹</span>
+          <span class="ref-country-name">Etiopia</span>
+        </div>
+        <div class="ref-cards" style="grid-template-columns:1fr">
+          <div class="ref-card">
+            <img class="ref-avatar" src="images/nigist.png" alt="Nigist Bernabucci">
+            <div class="ref-info">
+              <div class="ref-name">Nigist Bernabucci</div>
+              <div class="ref-role">
+                <span data-lang="it">Presidente ALS MCL Macerata · Responsabile Etiopia</span>
+                <span data-lang="en">President ALS MCL Macerata · Ethiopia Representative</span>
+                <span data-lang="es">Presidenta ALS MCL Macerata · Responsable Etiopía</span>
+              </div>
+              <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem">
+                <a href="tel:+393939234307" style="font-size:.75rem;font-weight:700;color:#fff;text-decoration:none">📞 +39 393 923 4307</a>
+                <a href="tel:+251989934730" style="font-size:.75rem;font-weight:700;color:rgba(255,255,255,.75);text-decoration:none">📱 +251 989 934 730</a>
               </div>
             </div>
           </div>
