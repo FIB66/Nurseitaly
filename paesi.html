@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paesi — NurseItaly</title>
+<link rel="icon" type="image/jpeg" href="images/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1a6fb5;    --blue-lt:#e8f2fc;  --blue-mid:#4a9dd4;
+  --red:#c0392b;     --red-lt:#fdecea;
+  --green:#18a084;   --green-lt:#e4f7f3;
+  --gold:#e8a020;    --gold-lt:#fef6e4;
+  --violet:#7c4dcc;  --violet-lt:#f0ebfa;
+  --white:#ffffff;   --off:#f8f9fb;
+  --txt:#1a1a2e;     --txt2:#4a4a6a;     --txt3:#8888aa;
+  --border:#e0e0f0;
+  --serif:'Playfair Display',serif;
+  --sans:'Plus Jakarta Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --r:14px; --r2:24px;
+  --sh:0 4px 24px rgba(26,26,46,.08);
+  --sh2:0 12px 48px rgba(26,26,46,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--txt);background:var(--white);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);box-shadow:0 2px 16px rgba(0,0,0,.06);
+  display:flex;align-items:center;justify-content:space-between;padding:0 2rem;
+  transition:all .3s}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-emblem{width:38px;height:38px;border-radius:50%;overflow:hidden;
+  border:2px solid var(--border);flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.nav-logo-emblem img{width:100%;height:100%;object-fit:cover}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.1}
+.nav-logo-name{font-family:var(--serif);font-size:1.25rem;font-weight:900;
+  color:var(--txt);letter-spacing:-.01em}
+.nav-logo-name span{color:var(--blue)}
+.nav-logo-sub{font-size:9px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--txt3)}
+.nav-logo-mark{background:linear-gradient(135deg,var(--blue),var(--green));
+  color:#fff;font-family:var(--mono);font-size:13px;font-weight:500;
+  padding:6px 13px;border-radius:10px;letter-spacing:.03em;display:inline-block}
+.nav-logo-mark span{color:rgba(255,255,255,.7)}
+.nav-links{display:flex;align-items:center;gap:.2rem}
+.nav-links a{color:var(--txt2);text-decoration:none;font-size:13px;font-weight:500;
+  padding:6px 12px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{background:var(--off);color:var(--blue)}
+.nav-links a.active{color:var(--blue);font-weight:700}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--green))!important;
+  color:#fff!important;font-weight:700!important;padding:8px 18px!important;border-radius:10px!important}
+.nav-cta:hover{box-shadow:0 4px 16px rgba(26,111,181,.35);transform:translateY(-1px)}
+.lang-switcher{display:flex;gap:4px;margin-right:.8rem}
+.lang-btn{background:none;border:1.5px solid var(--border);border-radius:6px;
+  font-size:11px;font-weight:600;padding:4px 8px;cursor:pointer;color:var(--txt2);
+  transition:all .2s;font-family:var(--sans)}
+.lang-btn.active,.lang-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--txt)}
+
+/* ── PAGE HEADER ── */
+.page-header{padding:100px 2rem 60px;background:linear-gradient(135deg,#e8f2fc 0%,#e4f7f3 60%,#fef6e4 100%);
+  text-align:center;position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;width:600px;height:600px;
+  background:radial-gradient(circle,rgba(26,111,181,.08),transparent 70%);
+  top:-200px;right:-100px;border-radius:50%}
+.page-header::after{content:'';position:absolute;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(24,160,132,.07),transparent 70%);
+  bottom:-100px;left:-50px;border-radius:50%}
+.page-header-inner{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.page-header .s-chip{margin-bottom:1rem}
+.page-header h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);
+  font-weight:900;color:var(--txt);margin-bottom:.8rem;line-height:1.1}
+.page-header p{color:var(--txt2);font-size:1rem;line-height:1.8;font-weight:300;max-width:560px;margin:0 auto}
+
+/* ── SEZIONI BASE ── */
+section{padding:70px 2rem}
+.s-inner{max-width:1200px;margin:0 auto}
+.s-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.08em;padding:5px 14px;border-radius:100px;
+  margin-bottom:1rem}
+.chip-blue{background:var(--blue-lt);color:var(--blue)}
+.chip-green{background:var(--green-lt);color:var(--green)}
+.chip-gold{background:var(--gold-lt);color:var(--gold)}
+.chip-violet{background:var(--violet-lt);color:var(--violet)}
+.chip-red{background:var(--red-lt);color:var(--red)}
+.s-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.4rem);
+  font-weight:900;color:var(--txt);margin-bottom:.5rem;line-height:1.15}
+.s-sub{color:var(--txt2);font-size:.95rem;max-width:560px;line-height:1.8;
+  margin-bottom:2.5rem;font-weight:300}
+
+/* ── FILTRI REGIONE ── */
+.region-filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.rfbtn{padding:8px 20px;border-radius:100px;font-size:13px;font-weight:600;
+  border:2px solid var(--border);cursor:pointer;transition:all .2s;background:#fff;
+  font-family:var(--sans);color:var(--txt2)}
+.rfbtn.active,.rfbtn:hover{border-color:var(--blue);background:var(--blue-lt);color:var(--blue)}
+
+/* ── REGIONE SEZIONE ── */
+.region-section{margin-bottom:3.5rem}
+.region-title{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;
+  padding-bottom:.8rem;border-bottom:2px solid var(--border)}
+.region-title h2{font-family:var(--serif);font-size:1.4rem;font-weight:900;color:var(--txt)}
+.region-title .region-count{font-size:12px;font-weight:700;color:var(--txt3);
+  background:var(--off);border:1px solid var(--border);padding:3px 10px;border-radius:100px}
+
+/* ── COUNTRY CARD GRANDE ── */
+.countries-grid-big{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.country-card-big{background:#fff;border:1.5px solid var(--border);border-radius:var(--r2);
+  padding:1.5rem;transition:all .25s;position:relative;overflow:hidden}
+.country-card-big::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--green));opacity:0;transition:opacity .25s}
+.country-card-big:hover{border-color:var(--blue);box-shadow:var(--sh2);transform:translateY(-3px)}
+.country-card-big:hover::before{opacity:1}
+.country-card-big.has-page{cursor:pointer}
+.ccb-top{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
+.ccb-flag{font-size:2.4rem;line-height:1}
+.ccb-head{}
+.ccb-name{font-size:1rem;font-weight:700;color:var(--txt);margin-bottom:2px}
+.ccb-region{font-size:11px;color:var(--txt3);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.ccb-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.9rem}
+.cc-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;display:inline-block}
+.cb-active{background:#dcfce7;color:#166534}
+.cb-dev{background:#fef9c3;color:#854d0e}
+.cb-new{background:var(--blue-lt);color:var(--blue)}
+.cb-priority{background:linear-gradient(135deg,var(--blue),var(--green));color:#fff}
+.ccb-body{font-size:.83rem;color:var(--txt2);line-height:1.7;font-weight:300;margin-bottom:1rem}
+.ccb-details{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.ccb-detail{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--txt2)}
+.ccb-detail-icon{font-size:14px;width:20px;text-align:center;flex-shrink:0}
+.ccb-footer{display:flex;align-items:center;justify-content:space-between;
+  padding-top:.8rem;border-top:1px solid var(--border)}
+.ccb-referente{font-size:.78rem;color:var(--txt3)}
+.ccb-referente strong{color:var(--txt2)}
+.ccb-link{display:inline-flex;align-items:center;gap:5px;font-size:.8rem;font-weight:700;
+  color:var(--blue);text-decoration:none;padding:5px 12px;border-radius:8px;
+  background:var(--blue-lt);transition:all .2s}
+.ccb-link:hover{background:var(--blue);color:#fff}
+.ccb-soon{font-size:.78rem;color:var(--txt3);font-style:italic}
+
+/* ── FOOTER ── */
+footer{background:var(--txt);color:rgba(255,255,255,.5);padding:3rem 2rem 1.5rem}
+.foot-inner{max-width:1140px;margin:0 auto}
+.foot-rainbow{height:3px;border-radius:100px;margin-bottom:2rem;
+  background:linear-gradient(90deg,var(--blue),var(--green),var(--gold),var(--violet))}
+.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;margin-bottom:2rem}
+.foot-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:rgba(255,255,255,.9);margin-bottom:.8rem}
+.foot-col a{display:block;font-size:.83rem;color:rgba(255,255,255,.45);text-decoration:none;
+  margin-bottom:.4rem;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.2rem;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-size:11px}
+.foot-als{display:inline-flex;align-items:center;gap:6px;margin-top:.5rem}
+.foot-als .fal{background:linear-gradient(135deg,var(--blue),var(--green));
+  color:#fff;font-family:var(--mono);font-size:10px;padding:3px 7px;border-radius:5px}
+
+/* ── MULTILANG ── */
+[data-lang]{display:none}
+[data-lang="it"]{display:block}
+span[data-lang]{display:inline}
+span[data-lang]:not([data-lang="it"]){display:none}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.4,0,.2,1),transform .65s cubic-bezier(.4,0,.2,1)}
+.reveal.vis{opacity:1;transform:none}
+.d1{transition-delay:.05s}.d2{transition-delay:.1s}.d3{transition-delay:.15s}
+.d4{transition-delay:.2s}.d5{transition-delay:.25s}.d6{transition-delay:.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .countries-grid-big{grid-template-columns:1fr 1fr}
+  .foot-top{grid-template-columns:1fr}
+  nav .nav-links{display:none}.hamburger{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;
+    left:0;right:0;background:#fff;border-bottom:1px solid var(--border);
+    padding:.8rem;gap:.2rem;box-shadow:var(--sh)}
+  .lang-switcher{display:none}
+}
+@media(max-width:600px){
+  .countries-grid-big{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="nurseitaly.html" class="nav-logo">
+    <div class="nav-logo-emblem">
+      <img src="images/logo.jpg" alt="NurseItaly logo">
+    </div>
+    <div class="nav-logo-text">
+      <div class="nav-logo-name">Nurse<span>Italy</span></div>
+      <div class="nav-logo-sub">International Nurse Recruitment</div>
+    </div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="nurseitaly.html#processo" data-i18n="nav.process">Come funziona</a>
+    <a href="paesi.html" class="active">Paesi</a>
+    <a href="nurseitaly.html#perche">Perché noi</a>
+    <a href="nurseitaly.html#chi-siamo">Chi siamo</a>
+    <a href="nurseitaly.html#contatti">Contatti</a>
+    <a href="nurseitaly.html#candidatura" class="nav-cta">Candidati ora</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:.5rem">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('it')">IT</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="s-chip chip-blue">🌍
+      <span data-lang="it">Corridoi di reclutamento</span>
+      <span data-lang="en">Recruitment corridors</span>
+      <span data-lang="es">Corredores de reclutamiento</span>
+    </div>
+    <h1>
+      <span data-lang="it">Paesi di provenienza</span>
+      <span data-lang="en">Countries of origin</span>
+      <span data-lang="es">Países de origen</span>
+    </h1>
+    <p>
+      <span data-lang="it">Collaboriamo con infermieri qualificati da ogni continente. Corridoi etici, legali e trasparenti verso le strutture sanitarie italiane.</span>
+      <span data-lang="en">We work with qualified nurses from every continent. Ethical, legal and transparent corridors to Italian healthcare facilities.</span>
+      <span data-lang="es">Trabajamos con enfermeros calificados de todos los continentes. Corredores éticos, legales y transparentes hacia los centros sanitarios italianos.</span>
+    </p>
+  </div>
+</div>
+
+<!-- CONTENUTO PRINCIPALE -->
+<section style="background:#fff">
+  <div class="s-inner">
+
+    <!-- Filtri -->
+    <div class="region-filters reveal" id="regionFilters">
+      <button class="rfbtn active" onclick="filterRegion('all',this)">
+        <span data-lang="it">Tutti i paesi</span>
+        <span data-lang="en">All countries</span>
+        <span data-lang="es">Todos los países</span>
+      </button>
+      <button class="rfbtn" onclick="filterRegion('asia',this)">🌏 Asia</button>
+      <button class="rfbtn" onclick="filterRegion('mideast',this)">🌙
+        <span data-lang="it">Medio Oriente</span>
+        <span data-lang="en">Middle East</span>
+        <span data-lang="es">Oriente Medio</span>
+      </button>
+      <button class="rfbtn" onclick="filterRegion('latam',this)">🌎
+        <span data-lang="it">America Latina</span>
+        <span data-lang="en">Latin America</span>
+        <span data-lang="es">América Latina</span>
+      </button>
+      <button class="rfbtn" onclick="filterRegion('africa',this)">🌍 Africa</button>
+      <button class="rfbtn" onclick="filterRegion('europe',this)">🇪🇺
+        <span data-lang="it">Europa Est</span>
+        <span data-lang="en">Eastern Europe</span>
+        <span data-lang="es">Europa del Este</span>
+      </button>
+    </div>
+
+    <!-- ── ASIA ── -->
+    <div class="region-section reveal" data-region-block="asia">
+      <div class="region-title">
+        <span style="font-size:1.8rem">🌏</span>
+        <h2>Asia</h2>
+        <span class="region-count">5 paesi</span>
+      </div>
+      <div class="countries-grid-big">
+
+        <div class="country-card-big has-page reveal d1" onclick="window.location='india.html'">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇮🇳</div>
+            <div class="ccb-head">
+              <div class="ccb-name">India</div>
+              <div class="ccb-region">Asia del Sud</div>
+            </div>
+          </div>
+          <div class="ccb-badges">
+            <span class="cc-badge cb-priority">⭐ Prioritario</span>
+            <span class="cc-badge cb-active">Attivo</span>
+          </div>
+          <div class="ccb-body">
+            <span data-lang="it">Corridoio principale di NurseItaly. Infermieri e OSS altamente qualificati, formati anche in italiano da AnKav Horizon.</span>
+            <span data-lang="en">NurseItaly's main corridor. Highly qualified nurses and care workers, also trained in Italian by AnKav Horizon.</span>
+            <span data-lang="es">Corredor principal de NurseItaly. Enfermeros altamente calificados, con formación en italiano de AnKav Horizon.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri & OSS</span><span data-lang="en">Nurses & Care Workers</span><span data-lang="es">Enfermeros & Auxiliares</span></div>
+            <div class="ccb-detail"><span class="ccb-detail-icon">🎓</span><span data-lang="it">Formazione italiano inclusa (AnKav Horizon)</span><span data-lang="en">Italian language training included (AnKav Horizon)</span><span data-lang="es">Formación en italiano incluida (AnKav Horizon)</span></div>
+            <div class="ccb-detail"><span class="ccb-detail-icon">📍</span><span data-lang="it">Tamil Nadu, Kerala, Karnataka</span><span data-lang="en">Tamil Nadu, Kerala, Karnataka</span><span data-lang="es">Tamil Nadu, Kerala, Karnataka</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <strong>Mythili Kumaresh</strong></div>
+            <a class="ccb-link" href="india.html">
+              <span data-lang="it">Approfondisci</span><span data-lang="en">Learn more</span><span data-lang="es">Más info</span> →
+            </a>
+          </div>
+        </div>
+
+        <div class="country-card-big has-page reveal d2" onclick="window.location='filippine.html'">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇵🇭</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Filippine</div>
+              <div class="ccb-region">Asia del Sud-Est</div>
+            </div>
+          </div>
+          <div class="ccb-badges">
+            <span class="cc-badge cb-active">Attivo</span>
+          </div>
+          <div class="ccb-body">
+            <span data-lang="it">Tra i maggiori esportatori mondiali di infermieri. Formazione internazionale, ottima conoscenza dell'inglese.</span>
+            <span data-lang="en">Among the world's largest nurse exporters. International training, excellent English skills.</span>
+            <span data-lang="es">Uno de los mayores exportadores mundiales de enfermeros. Formación internacional, excelente inglés.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+            <div class="ccb-detail"><span class="ccb-detail-icon">🌐</span><span data-lang="it">Formazione universitaria in inglese</span><span data-lang="en">University education in English</span><span data-lang="es">Formación universitaria en inglés</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon">
+              <span data-lang="it">Pagina in preparazione</span>
+              <span data-lang="en">Page coming soon</span>
+              <span data-lang="es">Página en preparación</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d3">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇵🇰</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Pakistan</div>
+              <div class="ccb-region">Asia del Sud</div>
+            </div>
+          </div>
+          <div class="ccb-badges">
+            <span class="cc-badge cb-dev">In sviluppo</span>
+          </div>
+          <div class="ccb-body">
+            <span data-lang="it">Ampio bacino di infermieri qualificati. Gestito tramite la rete AnKav Horizon con base in India.</span>
+            <span data-lang="en">Large pool of qualified nurses. Managed through the AnKav Horizon network based in India.</span>
+            <span data-lang="es">Gran reserva de enfermeros calificados. Gestionado a través de la red AnKav Horizon con sede en India.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+            <div class="ccb-detail"><span class="ccb-detail-icon">🔗</span><span data-lang="it">Rete AnKav Horizon</span><span data-lang="en">AnKav Horizon network</span><span data-lang="es">Red AnKav Horizon</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <strong>Mythili Kumaresh</strong></div>
+            <span class="ccb-soon">
+              <span data-lang="it">Pagina in preparazione</span>
+              <span data-lang="en">Page coming soon</span>
+              <span data-lang="es">Página en preparación</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d4">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇧🇩</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Bangladesh</div>
+              <div class="ccb-region">Asia del Sud</div>
+            </div>
+          </div>
+          <div class="ccb-badges">
+            <span class="cc-badge cb-dev">In sviluppo</span>
+          </div>
+          <div class="ccb-body">
+            <span data-lang="it">Professione infermieristica in forte crescita. Coordinato con la rete AnKav Horizon.</span>
+            <span data-lang="en">A rapidly growing nursing profession. Coordinated with the AnKav Horizon network.</span>
+            <span data-lang="es">Profesión enfermera en fuerte crecimiento. Coordinado con la red AnKav Horizon.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <strong>Mythili Kumaresh</strong></div>
+            <span class="ccb-soon">
+              <span data-lang="it">Pagina in preparazione</span>
+              <span data-lang="en">Page coming soon</span>
+              <span data-lang="es">Página en preparación</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d5">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇱🇰</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Sri Lanka</div>
+              <div class="ccb-region">Asia del Sud</div>
+            </div>
+          </div>
+          <div class="ccb-badges">
+            <span class="cc-badge cb-dev">In sviluppo</span>
+          </div>
+          <div class="ccb-body">
+            <span data-lang="it">Infermieri con solida formazione universitaria anglofona. Parte del corridoio India-AnKav Horizon.</span>
+            <span data-lang="en">Nurses with solid English-language university training. Part of the India-AnKav Horizon corridor.</span>
+            <span data-lang="es">Enfermeros con sólida formación universitaria anglófona. Parte del corredor India-AnKav Horizon.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <strong>Mythili Kumaresh</strong></div>
+            <span class="ccb-soon">
+              <span data-lang="it">Pagina in preparazione</span>
+              <span data-lang="en">Page coming soon</span>
+              <span data-lang="es">Página en preparación</span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── MEDIO ORIENTE ── -->
+    <div class="region-section reveal" data-region-block="mideast">
+      <div class="region-title">
+        <span style="font-size:1.8rem">🌙</span>
+        <h2>
+          <span data-lang="it">Medio Oriente</span>
+          <span data-lang="en">Middle East</span>
+          <span data-lang="es">Oriente Medio</span>
+        </h2>
+        <span class="region-count">1 paese</span>
+      </div>
+      <div class="countries-grid-big">
+
+        <div class="country-card-big has-page reveal d1" onclick="window.location='iraq.html'">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇮🇶</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Iraq & Kurdistan</div>
+              <div class="ccb-region">Medio Oriente</div>
+            </div>
+          </div>
+          <div class="ccb-badges">
+            <span class="cc-badge cb-active">Attivo</span>
+          </div>
+          <div class="ccb-body">
+            <span data-lang="it">Corridoio attivo con referente locale. Infermieri iracheni e curdi con titoli riconoscibili in Italia.</span>
+            <span data-lang="en">Active corridor with local contact. Iraqi and Kurdish nurses with qualifications recognizable in Italy.</span>
+            <span data-lang="es">Corredor activo con contacto local. Enfermeros iraquíes y kurdos con títulos reconocibles en Italia.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+            <div class="ccb-detail"><span class="ccb-detail-icon">📍</span><span data-lang="it">Baghdad, Erbil, Sulaymaniyah</span><span data-lang="en">Baghdad, Erbil, Sulaymaniyah</span><span data-lang="es">Baghdad, Erbil, Sulaymaniyah</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <strong>Matteo Hussein</strong></div>
+            <a class="ccb-link" href="iraq.html">
+              <span data-lang="it">Approfondisci</span><span data-lang="en">Learn more</span><span data-lang="es">Más info</span> →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── AMERICA LATINA ── -->
+    <div class="region-section reveal" data-region-block="latam">
+      <div class="region-title">
+        <span style="font-size:1.8rem">🌎</span>
+        <h2>
+          <span data-lang="it">America Latina</span>
+          <span data-lang="en">Latin America</span>
+          <span data-lang="es">América Latina</span>
+        </h2>
+        <span class="region-count">6 paesi</span>
+      </div>
+      <div class="countries-grid-big">
+
+        <div class="country-card-big reveal d1">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇨🇺</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Cuba</div>
+              <div class="ccb-region">Caraibi</div>
+            </div>
+          </div>
+          <div class="ccb-badges">
+            <span class="cc-badge cb-active">Attivo</span>
+          </div>
+          <div class="ccb-body">
+            <span data-lang="it">Formazione medico-infermieristica di altissimo livello. Cuba è tra i maggiori esportatori mondiali di operatori sanitari.</span>
+            <span data-lang="en">Top-level medical and nursing training. Cuba is among the world's largest exporters of healthcare workers.</span>
+            <span data-lang="es">Formación médico-enfermera de altísimo nivel. Cuba es uno de los mayores exportadores mundiales de trabajadores sanitarios.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri & Medici</span><span data-lang="en">Nurses & Doctors</span><span data-lang="es">Enfermeros & Médicos</span></div>
+            <div class="ccb-detail"><span class="ccb-detail-icon">🌐</span><span data-lang="it">Madrelingua spagnolo</span><span data-lang="en">Native Spanish speakers</span><span data-lang="es">Hispanohablantes nativos</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d2">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇧🇷</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Brasile</div>
+              <div class="ccb-region">America del Sud</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-active">Attivo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Grande comunità italo-brasiliana. Infermieri spesso con competenze linguistiche in italiano o facilità di apprendimento.</span>
+            <span data-lang="en">Large Italian-Brazilian community. Nurses often with Italian language skills or ease of learning.</span>
+            <span data-lang="es">Gran comunidad ítalo-brasileña. Enfermeros con frecuentes habilidades en italiano o facilidad de aprendizaje.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d3">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇨🇴</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Colombia</div>
+              <div class="ccb-region">America del Sud</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-active">Attivo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Forte tradizione universitaria in scienze infermieristiche. Madrelingua spagnolo, buona predisposizione all'italiano.</span>
+            <span data-lang="en">Strong university tradition in nursing sciences. Native Spanish speakers, good aptitude for Italian.</span>
+            <span data-lang="es">Fuerte tradición universitaria en ciencias de enfermería. Hispanohablantes nativos, buena predisposición al italiano.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d4">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇻🇪</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Venezuela</div>
+              <div class="ccb-region">America del Sud</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-dev">In sviluppo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Alta qualificazione professionale. Molti infermieri venezuelani cercano opportunità all'estero.</span>
+            <span data-lang="en">High professional qualification. Many Venezuelan nurses are seeking opportunities abroad.</span>
+            <span data-lang="es">Alta cualificación profesional. Muchos enfermeros venezolanos buscan oportunidades en el extranjero.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d5">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇵🇪</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Perù</div>
+              <div class="ccb-region">America del Sud</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-dev">In sviluppo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Crescente interesse verso l'Italia. Formazione sanitaria solida e riconosciuta.</span>
+            <span data-lang="en">Growing interest in Italy. Solid and recognized healthcare training.</span>
+            <span data-lang="es">Creciente interés por Italia. Formación sanitaria sólida y reconocida.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d6">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇦🇷</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Argentina</div>
+              <div class="ccb-region">America del Sud</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-new">Nuovo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Forte legame con l'Italia. La comunità italo-argentina è una delle più grandi al mondo.</span>
+            <span data-lang="en">Strong ties with Italy. The Italian-Argentine community is one of the largest in the world.</span>
+            <span data-lang="es">Fuertes vínculos con Italia. La comunidad ítalo-argentina es una de las más grandes del mundo.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── AFRICA ── -->
+    <div class="region-section reveal" data-region-block="africa">
+      <div class="region-title">
+        <span style="font-size:1.8rem">🌍</span>
+        <h2>Africa</h2>
+        <span class="region-count">4 paesi</span>
+      </div>
+      <div class="countries-grid-big">
+
+        <div class="country-card-big reveal d1">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇳🇬</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Nigeria</div>
+              <div class="ccb-region">Africa Occidentale</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-dev">In sviluppo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Paese con il maggior numero di infermieri in Africa. Formazione in lingua inglese.</span>
+            <span data-lang="en">Country with the highest number of nurses in Africa. Training in English.</span>
+            <span data-lang="es">País con el mayor número de enfermeros en África. Formación en inglés.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d2">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇪🇹</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Etiopia</div>
+              <div class="ccb-region">Africa Orientale</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-dev">In sviluppo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Sistema sanitario in rapida crescita. Giovani infermieri motivati con formazione in inglese.</span>
+            <span data-lang="en">Rapidly growing healthcare system. Young, motivated nurses trained in English.</span>
+            <span data-lang="es">Sistema sanitario en rápido crecimiento. Jóvenes enfermeros motivados con formación en inglés.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d3">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇹🇳</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Tunisia</div>
+              <div class="ccb-region">Africa del Nord</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-dev">In sviluppo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Formazione medica francofona riconoscibile in Italia. Vicinanza culturale con l'Europa mediterranea.</span>
+            <span data-lang="en">Francophone medical training recognizable in Italy. Cultural proximity to Mediterranean Europe.</span>
+            <span data-lang="es">Formación médica francófona reconocible en Italia. Proximidad cultural con la Europa mediterránea.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d4">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇲🇦</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Marocco</div>
+              <div class="ccb-region">Africa del Nord</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-dev">In sviluppo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Numerosi infermieri con formazione francofona e buona predisposizione all'italiano.</span>
+            <span data-lang="en">Many nurses with Francophone training and good aptitude for Italian.</span>
+            <span data-lang="es">Numerosos enfermeros con formación francófona y buena predisposición al italiano.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparazione</span></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── EUROPA EST ── -->
+    <div class="region-section reveal" data-region-block="europe">
+      <div class="region-title">
+        <span style="font-size:1.8rem">🇪🇺</span>
+        <h2>
+          <span data-lang="it">Europa dell'Est</span>
+          <span data-lang="en">Eastern Europe</span>
+          <span data-lang="es">Europa del Este</span>
+        </h2>
+        <span class="region-count">4 paesi</span>
+      </div>
+      <div class="countries-grid-big">
+
+        <div class="country-card-big reveal d1">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇷🇴</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Romania</div>
+              <div class="ccb-region">Europa dell'Est</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-active">Attivo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Lingua romanza molto vicina all'italiano. Numerosi infermieri già presenti in Italia. Riconoscimento titoli semplificato (UE).</span>
+            <span data-lang="en">Romance language very close to Italian. Many nurses already present in Italy. Simplified title recognition (EU).</span>
+            <span data-lang="es">Lengua romance muy cercana al italiano. Numerosos enfermeros ya presentes en Italia. Reconocimiento simplificado (UE).</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+            <div class="ccb-detail"><span class="ccb-detail-icon">🇪🇺</span><span data-lang="it">Titolo UE — riconoscimento automatico</span><span data-lang="en">EU qualification — automatic recognition</span><span data-lang="es">Título UE — reconocimiento automático</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d2">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇦🇱</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Albania</div>
+              <div class="ccb-region">Balcani</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-active">Attivo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Molti infermieri albanesi parlano già italiano. Forte migrazione verso l'Italia, riconoscimento titoli in corso.</span>
+            <span data-lang="en">Many Albanian nurses already speak Italian. Strong migration to Italy, title recognition in progress.</span>
+            <span data-lang="es">Muchos enfermeros albaneses ya hablan italiano. Fuerte migración hacia Italia, reconocimiento en curso.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+            <div class="ccb-detail"><span class="ccb-detail-icon">🗣️</span><span data-lang="it">Spesso già italofoni</span><span data-lang="en">Often already Italian-speaking</span><span data-lang="es">A menudo ya italohablantes</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d3">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇲🇩</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Moldova</div>
+              <div class="ccb-region">Europa dell'Est</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-dev">In sviluppo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Lingua romanza simile all'italiano. Tradizione di emigrazione verso l'Italia già consolidata.</span>
+            <span data-lang="en">Romance language similar to Italian. Established tradition of emigration to Italy.</span>
+            <span data-lang="es">Lengua romance similar al italiano. Tradición consolidada de emigración a Italia.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+        <div class="country-card-big reveal d4">
+          <div class="ccb-top">
+            <div class="ccb-flag">🇺🇦</div>
+            <div class="ccb-head">
+              <div class="ccb-name">Ucraina</div>
+              <div class="ccb-region">Europa dell'Est</div>
+            </div>
+          </div>
+          <div class="ccb-badges"><span class="cc-badge cb-new">Nuovo</span></div>
+          <div class="ccb-body">
+            <span data-lang="it">Molte infermiere ucraine già presenti in Italia come badanti. Percorso di riconoscimento del titolo professionale.</span>
+            <span data-lang="en">Many Ukrainian nurses already in Italy as caregivers. Path to professional qualification recognition.</span>
+            <span data-lang="es">Muchas enfermeras ucranianas ya en Italia como cuidadoras. Camino hacia el reconocimiento del título profesional.</span>
+          </div>
+          <div class="ccb-details">
+            <div class="ccb-detail"><span class="ccb-detail-icon">👩‍⚕️</span><span data-lang="it">Infermieri</span><span data-lang="en">Nurses</span><span data-lang="es">Enfermeros</span></div>
+          </div>
+          <div class="ccb-footer">
+            <div class="ccb-referente"><span data-lang="it">Referente:</span><span data-lang="en">Contact:</span><span data-lang="es">Referente:</span> <span class="ccb-soon"><span data-lang="it">In arrivo</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span></span></div>
+            <span class="ccb-soon"><span data-lang="it">Pagina in preparazione</span><span data-lang="en">Page coming soon</span><span data-lang="es">Página en preparación</span></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-rainbow"></div>
+    <div class="foot-top">
+      <div>
+        <div style="display:inline-block;margin-bottom:.6rem">
+          <div class="nav-logo-mark" style="display:inline-block">Nurse<span>Italy</span></div>
+        </div>
+        <div class="foot-als"><div class="fal">ALS MCL</div><span style="font-size:.78rem">Civitanova Marche A.P.S.</span></div>
+        <p style="margin-top:.6rem">
+          <span data-lang="it">Reclutamento etico e legale di infermieri da tutto il mondo verso le strutture sanitarie italiane. Servizio gratuito per i candidati.</span>
+          <span data-lang="en">Ethical and legal recruitment of nurses from around the world to Italian healthcare facilities. Free service for candidates.</span>
+          <span data-lang="es">Reclutamiento ético y legal de enfermeros de todo el mundo hacia los centros sanitarios italianos. Servicio gratuito para candidatos.</span>
+        </p>
+      </div>
+      <div class="foot-col">
+        <h4 data-lang="it">Navigazione</h4>
+        <h4 data-lang="en">Navigation</h4>
+        <h4 data-lang="es">Navegación</h4>
+        <a href="nurseitaly.html#processo" data-lang="it">Come funziona</a><a href="nurseitaly.html#processo" data-lang="en">How it works</a><a href="nurseitaly.html#processo" data-lang="es">Cómo funciona</a>
+        <a href="paesi.html" data-lang="it">Paesi</a><a href="paesi.html" data-lang="en">Countries</a><a href="paesi.html" data-lang="es">Países</a>
+        <a href="nurseitaly.html#candidatura" data-lang="it">Candidatura</a><a href="nurseitaly.html#candidatura" data-lang="en">Apply</a><a href="nurseitaly.html#candidatura" data-lang="es">Candidatura</a>
+        <a href="nurseitaly.html#chi-siamo" data-lang="it">Chi siamo</a><a href="nurseitaly.html#chi-siamo" data-lang="en">About</a><a href="nurseitaly.html#chi-siamo" data-lang="es">Quiénes somos</a>
+      </div>
+      <div class="foot-col">
+        <h4>Link</h4>
+        <a href="als_mcl_civitanova_5.html">ALS MCL Civitanova</a>
+        <a href="https://www.alsmcl.it" target="_blank" rel="noopener">ALS MCL Nazionale</a>
+        <a href="https://www.gus-italia.org" target="_blank" rel="noopener">GUS Italia</a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <script type="text/javascript" id="mmvst_globe" src="//mapmyvisitors.com/globe.js?d=1ZU_M256JOYrPdVoUrn6oKz1ZKiAz_y1_zQ0R0iEIHU"></script>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 NurseItaly · ALS MCL Territoriale di Civitanova A.P.S. · C.F. 97555660584 · Via Martiri di Belfiore 152, Civitanova Marche (MC)</span>
+      <span style="color:rgba(255,255,255,.3)" data-lang="it">Ente del Terzo Settore · D.Lgs. 117/2017</span>
+      <span style="color:rgba(255,255,255,.3)" data-lang="en">Third Sector Entity · D.Lgs. 117/2017</span>
+      <span style="color:rgba(255,255,255,.3)" data-lang="es">Entidad del Tercer Sector · D.Lgs. 117/2017</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── LINGUA ── */
+function setLang(l) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === l.toUpperCase()));
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    if (btn.tagName === 'BUTTON' && btn.classList.contains('lang-btn')) return;
+    if (btn.tagName === 'SPAN' || btn.tagName === 'A' || btn.tagName === 'H4') {
+      btn.style.display = btn.getAttribute('data-lang') === l ? 'inline' : 'none';
+    } else {
+      btn.style.display = btn.getAttribute('data-lang') === l ? 'block' : 'none';
+    }
+  });
+}
+setLang('it');
+
+/* ── FILTRO REGIONI ── */
+function filterRegion(region, btn) {
+  document.querySelectorAll('.rfbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.region-section').forEach(sec => {
+    sec.style.display = (region === 'all' || sec.dataset.regionBlock === region) ? '' : 'none';
+  });
+}
+
+/* ── REVEAL ── */
+const obs = new IntersectionObserver(e => {
+  e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('vis'); obs.unobserve(x.target); } });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── NAV scroll ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.boxShadow = scrollY > 40
+    ? '0 4px 24px rgba(0,0,0,.12)' : '0 2px 16px rgba(0,0,0,.06)';
+});
+
+/* ── menu mobile ── */
+document.querySelectorAll('.nav-links a').forEach(a =>
+  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+);
+</script>
+</body>
+</html>
