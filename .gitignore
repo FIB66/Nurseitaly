@@ -1,4 +1,23 @@
-# File di lavoro interni: il repo e' pubblico (GitHub Pages)
-# Documenti interni: il repo e' pubblico, restano solo in locale
-# in "Nurseitaly - Privato"
+# ATTENZIONE: questo repo e' PUBBLICO (necessario per GitHub Pages).
+# Tutto cio' che viene committato finisce online su
+# https://fib66.github.io/Nurseitaly/
+# Il materiale di lavoro va in "Nurseitaly - Privato" sul Desktop.
+
+# Segreti (non devono mai finire in un repo)
+.env
+.env.*
+*.key
+
+# Documenti e materiale interno
 riferimenti.txt
+TODO_miglioramenti.txt
+CHANGELOG.md
+Partner/
+
+# Backup
+*_backup_*.html
+*.bak
+*.tmp
+
+# Strumenti locali
+.claude/
